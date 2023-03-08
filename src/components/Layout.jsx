@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "./Footer/Footer";
 import NavPrincipal from "./Nav/NavPrincipal";
 
 const Layout = ({ children }) => {
@@ -6,7 +7,7 @@ const Layout = ({ children }) => {
     <>
       <NavPrincipal />
       {children}
-      <div>footer</div>
+      <Footer />
     </>
   );
 };
