@@ -7,6 +7,14 @@ const router = createBrowserRouter([
     path: "/",
     element: <PaginaPrincipal />,
   },
+  {
+    path: "mujer",
+    element: <PaginaPrincipal />,
+  },
+  {
+    path: "hombre",
+    element: <PaginaPrincipal />,
+  },
 ]);
 
 function App() {
