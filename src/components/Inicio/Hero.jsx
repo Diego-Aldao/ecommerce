@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import imgHeroMovil from "../../assets/Home/Hero/topshop_ww-hp-hero_mobile.webp";
-import imgHeroDesk from "../../assets/Home/Hero/topshop_ww-hp-hero_desktop.avif";
 import useWindowSize from "../../hooks/useWindowSize";
 import ContenedorWidth from "../../styles/ContenedorMaxWidth";
 
@@ -9,10 +7,6 @@ const Contenedor = styled.div`
   width: 100%;
   margin: 20px 0px;
   position: relative;
-  img {
-    width: 100%;
-    height: 100%;
-  }
 `;
 
 const InfoHero = styled.div`
@@ -55,21 +49,30 @@ const BtnComprar = styled.div`
   }
 `;
 
-const Hero = () => {
+const Hero = ({ data }) => {
   const size = useWindowSize();
 
   return (
     <ContenedorWidth className="no-padding">
       <Contenedor>
-        <img src={size.width < 768 ? imgHeroMovil : imgHeroDesk} alt="" />
-        <InfoHero>
-          <Tienda>
-            <span>topshop</span>
-          </Tienda>
-          <BtnComprar>
-            ,<button>comprar ahora</button>
-          </BtnComprar>
-        </InfoHero>
+        {data ? (
+          <>
+            <img
+              src={size.width < 768 ? data.imagenMovile : data.imagenDesktop}
+              alt="banner topshop"
+            />
+            <InfoHero>
+              <Tienda>
+                <span>{data.titulo}</span>
+              </Tienda>
+              <BtnComprar>
+                ,<button>comprar ahora</button>
+              </BtnComprar>
+            </InfoHero>
+          </>
+        ) : (
+          <>loading</>
+        )}
       </Contenedor>
     </ContenedorWidth>
   );

@@ -2,15 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 const ItemTendencia = styled.div`
-  img {
-    width: 100%;
-  }
+  width: 100%;
 `;
 
-const ItemTendencias = ({ column, imagenTendencia }) => {
+const ItemTendencias = ({ data }) => {
   return (
     <ItemTendencia>
-      <img src={imagenTendencia} alt="" />
+      <img src={data.imagen} alt="" />
     </ItemTendencia>
   );
 };

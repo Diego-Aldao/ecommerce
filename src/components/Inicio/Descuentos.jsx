@@ -18,15 +18,17 @@ const ContenedorDescuento = styled(Contenedor)`
   padding: 20px 35px 5px;
 `;
 
-const Descuentos = () => {
+const Descuentos = ({ data }) => {
   return (
     <ContenedorDescuento>
-      <TituloDescuento>
-        hasta un -50% de descuento en diseños comodos
-      </TituloDescuento>
-      <Terminos>
-        por tiempo limitado. Los articulos seleccionados se muestran rebajados
-      </Terminos>
+      {data !== undefined ? (
+        <>
+          <TituloDescuento>{data.descripcion}</TituloDescuento>
+          <Terminos>{data.footer}</Terminos>
+        </>
+      ) : (
+        <>loading</>
+      )}
     </ContenedorDescuento>
   );
 };

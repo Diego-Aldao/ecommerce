@@ -2,9 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 const ItemGrid = styled.div`
-  img {
-    width: 100%;
-  }
   h3 {
     text-align: center;
     padding: 15px 0px;
@@ -20,12 +17,12 @@ const ItemGrid = styled.div`
   }
 `;
 
-const ItemLanzamientos = ({ imagenLanzamiento }) => {
+const ItemLanzamientos = ({ data }) => {
   return (
     <ItemGrid>
-      <img src={imagenLanzamiento} alt="" />
-      <h3>trajes: el combo perfecto</h3>
-      <p>sastreria en toda la regla</p>
+      <img src={data.imagen} alt="imagen lanzamientos hombre" />
+      <h3>{data.titulo}</h3>
+      <p>{data.subtitulo}</p>
     </ItemGrid>
   );
 };

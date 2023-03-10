@@ -4,9 +4,6 @@ import styled from "styled-components";
 const ItemPromo = styled.div`
   width: 100%;
   text-align: center;
-  img {
-    width: 100%;
-  }
   h2 {
     padding: 20px 0px 10px;
     text-transform: uppercase;
@@ -31,12 +28,12 @@ const ItemPromo = styled.div`
   }
 `;
 
-const ItemPromos = ({ imagenPromo }) => {
+const ItemPromos = ({ data }) => {
   return (
     <ItemPromo>
-      <img src={imagenPromo} alt="" />
-      <h2>tommy jeans</h2>
-      <p>lo mejor en ropa vaquera</p>
+      <img src={data.imagen} alt="" />
+      <h2>{data.titulo}</h2>
+      <p>{data.subtitulo}</p>
       <button>
         <span>comprar ahora</span>
       </button>
