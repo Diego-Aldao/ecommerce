@@ -8,6 +8,7 @@ const Contenedor = styled.div`
   display: ${({ isVisible }) => (isVisible ? "flex" : "none")};
   top: 50px;
   left: 0px;
+  z-index: 9;
 `;
 
 const ListaFiltros = styled.ul`
@@ -38,10 +39,8 @@ const Filtro = styled.li`
       line-height: 2;
     }
   }
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  &:last-child {
+    border: none;
   }
 `;
 const ListaCategorias = styled.ul`
