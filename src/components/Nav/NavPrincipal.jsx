@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FiSearch, FiUser, FiShoppingBag, FiHeart } from "react-icons/fi";
 import NavMovil from "./NavMovil/NavMovil";
 import NavDesktop from "./NavDesktop/NavDesktop";
+import { Link, useLocation } from "react-router-dom";
 
 const Nav = styled.nav`
   width: 100%;
@@ -99,6 +100,7 @@ const BotonGenero = styled.button`
   display: none;
   color: white;
   font-weight: 700;
+
   a {
     text-transform: uppercase;
   }
@@ -107,14 +109,48 @@ const BotonGenero = styled.button`
     justify-content: center;
     align-items: center;
   }
+  &.btn-mujer {
+    background: ${({ genero }) =>
+      genero == "/hombre" ? "none" : "var(--color-secundario)"};
+    color: ${({ genero }) => (genero == "/hombre" ? "#fff" : "#000")};
+  }
+  &.btn-hombre {
+    background: ${({ genero }) =>
+      genero == "/hombre" ? "var(--color-secundario)" : "none"};
+    color: ${({ genero }) => (genero == "/hombre" ? "#000" : "#fff")};
+  }
 `;
 
 const NavPrincipal = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [data, setData] = useState();
+  const location = useLocation();
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+
+  const options = {
+    method: "GET",
+    headers: {
+      "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
+      "X-RapidAPI-Host": "asos2.p.rapidapi.com",
+    },
+  };
+
+  const fetchData = () => {
+    fetch(
+      "https://asos2.p.rapidapi.com/categories/list?country=ES&lang=es-ES",
+      options
+    )
+      .then((response) => response.json())
+      .then((dataFetch) => setData(dataFetch.navigation))
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -125,11 +161,11 @@ const NavPrincipal = () => {
           <span></span>
         </BtnNavMovil>
         <LogoNav>asos</LogoNav>
-        <BotonGenero>
-          <a href="/">mujer</a>
+        <BotonGenero genero={location.pathname} className="btn-mujer">
+          <Link to="/mujer">mujer</Link>
         </BotonGenero>
-        <BotonGenero>
-          <a href="/">hombre</a>
+        <BotonGenero genero={location.pathname} className="btn-hombre">
+          <Link to="/hombre">hombre</Link>
         </BotonGenero>
         <BusquedaNavPrincipal>
           <div>
@@ -153,7 +189,7 @@ const NavPrincipal = () => {
         </IconoNav>
         <NavMovil isOpen={isOpen} setIsOpen={setIsOpen} />
       </Nav>
-      <NavDesktop />
+      <NavDesktop data={data} />
     </>
   );
 };
