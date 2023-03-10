@@ -1,0 +1,204 @@
+{
+  "home": [
+    {
+      "nombre": "mujer",
+      "id": 1,
+      "children": [
+        {
+          "id": 1,
+          "nombre": "Hero",
+          "imagenMovile": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/12/hero/topshop/topshop_ww-hp-hero_mobile.jpg",
+          "imagenDesktop": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/12/hero/topshop/topshop_ww-hp-hero_desktop.jpg",
+          "titulo": "topshop"
+        },
+        {
+          "id": 2,
+          "nombre": "GridPrincipal",
+          "children": [
+            {
+              "id": 1,
+              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/26/moments/ww_global_ultimate_tailoring_moment_870x1110.jpg",
+              "titulo": "trajes: el combo perfecto",
+              "subtitulo": "sastrería en toda la regla"
+            },
+            {
+              "id": 2,
+              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/26/moments/ww_global_corsage_dressing_moment_870x1110.jpg",
+              "titulo": "puro magnetismo",
+              "subtitulo": "diseños para echarse flores"
+            },
+            {
+              "id": 3,
+              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/26/moments/ww_global_colour_and_shine_pu_moment_870x1110.jpg",
+              "titulo": "brilla con luz propia",
+              "subtitulo": "déjate conquistar por el PU"
+            },
+
+            {
+              "id": 4,
+              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/26/hero/tstm_refresh3_mob_ww_v2.png",
+              "titulo": "romance rave",
+              "subtitulo": "ASOS DESIGN: estilo para salir(se)"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "nombre": "Descuento",
+          "descripcion": "hasta un -50% de descuento en diseños comodos",
+          "footer": "Por tiempo limitado. Los artículos seleccionados se muestran rebajados"
+        },
+        {
+          "id": 4,
+          "nombre": "Promocion",
+          "children": [
+            {
+              "id": 1,
+              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/26/moments/ww_global_tommy_jeans_moment_870x1110.jpg",
+              "titulo": "tommy jeans",
+              "subtitulo": "lo mejor en ropa vaquera",
+              "boton": "comprar ahora"
+            },
+            {
+              "id": 2,
+              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/26/moments/ww_global_asos_design_halloween_moment_870x1110.jpg",
+              "titulo": "estilosamente terrorífico",
+              "subtitulo": "llega el estilo gotico",
+              "boton": "comprar halloween"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "nombre": "Marcas",
+          "children": [
+            {
+              "id": 1,
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/monkl-hp-logos-256x256.jpg"
+            },
+            {
+              "id": 2,
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/never-fully-dressed-hp-logos-256x256.png"
+            },
+            {
+              "id": 3,
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/1x12x---test.png"
+            },
+            {
+              "id": 4,
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/reclaimed-vintage-hp-logos-256x256.jpg"
+            },
+            {
+              "id": 5,
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/collusion-hp-logos-256x256.jpg"
+            },
+            {
+              "id": 6,
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/weekday-hp-logos-256x256.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nombre": "hombre",
+      "id": 2,
+      "children": [
+        {
+          "id": 1,
+          "nombre": "Hero",
+          "imagenMovile": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/12/topman/updated-assets/topman_hp-hero_mobile.jpg",
+          "imagenDesktop": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/12/topman/updated-assets/topman_hp-hero_desktop.jpg",
+          "titulo": "topman"
+        },
+        {
+          "id": 2,
+          "nombre": "GridPrincipal",
+          "children": [
+            {
+              "id": 1,
+              "imagen": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/26/moments/mw_warm_handle_moment_870x1110-v3.png",
+              "titulo": "confort de asos design",
+              "subtitulo": "ponle buena cara al frío"
+            },
+            {
+              "id": 2,
+              "imagen": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/26/moments/mw_global_winter_essentials_moment_870x1110.jpg",
+              "titulo": "neutros de invierno",
+              "subtitulo": "¿quién dijo que el beige es aburrido?"
+            },
+            {
+              "id": 3,
+              "imagen": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/26/moments/mw_weekday_moment_870x1110.jpg",
+              "titulo": "weekday",
+              "subtitulo": "ríete del frío"
+            },
+
+            {
+              "id": 4,
+              "imagen": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/26/moments/mw_retro_day_and_night_moment_870x1110-2.jpg",
+              "titulo": "disco nostalgia",
+              "subtitulo": "todo un viaje retro"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "nombre": "Descuento",
+          "descripcion": "hasta un -50% de descuento en diseños comodos",
+          "footer": "oferta limitada hasta agotar stock"
+        },
+        {
+          "id": 4,
+          "nombre": "Promocion",
+          "children": [
+            {
+              "id": 1,
+              "imagen": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/26/moments/mw_global_asos_design_halloween_moment_870x1110.jpg",
+              "titulo": "estilosamente terrorífico",
+              "subtitulo": "llega el estilo gotico",
+              "boton": "comprar asos design"
+            },
+            {
+              "id": 2,
+              "imagen": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/12/mw_global_melancholy_punk_moment_870x1110.jpg",
+              "titulo": "e-boy otoñal",
+              "subtitulo": "pásate al lado oscuro",
+              "boton": "comprar asos design"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "nombre": "Marcas",
+          "children": [
+            {
+              "id": 1,
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/tommy-hilfiger-hp-logos-256x256.jpg"
+            },
+            {
+              "id": 2,
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/north-face.png"
+            },
+            {
+              "id": 3,
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/nike-hp-logos-256x256.jpg"
+            },
+            {
+              "id": 4,
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/carhartt-hp-logos-256x256.jpg"
+            },
+            {
+              "id": 5,
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/ellesse-hp-logos-256x256.jpg"
+            },
+            {
+              "id": 6,
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/dr-martens-hp-logos-256x256.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
