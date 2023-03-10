@@ -22,5 +22,9 @@ const EstilosGlobales = createGlobalStyle`
     ul{
         list-style-type: none;
     }
+    img{
+        width: 100%;
+        object-fit: cover;
+    }
 `;
 export default EstilosGlobales;
