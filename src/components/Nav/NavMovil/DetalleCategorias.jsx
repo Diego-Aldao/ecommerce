@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { BsArrowLeft } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import useDestino from "../../../hooks/useDestino";
 
 const Nav = styled.nav`
   width: 100%;
   height: 100%;
   position: absolute;
-  left: ${({ currentNav }) => (currentNav == "detalle" ? "0px" : "100%")};
+  left: ${({ position }) => (position ? "0px" : "100%")};
   transition: var(--transition);
   overflow: hidden;
   color: black;
@@ -49,145 +51,171 @@ const MiniCategoria = styled.ul`
   padding-bottom: 30px;
 `;
 
-const TituloItem = styled.h4`
+const TituloInterior = styled.h4`
   width: 100%;
-  padding: 25px 0px;
-  background: var(--color-gris);
+  padding: 25px;
+  background: #eee;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  line-height: 1.3;
+  &.premium {
+    background: black;
+    padding: 15px;
+    margin: 20px 0px;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+  }
+  &.noTitle {
+    display: none;
+  }
 `;
 
-const ListaItems = styled.ul`
-  padding: 20px;
+const ListaItemsInterior = styled.ul`
+  padding: 15px;
 `;
 
-/*APLICAR EXTENDING STYLES DE STYLED COMPONENTS CUANDO YA TENGA LOS DATOS DEL FECTH */
-const ItemSimple = styled.li`
+const Item = styled.li`
   display: flex;
   height: 60px;
   align-items: center;
-  border-bottom: 1px solid var(--color-gris);
+  border-bottom: 1px solid #3d3d3d1a;
   position: relative;
   div {
     width: 40px;
     min-width: 40px;
     height: 40px;
-    background: var(--color-gris);
+    background: #3d3d3d1a;
     margin-right: 15px;
     border-radius: 50%;
     img {
       border-radius: 50%;
     }
   }
-  span {
-    text-transform: capitalize;
+  &.especial-grande,
+  &.especial-pequeño {
+    margin-bottom: 10px;
+    border: none;
+    span {
+      text-transform: uppercase;
+      font-weight: 700;
+      line-height: 1.2;
+    }
   }
-  &:last-of-type {
-    border-bottom: none;
+  &.especial-pequeño {
+    flex-direction: row-reverse;
+    background: #3d3d3d1a;
+    height: 80px;
+    justify-content: space-between;
+    padding: 12px;
+    div {
+      min-height: 62px;
+      min-width: 62px;
+      margin: 0;
+      margin-left: 10px;
+    }
+  }
+  &.especial-grande {
+    height: 85px;
+    span {
+      padding: 10px;
+      position: relative;
+      z-index: 2;
+      color: white;
+      max-width: 70%;
+    }
+    div {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      filter: brightness(0.7);
+      border-radius: 0px;
+      img {
+        border-radius: 0px;
+        object-fit: cover;
+      }
+    }
+  }
+  &:last-child {
+    border: none;
   }
 `;
 
-const DetalleCategorias = ({ currentNav, setCurrentNav }) => {
+const DetalleCategorias = ({ currentNav, position, setPosition }) => {
+  const navigate = useNavigate();
+  const [currentLink, setCurrentLink] = useState("");
+  const { linkFormateado } = useDestino(currentLink);
+
   const handleClick = () => {
-    setCurrentNav("categorias");
+    setPosition((prevValue) => !prevValue);
   };
+
+  const handleNavigation = (item) => {
+    setCurrentLink(item);
+  };
+
+  useEffect(() => {
+    navigate(linkFormateado);
+  }, [linkFormateado]);
+
   return (
-    <Nav currentNav={currentNav}>
+    <Nav position={position}>
       <Header onClick={handleClick}>
         <BtnAtras>
           <BsArrowLeft></BsArrowLeft>
         </BtnAtras>
-        <Titulo>novedades</Titulo>
+        <Titulo>{currentNav && currentNav.content.title}</Titulo>
       </Header>
       <MiniCategoria>
-        <li>
-          <TituloItem>novedades</TituloItem>
-          <ListaItems>
-            <ItemSimple>
-              <div>
-                <img src="" alt="" />
-              </div>
-              <span>nombre item</span>
-            </ItemSimple>
-            <ItemSimple>
-              <div>
-                <img src="" alt="" />
-              </div>
-              <span>nombre item</span>
-            </ItemSimple>
-            <ItemSimple>
-              <div>
-                <img src="" alt="" />
-              </div>
-              <span>nombre item</span>
-            </ItemSimple>
-            <ItemSimple>
-              <div>
-                <img src="" alt="" />
-              </div>
-              <span>nombre item</span>
-            </ItemSimple>
-          </ListaItems>
-        </li>
-        <li>
-          <TituloItem>novedades</TituloItem>
-          <ListaItems>
-            <ItemSimple>
-              <div>
-                <img src="" alt="" />
-              </div>
-              <span>nombre item</span>
-            </ItemSimple>
-            <ItemSimple>
-              <div>
-                <img src="" alt="" />
-              </div>
-              <span>nombre item</span>
-            </ItemSimple>
-            <ItemSimple>
-              <div>
-                <img src="" alt="" />
-              </div>
-              <span>nombre item</span>
-            </ItemSimple>
-            <ItemSimple>
-              <div>
-                <img src="" alt="" />
-              </div>
-              <span>nombre item</span>
-            </ItemSimple>
-          </ListaItems>
-        </li>
-        <li>
-          <TituloItem>novedades</TituloItem>
-          <ListaItems>
-            <ItemSimple>
-              <div>
-                <img src="" alt="" />
-              </div>
-              <span>nombre item</span>
-            </ItemSimple>
-            <ItemSimple>
-              <div>
-                <img src="" alt="" />
-              </div>
-              <span>nombre item</span>
-            </ItemSimple>
-            <ItemSimple>
-              <div>
-                <img src="" alt="" />
-              </div>
-              <span>nombre item</span>
-            </ItemSimple>
-            <ItemSimple>
-              <div>
-                <img src="" alt="" />
-              </div>
-              <span>nombre item</span>
-            </ItemSimple>
-          </ListaItems>
-        </li>
+        {currentNav
+          ? currentNav.children
+              .filter((obj) => obj.channelExclusions.length !== 1)
+              .map((obj) => {
+                return (
+                  <li key={obj.id}>
+                    <TituloInterior className={obj.style.webLargeStyleType}>
+                      {obj.content.title}
+                    </TituloInterior>
+                    <ListaItemsInterior>
+                      {obj.children.map((item) => {
+                        return (
+                          <>
+                            {item.style.webLargeStyleType === "premium" &&
+                            item.channelExclusions < 1 ? (
+                              <TituloInterior className="premium" key={item.id}>
+                                {item.content.title}
+                              </TituloInterior>
+                            ) : (
+                              <Item
+                                className={
+                                  obj.style.webLargeStyleType == "noTitle" &&
+                                  obj.style.mobileStyleType == "noTitle"
+                                    ? "especial-grande"
+                                    : obj.style.webLargeStyleType == "noTitle"
+                                    ? "especial-pequeño"
+                                    : ""
+                                }
+                                onClick={() =>
+                                  handleNavigation(item.link.webUrl)
+                                }
+                              >
+                                <div>
+                                  <img
+                                    src={item.content.mobileImageUrl}
+                                    alt=""
+                                  />
+                                </div>
+                                <span>{item.content.title}</span>
+                              </Item>
+                            )}
+                          </>
+                        );
+                      })}
+                    </ListaItemsInterior>
+                  </li>
+                );
+              })
+          : ""}
       </MiniCategoria>
     </Nav>
   );
