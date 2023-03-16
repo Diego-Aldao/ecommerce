@@ -3,23 +3,10 @@ import styled from "styled-components";
 import useCategorias from "../../../hooks/useCategorias";
 import Categorias from "./Categorias";
 import DetalleCategorias from "./DetalleCategorias";
-
-const MainContenedor = styled.div`
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  top: 0;
-  background: #00000057;
-  visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
-  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
-  display: flex;
-  transition: var(--transition);
-  z-index: 99;
-`;
+import ModalFixed from "../../ModalFixed";
 
 const ContenedorNavs = styled.div`
-  flex: 1 1 auto;
+  width: 266px;
   height: 100%;
   background: white;
   display: flex;
@@ -28,6 +15,9 @@ const ContenedorNavs = styled.div`
   max-width: 500px;
   left: ${({ isOpen }) => (isOpen ? "0px" : "-100%")};
   transition: var(--transition);
+  @media (min-width: 400px) {
+    width: 320px;
+  }
 `;
 
 const BtnCerrar = styled.div`
@@ -61,18 +51,8 @@ const NavMovil = ({ setIsOpen, isOpen, data }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleClickEspecial = (e) => {
-    if (e.target.classList[2] == "contenedor-nav-movil") {
-      setIsOpen(!isOpen);
-    }
-  };
-
   return (
-    <MainContenedor
-      isOpen={isOpen}
-      className="contenedor-nav-movil"
-      onClick={handleClickEspecial}
-    >
+    <ModalFixed isOpen={isOpen} setIsOpen={setIsOpen} className="modal-fixed">
       <ContenedorNavs isOpen={isOpen}>
         <Categorias
           currentNav={currentNav}
@@ -92,7 +72,7 @@ const NavMovil = ({ setIsOpen, isOpen, data }) => {
         <span></span>
         <span></span>
       </BtnCerrar>
-    </MainContenedor>
+    </ModalFixed>
   );
 };
 

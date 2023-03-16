@@ -47,6 +47,7 @@ const BotonesGenero = styled.div`
 const ListaCategorias = styled.ul`
   width: 100%;
   height: 100%;
+  padding: 16px;
   overflow-y: scroll;
 `;
 
@@ -57,9 +58,12 @@ const Categoria = styled.li`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  margin: 20px;
+  margin: 20px 0px;
   &.btn-inicio {
     height: 50px;
+  }
+  @media (min-width: 400px) {
+    height: 96px;
   }
 `;
 
