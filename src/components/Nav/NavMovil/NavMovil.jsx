@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import useCategorias from "../../../hooks/useCategorias";
 import Categorias from "./Categorias";
 import DetalleCategorias from "./DetalleCategorias";
 
@@ -14,6 +15,7 @@ const MainContenedor = styled.div`
   opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
   display: flex;
   transition: var(--transition);
+  z-index: 99;
 `;
 
 const ContenedorNavs = styled.div`
@@ -50,8 +52,11 @@ const BtnCerrar = styled.div`
   }
 `;
 
-const NavMovil = ({ setIsOpen, isOpen }) => {
-  const [currentNav, setCurrentNav] = useState("categorias");
+const NavMovil = ({ setIsOpen, isOpen, data }) => {
+  const [currentNav, setCurrentNav] = useState();
+  const [position, setPosition] = useState(false);
+  const { categorias } = useCategorias(data);
+
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
@@ -69,9 +74,17 @@ const NavMovil = ({ setIsOpen, isOpen }) => {
       onClick={handleClickEspecial}
     >
       <ContenedorNavs isOpen={isOpen}>
-        <Categorias currentNav={currentNav} setCurrentNav={setCurrentNav} />
+        <Categorias
+          currentNav={currentNav}
+          setCurrentNav={setCurrentNav}
+          position={position}
+          setPosition={setPosition}
+          categorias={categorias}
+        />
         <DetalleCategorias
           currentNav={currentNav}
+          position={position}
+          setPosition={setPosition}
           setCurrentNav={setCurrentNav}
         />
       </ContenedorNavs>
