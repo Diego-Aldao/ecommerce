@@ -1,6 +1,7 @@
 import PaginaPrincipal from "./pages/PaginaPrincipal";
 import EstilosGlobales from "./styles/EstilosGlobales";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ListadoProductos from "./pages/ListadoProductos";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "hombre",
     element: <PaginaPrincipal />,
+  },
+  {
+    path: "/productos/:genero/:categoria1/:categoria2/:idCategoria",
+    element: <ListadoProductos />,
   },
 ]);
 
