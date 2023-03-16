@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import useDestino from "../../../hooks/useDestino";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Contenedor = styled.div`
   width: 100%;
@@ -206,6 +209,18 @@ const Categorias = styled.li`
 `;
 
 const Dropdown = ({ isVisible, currentContent }) => {
+  const navigate = useNavigate();
+  const [currentLink, setCurrentLink] = useState("");
+  const { linkFormateado } = useDestino(currentLink);
+
+  const handleNavigation = (item) => {
+    setCurrentLink(item);
+  };
+
+  useEffect(() => {
+    navigate(linkFormateado);
+  }, [linkFormateado]);
+
   const categoriasFiltradas = currentContent?.filter(
     (categoria) => categoria.channelExclusions.length !== 1
   );
@@ -227,6 +242,9 @@ const Dropdown = ({ isVisible, currentContent }) => {
           {catMayor.children.map((catMenor) => {
             return (
               <Categorias
+                onClick={() => {
+                  handleNavigation(catMenor.link.webUrl);
+                }}
                 key={catMenor.id}
                 className={
                   catMayor.display.webLargeTemplateName.length !== 0
