@@ -187,7 +187,7 @@ const NavPrincipal = () => {
         <IconoNav>
           <FiShoppingBag />
         </IconoNav>
-        <NavMovil isOpen={isOpen} setIsOpen={setIsOpen} />
+        <NavMovil isOpen={isOpen} setIsOpen={setIsOpen} data={data} />
       </Nav>
       <NavDesktop data={data} />
     </>
