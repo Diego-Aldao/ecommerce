@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Dropdown from "./Dropdown";
-import { useLocation } from "react-router-dom";
-
+import useCategorias from "../../../hooks/useCategorias";
 const Contenedor = styled.div`
   width: 100%;
   height: 50px;
@@ -30,25 +29,7 @@ const Contenedor = styled.div`
 const NavDesktop = ({ data }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentContent, setCurrentContent] = useState();
-  const location = useLocation();
-  const [categorias, setCategorias] = useState();
-
-  const getCategorias = (data) => {
-    if (data === undefined) return;
-    const dataCategorias =
-      location.pathname == "/hombre"
-        ? data[0].children.filter(
-            (child) => child.content.title == "Categories"
-          )[0].children
-        : data[1].children.filter(
-            (child) => child.content.title == "Categories"
-          )[0].children;
-    setCategorias(dataCategorias);
-  };
-
-  useEffect(() => {
-    getCategorias(data);
-  }, [data, location]);
+  const { categorias } = useCategorias(data);
 
   const handleMouseOverCategoria = (categoria) => {
     setCurrentContent(categoria.children);
