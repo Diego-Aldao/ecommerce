@@ -1,59 +1,43 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import useCategorias from "../../../hooks/useCategorias";
 import Categorias from "./Categorias";
 import DetalleCategorias from "./DetalleCategorias";
-import ModalFixed from "../../ModalFixed";
+import useWindowSize from "../../../hooks/useWindowSize";
+import { Modal, BtnCerrar, ContenedorNavs } from "../../ModalFixed";
+import styled from "styled-components";
 
-const ContenedorNavs = styled.div`
-  width: 266px;
-  height: 100%;
-  background: white;
-  display: flex;
-  position: relative;
-  overflow-x: hidden;
-  max-width: 500px;
-  left: ${({ isOpen }) => (isOpen ? "0px" : "-100%")};
-  transition: var(--transition);
-  @media (min-width: 400px) {
-    width: 320px;
-  }
-`;
-
-const BtnCerrar = styled.div`
-  width: 50px;
-  height: 50px;
-  display: flex;
-  background: black;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  left: ${({ isOpen }) => (isOpen ? "0px" : "-100%")};
-  transition: var(--transition);
-  span {
-    position: absolute;
-    width: 30px;
-    height: 3px;
-    background: white;
-    transform: rotate(45deg);
-  }
-  span:nth-child(2) {
-    transform: rotate(-45deg);
-  }
-`;
+const ModalNav = styled(Modal)``;
+const BtnCerrarNav = styled(BtnCerrar)``;
+const ContenedorNav = styled(ContenedorNavs)``;
 
 const NavMovil = ({ setIsOpen, isOpen, data }) => {
   const [currentNav, setCurrentNav] = useState();
   const [position, setPosition] = useState(false);
   const { categorias } = useCategorias(data);
+  const size = useWindowSize();
 
-  const handleClick = () => {
+  if (size.width > 768) {
+    setIsOpen(false);
+  }
+
+  const handleClick = (e) => {
+    if (Object.values(e.target.classList).includes("modal-fixed")) {
+      setIsOpen(!isOpen);
+    }
+  };
+
+  const handleClose = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <ModalFixed isOpen={isOpen} setIsOpen={setIsOpen} className="modal-fixed">
-      <ContenedorNavs isOpen={isOpen}>
+    <ModalNav
+      isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      onClick={handleClick}
+      className="modal-fixed"
+    >
+      <ContenedorNav isOpen={isOpen} className="left">
         <Categorias
           currentNav={currentNav}
           setCurrentNav={setCurrentNav}
@@ -67,12 +51,12 @@ const NavMovil = ({ setIsOpen, isOpen, data }) => {
           setPosition={setPosition}
           setCurrentNav={setCurrentNav}
         />
-      </ContenedorNavs>
-      <BtnCerrar onClick={handleClick} isOpen={isOpen}>
+      </ContenedorNav>
+      <BtnCerrarNav isOpen={isOpen} onClick={handleClose} className="left">
         <span></span>
         <span></span>
-      </BtnCerrar>
-    </ModalFixed>
+      </BtnCerrarNav>
+    </ModalNav>
   );
 };
 
