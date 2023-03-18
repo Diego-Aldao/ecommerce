@@ -1,8 +1,6 @@
-import React from "react";
 import styled from "styled-components";
-import useWindowSize from "../hooks/useWindowSize";
 
-const MainContenedor = styled.div`
+const Modal = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
@@ -15,30 +13,50 @@ const MainContenedor = styled.div`
   transition: var(--transition);
   z-index: 99;
 `;
-
-const ModalFixed = ({ children, isOpen, className, setIsOpen }) => {
-  const size = useWindowSize();
-
-  if (size.width > 768) {
-    setIsOpen(false);
+const ContenedorNavs = styled.div`
+  width: 266px;
+  height: 100%;
+  background: white;
+  display: flex;
+  position: relative;
+  overflow-x: hidden;
+  max-width: 500px;
+  transition: var(--transition);
+  @media (min-width: 400px) {
+    width: 320px;
   }
+  &.left {
+    left: ${({ isOpen }) => (isOpen ? "0px" : "-100%")};
+  }
+  &.right {
+    right: ${({ isOpen }) => (isOpen ? "0px" : "-100%")};
+  }
+`;
 
-  const handleClick = (e) => {
-    if (e.target.classList[2] == "modal-fixed") {
-      setIsOpen(!isOpen);
-    }
-  };
-  return (
-    <MainContenedor
-      onClick={handleClick}
-      isOpen={isOpen}
-      className={
-        className
-      } /*Para extender estilos, styled-components pasa un nombre de clase como props al componente extendido */
-    >
-      {children}
-    </MainContenedor>
-  );
-};
-
-export default ModalFixed;
+const BtnCerrar = styled.div`
+  width: calc(100% - 266px);
+  height: 50px;
+  display: flex;
+  background: black;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: var(--transition);
+  span {
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background: white;
+    transform: rotate(45deg);
+  }
+  span:nth-child(2) {
+    transform: rotate(-45deg);
+  }
+  &.left {
+    left: ${({ isOpen }) => (isOpen ? "0px" : "-100%")};
+  }
+  &.right {
+    right: ${({ isOpen }) => (isOpen ? "0px" : "-100%")};
+  }
+`;
+export { Modal, ContenedorNavs, BtnCerrar };
