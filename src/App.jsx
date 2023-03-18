@@ -20,6 +20,10 @@ const router = createBrowserRouter([
     path: "/productos/:genero/:categoria1/:categoria2/:idCategoria",
     element: <ListadoProductos />,
   },
+  {
+    path: "/productos/:genero/:categoria1/:categoria2/cat/:idCategoria",
+    element: <ListadoProductos />,
+  },
 ]);
 
 function App() {
