@@ -187,6 +187,7 @@ const DetalleCategorias = ({ currentNav, position, setPosition }) => {
                               </TituloInterior>
                             ) : (
                               <Item
+                                key={item.id}
                                 className={
                                   obj.style.webLargeStyleType == "noTitle" &&
                                   obj.style.mobileStyleType == "noTitle"

@@ -35,7 +35,7 @@ const PaginaPrincipal = () => {
       <UltimosLanzamientos>
         {dataGenero[1] !== undefined ? (
           dataGenero[1].map((item) => {
-            return <ItemLanzamientos data={item} />;
+            return <ItemLanzamientos data={item} key={item.id} />;
           })
         ) : (
           <>loading</>
@@ -45,7 +45,7 @@ const PaginaPrincipal = () => {
       <Promos>
         {dataGenero[3] !== undefined ? (
           dataGenero[3].map((item) => {
-            return <ItemPromos data={item} />;
+            return <ItemPromos data={item} key={item.id} />;
           })
         ) : (
           <>loading</>
@@ -54,7 +54,7 @@ const PaginaPrincipal = () => {
       <Tendencias>
         {dataGenero[4] !== undefined ? (
           dataGenero[4].map((item) => {
-            return <ItemTendencias data={item} />;
+            return <ItemTendencias data={item} key={item.id} />;
           })
         ) : (
           <>loading</>

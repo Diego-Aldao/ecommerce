@@ -48,10 +48,9 @@ const NavDesktop = ({ data }) => {
       let categoriaExcluidaDesktop = categoria.channelExclusions.filter(
         (exclusion) => exclusion == "webLarge"
       );
-      return categoriaExcluidaDesktop == "webLarge" ? (
-        <></>
-      ) : (
+      return categoriaExcluidaDesktop !== "webLarge" ? (
         <button
+          key={categoria.id}
           onMouseOver={() => {
             handleMouseOverCategoria(categoria);
           }}
@@ -59,7 +58,7 @@ const NavDesktop = ({ data }) => {
         >
           {categoria.content.title}
         </button>
-      );
+      ) : null;
     })
   ) : (
     <p>loading</p>
