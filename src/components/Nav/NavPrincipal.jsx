@@ -130,6 +130,11 @@ const NavPrincipal = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleData = (data) => {
+    setData(data);
+    localStorage.setItem("data", JSON.stringify(data));
+  };
+
   const options = {
     method: "GET",
     headers: {
@@ -144,12 +149,16 @@ const NavPrincipal = () => {
       options
     )
       .then((response) => response.json())
-      .then((dataFetch) => setData(dataFetch.navigation))
+      .then((dataFetch) => handleData(dataFetch.navigation))
       .catch((err) => console.error(err));
   };
 
   useEffect(() => {
-    fetchData();
+    if (localStorage.getItem("data")) {
+      setData(JSON.parse(localStorage.getItem("data")));
+    } else {
+      fetchData();
+    }
   }, []);
 
   return (
