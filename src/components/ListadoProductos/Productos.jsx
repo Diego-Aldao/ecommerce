@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ContenedorWidth from "../../styles/ContenedorMaxWidth";
-
+import { BsFiles } from "react-icons/bs";
 import ItemProductos from "./ItemProductos";
 
 const Contenedor = styled.section`
@@ -21,6 +21,10 @@ const Header = styled.header`
   }
   p:last-child:first-letter {
     text-transform: uppercase;
+  }
+  span {
+    display: inline-block;
+    margin-left: 5px;
   }
 `;
 
@@ -42,7 +46,12 @@ const Productos = ({ data }) => {
       <Contenedor>
         <Header>
           <p>{data?.itemCount} estilos encontrados</p>
-          <p>mas informacion sobre como estan ordenados estos productos</p>
+          <p>
+            mas informacion sobre como estan ordenados estos productos
+            <span>
+              <BsFiles></BsFiles>
+            </span>
+          </p>
         </Header>
         <GridProductos>
           {data?.products.map((product) => {
