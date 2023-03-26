@@ -6,10 +6,6 @@ import useWindowSize from "../../../hooks/useWindowSize";
 import { Modal, BtnCerrar, ContenedorNavs } from "../../ModalFixed";
 import styled from "styled-components";
 
-const ModalNav = styled(Modal)``;
-const BtnCerrarNav = styled(BtnCerrar)``;
-const ContenedorNav = styled(ContenedorNavs)``;
-
 const NavMovil = ({ setIsOpen, isOpen, data }) => {
   const [currentNav, setCurrentNav] = useState();
   const [position, setPosition] = useState(false);
@@ -26,18 +22,14 @@ const NavMovil = ({ setIsOpen, isOpen, data }) => {
     }
   };
 
-  const handleClose = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <ModalNav
+    <Modal
       isOpen={isOpen}
       setIsOpen={setIsOpen}
       onClick={handleClick}
       className="modal-fixed"
     >
-      <ContenedorNav isOpen={isOpen} className="left">
+      <ContenedorNavs isOpen={isOpen} className="left">
         <Categorias
           currentNav={currentNav}
           setCurrentNav={setCurrentNav}
@@ -51,12 +43,12 @@ const NavMovil = ({ setIsOpen, isOpen, data }) => {
           setPosition={setPosition}
           setCurrentNav={setCurrentNav}
         />
-      </ContenedorNav>
-      <BtnCerrarNav isOpen={isOpen} onClick={handleClose} className="left">
+      </ContenedorNavs>
+      <BtnCerrar isOpen={isOpen} setIsOpen={setIsOpen} className="left">
         <span></span>
         <span></span>
-      </BtnCerrarNav>
-    </ModalNav>
+      </BtnCerrar>
+    </Modal>
   );
 };
 
