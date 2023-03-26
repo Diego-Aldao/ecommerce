@@ -1,26 +1,30 @@
 import { useState } from "react";
-const useFiltros = (dataFiltros) => {
-  const [selected, setSelected] = useState([]);
+const useFiltros = () => {
+  const [seleccionados, setSeleccionados] = useState([]);
 
   const changeSelection = (filtro) => {
     if (filtro.isSelected == false) {
       filtro.isSelected = !filtro.isSelected;
-      setSelected([...selected, filtro]);
+      setSeleccionados([...seleccionados, filtro]);
     } else {
       filtro.isSelected = !filtro.isSelected;
-      const updateSeleccionados = selected.filter((obj) => {
-        obj.id !== filtro.id;
-      });
-      setSelected([...selected, updateSeleccionados]);
+      const updateSeleccionados = seleccionados.filter(
+        (obj) => obj.id !== filtro.id
+      );
+      setSeleccionados(updateSeleccionados);
     }
   };
 
-  const changeSelectionAll = (valor) => {
-    dataFiltros.facetValues.map((value) => (value.isSelected = valor));
-    setSelected(dataFiltros.facetValues);
+  const changeSelectionAll = (data, valor) => {
+    data.facetValues.map((value) => (value.isSelected = valor));
+    if (data.facetValues.every((value) => value.isSelected == true)) {
+      setSeleccionados(data.facetValues);
+    } else {
+      setSeleccionados([]);
+    }
   };
 
-  return { changeSelection, changeSelectionAll, selected };
+  return { changeSelection, changeSelectionAll, seleccionados };
 };
 
 export default useFiltros;
