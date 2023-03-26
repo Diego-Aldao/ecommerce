@@ -1,6 +1,7 @@
+import React from "react";
 import styled from "styled-components";
 
-const Modal = styled.div`
+const ModalFixed = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
@@ -13,7 +14,7 @@ const Modal = styled.div`
   transition: var(--transition);
   z-index: 99;
 `;
-const ContenedorNavs = styled.div`
+const Contenedor = styled.div`
   width: 266px;
   height: 100%;
   background: white;
@@ -33,7 +34,7 @@ const ContenedorNavs = styled.div`
   }
 `;
 
-const BtnCerrar = styled.div`
+const Btn = styled.div`
   width: calc(100% - 266px);
   height: 50px;
   display: flex;
@@ -59,4 +60,35 @@ const BtnCerrar = styled.div`
     right: ${({ isOpen }) => (isOpen ? "0px" : "-100%")};
   }
 `;
+
+const Modal = ({ children, isOpen, className, setIsOpen }) => {
+  const handleClick = (e) => {
+    if (Object.values(e.target.classList).includes("modal-fixed")) {
+      setIsOpen(!isOpen);
+    }
+  };
+  return (
+    <ModalFixed isOpen={isOpen} className={className} onClick={handleClick}>
+      {children}
+    </ModalFixed>
+  );
+};
+const ContenedorNavs = ({ children, isOpen, className }) => {
+  return (
+    <Contenedor isOpen={isOpen} className={className}>
+      {children}
+    </Contenedor>
+  );
+};
+const BtnCerrar = ({ children, isOpen, className, setIsOpen }) => {
+  const handleClose = () => {
+    setIsOpen(!isOpen);
+  };
+  return (
+    <Btn isOpen={isOpen} className={className} onClick={handleClose}>
+      {children}
+    </Btn>
+  );
+};
+
 export { Modal, ContenedorNavs, BtnCerrar };
