@@ -8,6 +8,7 @@ const Contenedor = styled.nav`
   height: 50px;
   padding: 0px 15px;
   margin-bottom: 1px solid black;
+  border-bottom: 1px solid var(--color-gris);
   ul {
     display: flex;
     height: 100%;
@@ -18,7 +19,6 @@ const Contenedor = styled.nav`
     p {
       font-size: clamp(12px, 2vw, 15px);
       text-transform: capitalize;
-      color: #333333;
     }
   }
   li:last-child p {
@@ -39,6 +39,8 @@ const Contenedor = styled.nav`
 
 const Navegacion = () => {
   let { genero, categoria1, categoria2 } = useParams();
+  let currentCategoria = categoria2.replaceAll("-", " ");
+  let primerCategoria = categoria1.replaceAll("-", " ");
   return (
     <Contenedor>
       <ul>
@@ -55,13 +57,13 @@ const Navegacion = () => {
           <span>
             <MdKeyboardArrowRight></MdKeyboardArrowRight>
           </span>
-          <p>{categoria1}</p>
+          <p>{primerCategoria}</p>
         </li>
         <li>
           <span>
             <MdKeyboardArrowRight></MdKeyboardArrowRight>
           </span>
-          <p>{categoria2}</p>
+          <p>{currentCategoria}</p>
         </li>
       </ul>
     </Contenedor>
