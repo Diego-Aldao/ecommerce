@@ -9,6 +9,7 @@ const EstilosGlobales = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         font-family: var(--fuente-principal);
+        color: var(--color-texto);
     }
     button, input{
         background: none;
