@@ -21,6 +21,29 @@ const Links = styled.div`
     font-size: 12px;
     text-transform: capitalize;
     padding: 5px;
+    position: relative;
+  }
+  @media (min-width: 480px) {
+    padding: 10px 0px;
+    flex-direction: row;
+    span {
+      padding: 0px 10px;
+    }
+    span:after {
+      content: "";
+      width: 1px;
+      height: 50%;
+      position: absolute;
+      background: var(--color-texto);
+      right: 0px;
+      bottom: 25%;
+    }
+    span:last-child {
+      padding-right: 0px;
+    }
+    span:last-child:after {
+      display: none;
+    }
   }
 `;
 
