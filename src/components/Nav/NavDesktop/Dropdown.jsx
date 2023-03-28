@@ -46,6 +46,7 @@ const Filtro = styled.li`
     border: none;
   }
 `;
+
 const ListaCategorias = styled.ul`
   color: #666;
   font-size: 14px;
@@ -221,51 +222,52 @@ const Dropdown = ({ isVisible, currentContent }) => {
     navigate(linkFormateado);
   }, [linkFormateado]);
 
-  const categoriasFiltradas = currentContent?.filter(
-    (categoria) => categoria.channelExclusions.length !== 1
-  );
-
-  const listasContenido = categoriasFiltradas?.map((catMayor) => {
-    return (
-      <Filtro key={catMayor.id} flex={catMayor.display.webLargeColumnSpan}>
-        <h4 className={catMayor.style.webLargeStyleType}>
-          <span>{catMayor.content.title}</span>
-        </h4>
-        <ListaCategorias
-          className={
-            catMayor.display.webLargeTemplateName.length !== 0
-              ? catMayor.display.webLargeTemplateName
-              : catMayor.display.mobileDisplayLayout
-          }
-          column={catMayor.display.webLargeColumnSpan}
-        >
-          {catMayor.children.map((catMenor) => {
-            return (
-              <Categorias
-                onClick={() => {
-                  handleNavigation(catMenor.link.webUrl);
-                }}
-                key={catMenor.id}
-                className={
-                  catMayor.display.webLargeTemplateName.length !== 0
-                    ? `li-${catMayor.display.webLargeTemplateName}`
-                    : `li-${catMayor.display.mobileDisplayLayout}`
-                }
-              >
-                <div>
-                  <img src={catMenor.content.webLargeImageUrl}></img>
-                </div>
-                <span>{catMenor.content.title}</span>
-              </Categorias>
-            );
-          })}
-        </ListaCategorias>
-      </Filtro>
-    );
-  });
   return (
     <Contenedor isVisible={isVisible}>
-      <ListaFiltros visible={isVisible}>{listasContenido}</ListaFiltros>
+      <ListaFiltros visible={isVisible}>
+        {currentContent?.map((tipo) => {
+          /*retornar las agrupaciones de productos */
+          return (
+            !tipo.channelExclusions.includes("webLarge") && (
+              <Filtro key={tipo.id} flex={tipo.display.webLargeColumnSpan}>
+                <h4 className={tipo.style.webLargeStyleType}>
+                  <span>{tipo.content.title}</span>
+                </h4>
+                <ListaCategorias
+                  className={
+                    tipo.display.webLargeTemplateName.length !== 0
+                      ? tipo.display.webLargeTemplateName
+                      : tipo.display.mobileDisplayLayout
+                  }
+                  column={tipo.display.webLargeColumnSpan}
+                >
+                  {tipo.children.map((producto) => {
+                    /*retornar los productos */
+                    return (
+                      <Categorias
+                        onClick={() => {
+                          handleNavigation(producto.link.webUrl);
+                        }}
+                        key={producto.id}
+                        className={
+                          tipo.display.webLargeTemplateName.length !== 0
+                            ? `li-${tipo.display.webLargeTemplateName}`
+                            : `li-${tipo.display.mobileDisplayLayout}`
+                        }
+                      >
+                        <div>
+                          <img src={producto.content.webLargeImageUrl}></img>
+                        </div>
+                        <span>{producto.content.title}</span>
+                      </Categorias>
+                    );
+                  })}
+                </ListaCategorias>
+              </Filtro>
+            )
+          );
+        })}
+      </ListaFiltros>
     </Contenedor>
   );
 };

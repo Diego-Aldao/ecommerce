@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = styled.nav`
@@ -24,7 +24,7 @@ const BotonesGenero = styled.div`
     flex: 1 1 auto;
     position: relative;
   }
-  a {
+  span {
     text-transform: uppercase;
     font-weight: 700;
     width: 100%;
@@ -33,7 +33,8 @@ const BotonesGenero = styled.div`
     justify-content: center;
     align-items: center;
   }
-  .btn-mujer:after {
+
+  button:first-child:after {
     content: "";
     width: 1px;
     height: 50%;
@@ -52,15 +53,21 @@ const ListaCategorias = styled.ul`
 `;
 
 const Categoria = styled.li`
-  flex: 1 1 auto;
   height: 80px;
   background: url(${({ background }) => background});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   margin: 20px 0px;
+  position: relative;
   &.btn-inicio {
     height: 50px;
+    img {
+      position: absolute;
+    }
+    span {
+      position: relative;
+    }
   }
   @media (min-width: 400px) {
     height: 96px;
@@ -89,51 +96,86 @@ const Titulo = styled.span`
   }
 `;
 
-const Categorias = ({ setCurrentNav, categorias, position, setPosition }) => {
+const Categorias = ({
+  setCurrentNav,
+  categorias,
+  position,
+  setPosition,
+  inicio,
+  setIsOpen,
+}) => {
+  const navigate = useNavigate();
+  const [link, setLink] = useState();
   const handleClick = (item) => {
     setCurrentNav(item);
     setPosition((prevValue) => !prevValue);
   };
+
+  const handleNavigation = (url) => {
+    let urlFormateada = url.replaceAll("https://www.asos.com/es/", "/");
+    setLink(urlFormateada);
+    setIsOpen((prevValue) => !prevValue);
+  };
+
+  useEffect(() => {
+    navigate(link);
+  }, [link]);
+
   return (
     <Nav position={position}>
       <BotonesGenero>
-        <button className="btn-mujer">
-          <Link to="/mujer"> mujer</Link>
+        <button
+          onClick={() => {
+            handleNavigation("/mujer");
+          }}
+        >
+          <span>mujer</span>
         </button>
-        <button>
-          <Link to="/hombre"> hombre</Link>
+        <button
+          onClick={() => {
+            handleNavigation("/hombre");
+          }}
+        >
+          <span>hombre</span>
         </button>
       </BotonesGenero>
       <ListaCategorias>
-        <Categoria className="btn-inicio"></Categoria>
-        {categorias ? (
-          categorias
-            .filter((categoria) => categoria.channelExclusions.length !== 2)
-            .map((item) => {
-              return (
-                <Categoria
-                  key={item.id}
-                  onClick={() => {
-                    handleClick(item);
-                  }}
-                  background={item.content.mobileImageUrl}
-                >
-                  {item.content.subTitle ? (
+        <Categoria
+          className="btn-inicio"
+          onClick={() => {
+            handleNavigation(inicio.link.webUrl);
+          }}
+        >
+          <img src={inicio?.content.mobileImageUrl} alt="" />
+          <Titulo>{inicio?.content.title}</Titulo>
+        </Categoria>
+        {categorias?.map((categoria) => {
+          return (
+            !categoria.channelExclusions.includes("webSmall") && (
+              <Categoria
+                key={categoria.id}
+                onClick={() => {
+                  handleClick(categoria);
+                }}
+                background={categoria.content.mobileImageUrl}
+              >
+                {categoria.style.mobileStyleType !== "noTitle" &&
+                  (categoria.content.subTitle ? (
                     <>
-                      <Titulo className="especial">{item.content.title}</Titulo>
+                      <Titulo className="especial">
+                        {categoria.content.title}
+                      </Titulo>
                       <Titulo className="subtitulo">
-                        {item.content.subTitle}
+                        {categoria.content.subTitle}
                       </Titulo>
                     </>
                   ) : (
-                    <Titulo>{item.content.title}</Titulo>
-                  )}
-                </Categoria>
-              );
-            })
-        ) : (
-          <>loading</>
-        )}
+                    <Titulo>{categoria.content.title}</Titulo>
+                  ))}
+              </Categoria>
+            )
+          );
+        })}
       </ListaCategorias>
     </Nav>
   );

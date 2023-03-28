@@ -22,6 +22,7 @@ const Header = styled.div`
   align-items: center;
   box-shadow: 1px 1px 50px 1px var(--color-gris-secundario);
 `;
+
 const BtnAtras = styled.button`
   width: 50px;
   height: 100%;
@@ -117,9 +118,11 @@ const Item = styled.li`
   }
   &.especial-grande {
     height: 85px;
+    position: relative;
+    background: black;
+    overflow: hidden;
     span {
       padding: 10px;
-      position: relative;
       z-index: 2;
       color: white;
       max-width: 70%;
@@ -132,7 +135,7 @@ const Item = styled.li`
       border-radius: 0px;
       img {
         border-radius: 0px;
-        object-fit: cover;
+        object-fit: contain;
       }
     }
   }
@@ -141,7 +144,12 @@ const Item = styled.li`
   }
 `;
 
-const DetalleCategorias = ({ currentNav, position, setPosition }) => {
+const DetalleCategorias = ({
+  currentNav,
+  position,
+  setPosition,
+  setIsOpen,
+}) => {
   const navigate = useNavigate();
   const [currentLink, setCurrentLink] = useState("");
   const { linkFormateado } = useDestino(currentLink);
@@ -150,8 +158,10 @@ const DetalleCategorias = ({ currentNav, position, setPosition }) => {
     setPosition((prevValue) => !prevValue);
   };
 
-  const handleNavigation = (item) => {
-    setCurrentLink(item);
+  const handleNavigation = (link) => {
+    setCurrentLink(link);
+    setIsOpen((prevValue) => !prevValue);
+    setPosition((prevValue) => !prevValue);
   };
 
   useEffect(() => {
@@ -164,59 +174,53 @@ const DetalleCategorias = ({ currentNav, position, setPosition }) => {
         <BtnAtras>
           <BsArrowLeft></BsArrowLeft>
         </BtnAtras>
-        <Titulo>{currentNav && currentNav.content.title}</Titulo>
+        <Titulo>{currentNav?.content.title}</Titulo>
       </Header>
       <MiniCategoria>
-        {currentNav
-          ? currentNav.children
-              .filter((obj) => obj.channelExclusions.length !== 1)
-              .map((obj) => {
-                return (
-                  <li key={obj.id}>
-                    <TituloInterior className={obj.style.webLargeStyleType}>
-                      {obj.content.title}
-                    </TituloInterior>
-                    <ListaItemsInterior>
-                      {obj.children.map((item) => {
-                        return (
-                          <>
-                            {item.style.webLargeStyleType === "premium" &&
-                            item.channelExclusions < 1 ? (
-                              <TituloInterior className="premium" key={item.id}>
-                                {item.content.title}
-                              </TituloInterior>
-                            ) : (
-                              <Item
-                                key={item.id}
-                                className={
-                                  obj.style.webLargeStyleType == "noTitle" &&
-                                  obj.style.mobileStyleType == "noTitle"
-                                    ? "especial-grande"
-                                    : obj.style.webLargeStyleType == "noTitle"
-                                    ? "especial-pequeño"
-                                    : ""
-                                }
-                                onClick={() =>
-                                  handleNavigation(item.link.webUrl)
-                                }
-                              >
-                                <div>
-                                  <img
-                                    src={item.content.mobileImageUrl}
-                                    alt=""
-                                  />
-                                </div>
-                                <span>{item.content.title}</span>
-                              </Item>
-                            )}
-                          </>
-                        );
-                      })}
-                    </ListaItemsInterior>
-                  </li>
-                );
-              })
-          : ""}
+        {currentNav?.children.map((tipo) => {
+          return (
+            !tipo.channelExclusions.length >= 1 &&
+            tipo.content.title !== "App and Mobile Top Level" && (
+              <li key={tipo.id}>
+                <TituloInterior className={tipo.style.webLargeStyleType}>
+                  {tipo.content.title}
+                </TituloInterior>
+                <ListaItemsInterior>
+                  {tipo.children.map((item) => {
+                    return (
+                      <>
+                        {item.style.webLargeStyleType === "premium" &&
+                        item.channelExclusions < 1 ? (
+                          <TituloInterior className="premium" key={item.id}>
+                            {item.content.title}
+                          </TituloInterior>
+                        ) : (
+                          <Item
+                            key={item.id}
+                            className={
+                              tipo.style.webLargeStyleType == "noTitle" &&
+                              tipo.style.mobileStyleType == "noTitle"
+                                ? "especial-grande"
+                                : tipo.style.webLargeStyleType == "noTitle"
+                                ? "especial-pequeño"
+                                : ""
+                            }
+                            onClick={() => handleNavigation(item.link.webUrl)}
+                          >
+                            <div>
+                              <img src={item.content.mobileImageUrl} alt="" />
+                            </div>
+                            <span>{item.content.title}</span>
+                          </Item>
+                        )}
+                      </>
+                    );
+                  })}
+                </ListaItemsInterior>
+              </li>
+            )
+          );
+        })}
       </MiniCategoria>
     </Nav>
   );
