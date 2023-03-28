@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
@@ -18,6 +18,8 @@ const Contenedor = styled.nav`
     align-items: center;
     p {
       font-size: clamp(12px, 2vw, 15px);
+    }
+    p:first-letter {
       text-transform: capitalize;
     }
   }
@@ -37,34 +39,48 @@ const Contenedor = styled.nav`
   }
 `;
 
-const Navegacion = () => {
-  let { genero, categoria1, categoria2 } = useParams();
-  let currentCategoria = categoria2.replaceAll("-", " ");
-  let primerCategoria = categoria1.replaceAll("-", " ");
+const Navegacion = ({ genero, categoria1, categoria2, producto }) => {
+  let primerCategoria = categoria1?.replaceAll("-", " ");
+  let currentCategoria = categoria2?.replaceAll("-", " ");
+  let currentProducto = producto?.replaceAll("-", " ");
   return (
     <Contenedor>
       <ul>
         <li>
-          <p>inicio</p>
+          <Link to="/">
+            <p>inicio</p>
+          </Link>
         </li>
-        <li>
-          <span>
-            <MdKeyboardArrowRight></MdKeyboardArrowRight>
-          </span>
-          <p>{genero}</p>
-        </li>
+        {genero && (
+          <li>
+            <span>
+              <MdKeyboardArrowRight></MdKeyboardArrowRight>
+            </span>
+            <p>{genero}</p>
+          </li>
+        )}
         <li>
           <span>
             <MdKeyboardArrowRight></MdKeyboardArrowRight>
           </span>
           <p>{primerCategoria}</p>
         </li>
-        <li>
-          <span>
-            <MdKeyboardArrowRight></MdKeyboardArrowRight>
-          </span>
-          <p>{currentCategoria}</p>
-        </li>
+        {categoria2 && (
+          <li>
+            <span>
+              <MdKeyboardArrowRight></MdKeyboardArrowRight>
+            </span>
+            <p>{currentCategoria}</p>
+          </li>
+        )}
+        {producto && (
+          <li>
+            <span>
+              <MdKeyboardArrowRight></MdKeyboardArrowRight>
+            </span>
+            <p>{currentProducto}</p>
+          </li>
+        )}
       </ul>
     </Contenedor>
   );
