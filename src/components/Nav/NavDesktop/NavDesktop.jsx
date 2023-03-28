@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Dropdown from "./Dropdown";
 import useCategorias from "../../../hooks/useCategorias";
+
 const Contenedor = styled.div`
   width: 100%;
   height: 50px;
@@ -43,34 +44,25 @@ const NavDesktop = ({ data }) => {
     setIsVisible(false);
   };
 
-  const componentesCategorias = categorias ? (
-    categorias.map((categoria) => {
-      let categoriaExcluidaDesktop = categoria.channelExclusions.filter(
-        (exclusion) => exclusion == "webLarge"
-      );
-      return categoriaExcluidaDesktop !== "webLarge" ? (
-        <button
-          key={categoria.id}
-          onMouseOver={() => {
-            handleMouseOverCategoria(categoria);
-          }}
-          onMouseOut={handleMouseOut}
-        >
-          {categoria.content.title}
-        </button>
-      ) : null;
-    })
-  ) : (
-    <p>loading</p>
-  );
-
   return (
-    <>
-      <Contenedor onMouseOut={handleMouseOut} onMouseOver={handleMouseOver}>
-        {componentesCategorias}
-        <Dropdown isVisible={isVisible} currentContent={currentContent} />
-      </Contenedor>
-    </>
+    <Contenedor onMouseOut={handleMouseOut} onMouseOver={handleMouseOver}>
+      {categorias?.map((categoria) => {
+        return (
+          !categoria.channelExclusions.includes("webLarge") && (
+            <button
+              key={categoria.id}
+              onMouseOver={() => {
+                handleMouseOverCategoria(categoria);
+              }}
+              onMouseOut={handleMouseOut}
+            >
+              {categoria.content.title}
+            </button>
+          )
+        );
+      })}
+      <Dropdown isVisible={isVisible} currentContent={currentContent} />
+    </Contenedor>
   );
 };
 
