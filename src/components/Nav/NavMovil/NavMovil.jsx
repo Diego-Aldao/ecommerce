@@ -4,12 +4,11 @@ import Categorias from "./Categorias";
 import DetalleCategorias from "./DetalleCategorias";
 import useWindowSize from "../../../hooks/useWindowSize";
 import { Modal, BtnCerrar, ContenedorNavs } from "../../ModalFixed";
-import styled from "styled-components";
 
 const NavMovil = ({ setIsOpen, isOpen, data }) => {
   const [currentNav, setCurrentNav] = useState();
   const [position, setPosition] = useState(false);
-  const { categorias } = useCategorias(data);
+  const { categorias, inicio } = useCategorias(data);
   const size = useWindowSize();
 
   if (size.width > 768) {
@@ -31,13 +30,16 @@ const NavMovil = ({ setIsOpen, isOpen, data }) => {
     >
       <ContenedorNavs isOpen={isOpen} className="left">
         <Categorias
+          setIsOpen={setIsOpen}
           currentNav={currentNav}
           setCurrentNav={setCurrentNav}
           position={position}
           setPosition={setPosition}
           categorias={categorias}
+          inicio={inicio}
         />
         <DetalleCategorias
+          setIsOpen={setIsOpen}
           currentNav={currentNav}
           position={position}
           setPosition={setPosition}
