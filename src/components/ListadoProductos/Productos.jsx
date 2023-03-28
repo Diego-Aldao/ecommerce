@@ -55,7 +55,13 @@ const Productos = ({ data }) => {
         </Header>
         <GridProductos>
           {data?.products.map((product) => {
-            return <ItemProductos key={product.id} producto={product} />;
+            return (
+              <ItemProductos
+                key={product.id}
+                producto={product}
+                data={data.facets}
+              />
+            );
           })}
         </GridProductos>
       </Contenedor>
