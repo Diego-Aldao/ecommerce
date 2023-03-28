@@ -23,8 +23,8 @@ const InfoHero = styled.div`
 const Tienda = styled.div`
   padding: 14px 15px 10px;
   background: black;
-  color: white;
   span {
+    color: #fff;
     font-size: 32px;
     font-weight: 800;
     text-transform: uppercase;

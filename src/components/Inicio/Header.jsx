@@ -45,6 +45,7 @@ const BtnRegistro = styled.button`
     letter-spacing: 1px;
     padding-top: 3px;
     display: block;
+    color: #fff;
   }
 `;
 

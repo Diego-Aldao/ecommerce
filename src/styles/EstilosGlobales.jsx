@@ -9,6 +9,14 @@ const EstilosGlobales = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         font-family: var(--fuente-principal);
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    span,
+    button {
         color: var(--color-texto);
     }
     button, input{
