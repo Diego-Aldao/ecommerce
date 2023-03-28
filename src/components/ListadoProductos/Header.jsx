@@ -14,7 +14,7 @@ const Titulo = styled.div`
 `;
 
 const Header = ({ nombre }) => {
-  const nombreCategoria = nombre.replaceAll("-", " ");
+  const nombreCategoria = nombre?.replaceAll("-", " ");
 
   return (
     <Titulo>
