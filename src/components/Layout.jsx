@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "./Footer/Footer";
+import FooterDesktop from "./Footer/FooterDesktop";
 import NavPrincipal from "./Nav/NavPrincipal";
 
 const Layout = ({ children }) => {
@@ -7,6 +8,7 @@ const Layout = ({ children }) => {
     <>
       <NavPrincipal />
       {children}
+      <FooterDesktop />
       <Footer />
     </>
   );
