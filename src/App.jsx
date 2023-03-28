@@ -1,7 +1,10 @@
-import PaginaPrincipal from "./pages/PaginaPrincipal";
-import EstilosGlobales from "./styles/EstilosGlobales";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import PaginaPrincipal from "./pages/PaginaPrincipal";
 import ListadoProductos from "./pages/ListadoProductos";
+import DetalleProducto from "./pages/DetalleProducto";
+import EstilosGlobales from "./styles/EstilosGlobales";
+import { ProductosContextProvider } from "./context/ProductosContext";
+import { CategoriaContextProvider } from "./context/IdCategoriaContext";
 
 const router = createBrowserRouter([
   {
@@ -21,16 +24,24 @@ const router = createBrowserRouter([
     element: <ListadoProductos />,
   },
   {
-    path: "/productos/:genero/:categoria1/:categoria2/cat/:idCategoria",
+    path: "/productos/:genero/:categoria1/:idCategoria",
     element: <ListadoProductos />,
+  },
+  {
+    path: "/detalle/:categoria/:producto/prd/:querys",
+    element: <DetalleProducto />,
   },
 ]);
 
 function App() {
   return (
     <>
-      <EstilosGlobales />
-      <RouterProvider router={router} />
+      <CategoriaContextProvider>
+        <ProductosContextProvider>
+          <EstilosGlobales />
+          <RouterProvider router={router} />
+        </ProductosContextProvider>
+      </CategoriaContextProvider>
     </>
   );
 }
