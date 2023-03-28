@@ -4,6 +4,7 @@ import { FiSearch, FiUser, FiShoppingBag, FiHeart } from "react-icons/fi";
 import NavMovil from "./NavMovil/NavMovil";
 import NavDesktop from "./NavDesktop/NavDesktop";
 import { Link, useLocation } from "react-router-dom";
+import BusquedaDesktop from "./Busqueda/BusquedaDesktop";
 
 const Nav = styled.nav`
   width: 100%;
@@ -44,6 +45,7 @@ const LogoNav = styled.p`
   padding: 0px 20px;
   font-size: 2rem;
   margin-right: auto;
+  color: white;
   @media (min-width: 1024px) {
     padding-left: 0px;
   }
@@ -64,36 +66,6 @@ const IconoNav = styled.button`
   }
 `;
 
-const BusquedaNavPrincipal = styled.form`
-  flex: 1 1 auto;
-  height: 100%;
-  padding: 10px 15px;
-  display: none;
-  @media (min-width: 768px) {
-    display: flex;
-  }
-  div {
-    background: white;
-    width: 100%;
-    height: 100%;
-    border-radius: 25px;
-    display: flex;
-    color: black;
-    input {
-      flex: 1 1 auto;
-      height: 100%;
-      margin-left: 20px;
-    }
-    button {
-      width: 50px;
-      height: 100%;
-    }
-    svg {
-      width: 22px;
-      height: 22px;
-    }
-  }
-`;
 const BotonGenero = styled.button`
   width: 115px;
   height: 100%;
@@ -176,14 +148,7 @@ const NavPrincipal = () => {
         <BotonGenero genero={location.pathname} className="btn-hombre">
           <Link to="/hombre">hombre</Link>
         </BotonGenero>
-        <BusquedaNavPrincipal>
-          <div>
-            <input type="search" name="" id="" />
-            <button>
-              <FiSearch />
-            </button>
-          </div>
-        </BusquedaNavPrincipal>
+        <BusquedaDesktop />
         <IconoNav className="icono-busqueda">
           <FiSearch />
         </IconoNav>
