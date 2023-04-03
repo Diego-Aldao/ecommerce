@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { FiHeart } from "react-icons/fi";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { MdOutlineLocalShipping } from "react-icons/md";
 import { TbTruckReturn } from "react-icons/tb";
 import { BsFiles } from "react-icons/bs";
 import { AiOutlineTag } from "react-icons/ai";
 import Descripcion from "./Descripcion";
+import useGuardados from "../../hooks/useGuardados";
 
 const Contenido = styled.section`
   width: 100%;
@@ -162,6 +163,13 @@ const Envio = styled.div`
 `;
 
 const Info = ({ data }) => {
+  const [liked, setLiked] = useState([]);
+  const { guardados, guardarProducto } = useGuardados();
+
+  useEffect(() => {
+    let currentLiked = guardados?.some((guardado) => guardado.id === data.id);
+    setLiked(currentLiked);
+  }, [guardados]);
   return (
     <Contenido>
       <Header>
@@ -206,8 +214,17 @@ const Info = ({ data }) => {
       </Caracteristica>
       <BotonesUsuario>
         <BtnAñadir>añadir al carrito</BtnAñadir>
-        <BtnFavorito>
-          <FiHeart></FiHeart>
+        <BtnFavorito
+          onClick={() => {
+            guardarProducto(data);
+            console.log(guardados?.some((guardado) => guardado.id === data.id));
+          }}
+        >
+          {liked ? (
+            <AiFillHeart></AiFillHeart>
+          ) : (
+            <AiOutlineHeart></AiOutlineHeart>
+          )}
         </BtnFavorito>
       </BotonesUsuario>
       <Envio>
