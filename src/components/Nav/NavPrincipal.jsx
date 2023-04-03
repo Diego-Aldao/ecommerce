@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { FiSearch, FiUser, FiShoppingBag, FiHeart } from "react-icons/fi";
+import {
+  AiOutlineHeart,
+  AiFillHeart,
+  AiOutlineUser,
+  AiOutlineShopping,
+  AiOutlineSearch,
+  AiTwotoneShopping,
+} from "react-icons/ai";
 import NavMovil from "./NavMovil/NavMovil";
 import NavDesktop from "./NavDesktop/NavDesktop";
 import { Link, useLocation } from "react-router-dom";
 import BusquedaDesktop from "./Busqueda/BusquedaDesktop";
+import useGuardados from "../../hooks/useGuardados";
+import useCarrito from "../../hooks/useCarrito";
 
 const Nav = styled.nav`
   width: 100%;
@@ -56,10 +65,15 @@ const IconoNav = styled.button`
   padding: 10px;
   display: flex;
   align-items: center;
+  position: relative;
   svg {
-    stroke-width: 3;
-    width: 22px;
-    height: 22px;
+    stroke-width: 30;
+    width: 23px;
+    height: 23px;
+  }
+  .lleno {
+    fill: var(--color-principal);
+    stroke: var(--color-principal);
   }
   @media (min-width: 768px) {
     padding: 15px;
@@ -93,10 +107,27 @@ const BotonGenero = styled.button`
   }
 `;
 
+const Cantidad = styled.span`
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  color: white;
+  font-weight: 800;
+  font-size: 18px;
+  top: 2px;
+  right: 2px;
+  @media (min-width: 768px) {
+    top: 7px;
+    right: 7px;
+  }
+`;
+
 const NavPrincipal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState();
   const location = useLocation();
+  const { guardados } = useGuardados();
+  const { carrito } = useCarrito();
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -150,17 +181,39 @@ const NavPrincipal = () => {
         </BotonGenero>
         <BusquedaDesktop />
         <IconoNav className="icono-busqueda">
-          <FiSearch />
+          <AiOutlineSearch />
         </IconoNav>
         <IconoNav>
-          <FiUser />
+          <AiOutlineUser />
         </IconoNav>
-        <IconoNav>
-          <FiHeart />
-        </IconoNav>
-        <IconoNav>
-          <FiShoppingBag />
-        </IconoNav>
+        {guardados.length >= 1 ? (
+          <IconoNav>
+            <Cantidad>{guardados.length}</Cantidad>
+            <Link to="/guardados">
+              <AiFillHeart className="lleno" />
+            </Link>
+          </IconoNav>
+        ) : (
+          <IconoNav>
+            <Link to="/guardados">
+              <AiOutlineHeart />
+            </Link>
+          </IconoNav>
+        )}
+        {carrito.length >= 1 ? (
+          <IconoNav>
+            <Cantidad>{carrito.length}</Cantidad>
+            <Link to="/carrito">
+              <AiTwotoneShopping className="lleno" />
+            </Link>
+          </IconoNav>
+        ) : (
+          <IconoNav>
+            <Link to="/carrito">
+              <AiOutlineShopping />
+            </Link>
+          </IconoNav>
+        )}
         <NavMovil isOpen={isOpen} setIsOpen={setIsOpen} data={data} />
       </Nav>
       <NavDesktop data={data} />
