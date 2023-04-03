@@ -2,28 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import ImageGallery from "react-image-gallery";
 import { BsPlay, BsImages } from "react-icons/bs";
+import ReactPlayer from "react-player";
 
 const ContenedorMedia = styled.div`
   position: relative;
   width: 100%;
-  .media {
-  }
-  .image-gallery-image {
-    max-height: 660px !important;
-  }
-  .video,
-  .slide {
-    min-height: 408px;
-  }
   .slide {
     img {
       object-fit: cover;
-    }
-  }
-  .video {
-    width: 100%;
-    video {
-      width: 100%;
     }
   }
   @media (min-width: 768px) {
@@ -32,9 +18,6 @@ const ContenedorMedia = styled.div`
       max-height: 660px;
       top: 0px;
       position: sticky;
-    }
-    .slide,
-    .video {
     }
   }
 `;
@@ -140,13 +123,14 @@ const Galeria = ({ data }) => {
           <div className="video">
             {data.media.catwalk.map((item) => {
               return (
-                <video autoPlay muted controls loop key={item.url}>
-                  {/*Cambiar src al video url con el fetch */}
-                  <source
-                    src="https://video.asos-media.com/products/ASOS/_media_/b9a/b9afe1d7-13d5-4077-bd71-e9c30d881e5f.mp4"
-                    type="video/mp4"
-                  />
-                </video>
+                <ReactPlayer
+                  url={`https://${item.url}.m3u8`}
+                  width="100%"
+                  height="100%"
+                  playing={true}
+                  loop={true}
+                  controls={true}
+                />
               );
             })}
           </div>
