@@ -5,6 +5,10 @@ import DetalleProducto from "./pages/DetalleProducto";
 import EstilosGlobales from "./styles/EstilosGlobales";
 import { ProductosContextProvider } from "./context/ProductosContext";
 import { CategoriaContextProvider } from "./context/IdCategoriaContext";
+import { GuardadosContextProvider } from "./context/GuardadosContext";
+import ProductosGuardados from "./pages/ProductosGuardados";
+import { CarritoContextProvider } from "./context/CarritoContext";
+import CarritoProductos from "./pages/CarritoProductos";
 
 const router = createBrowserRouter([
   {
@@ -31,18 +35,28 @@ const router = createBrowserRouter([
     path: "/detalle/:categoria/:producto/prd/:querys",
     element: <DetalleProducto />,
   },
+  {
+    path: "/guardados",
+    element: <ProductosGuardados />,
+  },
+  {
+    path: "/carrito",
+    element: <CarritoProductos />,
+  },
 ]);
 
 function App() {
   return (
-    <>
-      <CategoriaContextProvider>
-        <ProductosContextProvider>
-          <EstilosGlobales />
-          <RouterProvider router={router} />
-        </ProductosContextProvider>
-      </CategoriaContextProvider>
-    </>
+    <GuardadosContextProvider>
+      <CarritoContextProvider>
+        <CategoriaContextProvider>
+          <ProductosContextProvider>
+            <EstilosGlobales />
+            <RouterProvider router={router} />
+          </ProductosContextProvider>
+        </CategoriaContextProvider>
+      </CarritoContextProvider>
+    </GuardadosContextProvider>
   );
 }
 
