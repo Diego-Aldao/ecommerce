@@ -9,6 +9,8 @@ import { GuardadosContextProvider } from "./context/GuardadosContext";
 import ProductosGuardados from "./pages/ProductosGuardados";
 import { CarritoContextProvider } from "./context/CarritoContext";
 import CarritoProductos from "./pages/CarritoProductos";
+import LoginUsuario from "./pages/LoginUsuario";
+import RegistroUsuario from "./pages/RegistroUsuario";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +44,14 @@ const router = createBrowserRouter([
   {
     path: "/carrito",
     element: <CarritoProductos />,
+  },
+  {
+    path: "/login",
+    element: <LoginUsuario />,
+  },
+  {
+    path: "/registro",
+    element: <RegistroUsuario />,
   },
 ]);
 
