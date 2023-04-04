@@ -1,7 +1,7 @@
 import React from "react";
-import Footer from "./Footer/Footer";
-import FooterDesktop from "./Footer/FooterDesktop";
-import NavPrincipal from "./Nav/NavPrincipal";
+import Footer from "../components/Footer/Footer";
+import FooterDesktop from "../components/Footer/FooterDesktop";
+import NavPrincipal from "../components/Nav/NavPrincipal";
 
 const Layout = ({ children }) => {
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import dataDetalle from "../data/DetalleVestido.json";
-import Layout from "../components/Layout";
+import LayoutPrincipal from "../Layout/LayoutPrincipal";
 import Navegacion from "../components/ListadoProductos/Navegacion";
 import Galeria from "../components/DetalleProducto/Galeria";
 import Info from "../components/DetalleProducto/Info";
@@ -14,7 +14,7 @@ const DetalleProducto = () => {
   const size = useWindowSize();
   const [data, setData] = useState(dataDetalle);
   return (
-    <Layout>
+    <LayoutPrincipal>
       {size.width > 768 && (
         <Navegacion categoria1={categoria} producto={producto} />
       )}
@@ -23,7 +23,7 @@ const DetalleProducto = () => {
         <Info data={data} />
         <Relacionados />
       </Main>
-    </Layout>
+    </LayoutPrincipal>
   );
 };
 

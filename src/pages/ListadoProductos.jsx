@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Layout from "../components/Layout";
+import LayoutPrincipal from "../Layout/LayoutPrincipal";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navegacion from "../components/ListadoProductos/Navegacion";
@@ -28,7 +28,7 @@ const ListadoProductos = () => {
   }, []);
 
   return (
-    <Layout>
+    <LayoutPrincipal>
       <Navegacion
         genero={genero}
         categoria1={categoria1}
@@ -44,7 +44,7 @@ const ListadoProductos = () => {
       />
       <FiltroDesktop data={filtros} />
       <Productos data={data} idCategoria={idCategoria} />
-    </Layout>
+    </LayoutPrincipal>
   );
 };
 

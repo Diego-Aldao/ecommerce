@@ -1,6 +1,6 @@
 import React from "react";
 import useWindowSize from "../hooks/useWindowSize";
-import Layout from "../components/Layout";
+import LayoutPrincipal from "../Layout/LayoutPrincipal";
 import Header from "../components/Inicio/Header";
 import Hero from "../components/Inicio/Hero";
 import Descuentos from "../components/Inicio/Descuentos";
@@ -20,7 +20,7 @@ const PaginaPrincipal = () => {
   const { dataGenero } = useContentHome({ genero }); //hook para obtener la data correcta segun el genero
 
   return (
-    <Layout>
+    <LayoutPrincipal>
       {size.width < 768 ? (
         <>
           <Header />
@@ -60,7 +60,7 @@ const PaginaPrincipal = () => {
           <>loading</>
         )}
       </Tendencias>
-    </Layout>
+    </LayoutPrincipal>
   );
 };
 

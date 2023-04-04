@@ -1,12 +1,12 @@
 import React from "react";
-import Layout from "../components/Layout";
+import LayoutPrincipal from "../Layout/LayoutPrincipal";
 import Guardados from "../components/Guardados/Guardados";
 
 const ProductosGuardados = () => {
   return (
-    <Layout>
+    <LayoutPrincipal>
       <Guardados />
-    </Layout>
+    </LayoutPrincipal>
   );
 };
 

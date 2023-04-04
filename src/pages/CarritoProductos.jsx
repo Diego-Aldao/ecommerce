@@ -1,11 +1,11 @@
 import React from "react";
-import Layout from "../components/Layout";
+import LayoutPrincipal from "../Layout/LayoutPrincipal";
 import Carrito from "../components/Carrito/Carrito";
 const CarritoProductos = () => {
   return (
-    <Layout>
+    <LayoutPrincipal>
       <Carrito />
-    </Layout>
+    </LayoutPrincipal>
   );
 };
 
