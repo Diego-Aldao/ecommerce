@@ -52,10 +52,17 @@ const BtnAplicar = styled.button`
   padding: 20px;
 `;
 
-const Filtros = ({ position, setPosition, filtros, setDataFiltros }) => {
+const Filtros = ({
+  position,
+  setPosition,
+  filtros,
+  setDataFiltros,
+  setCurrentItem,
+}) => {
   const handleClick = (filtro) => {
     setPosition(!position);
     setDataFiltros(filtro);
+    setCurrentItem(filtro.id);
   };
 
   return (

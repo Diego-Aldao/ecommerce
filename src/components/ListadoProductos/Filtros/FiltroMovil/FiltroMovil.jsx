@@ -7,6 +7,8 @@ import Filtros from "./Filtros";
 const FiltroMovil = ({ isOpen, setIsOpen, data, loading }) => {
   const [position, setPosition] = useState();
   const [dataFiltros, setDataFiltros] = useState();
+  const [currentItem, setCurrentItem] = useState();
+
   const size = useWindowSize();
 
   if (size.width > 768) {
@@ -25,11 +27,13 @@ const FiltroMovil = ({ isOpen, setIsOpen, data, loading }) => {
           setPosition={setPosition}
           filtros={data}
           setDataFiltros={setDataFiltros}
+          setCurrentItem={setCurrentItem}
         />
         <DetalleFiltro
           position={position}
           setPosition={setPosition}
           dataFiltros={dataFiltros}
+          currentItem={currentItem}
         />
       </ContenedorNavs>
     </Modal>
