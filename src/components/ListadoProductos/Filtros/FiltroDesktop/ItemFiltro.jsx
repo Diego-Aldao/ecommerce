@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { BsCheck2, BsX } from "react-icons/bs";
 import useFiltros from "../../../../hooks/useFiltros";
+import FiltrosFetchContext from "../../../../context/FiltrosFetchContext";
 
 const Item = styled.li`
   width: 100%;
@@ -113,12 +114,29 @@ const DropdownItem = styled.div`
 const ItemFiltro = ({ data }) => {
   const [claseActiva, setClaseActiva] = useState();
   const [currentItem, setCurrentItem] = useState();
-  const { changeSelection, changeSelectionAll, seleccionados } = useFiltros();
+  const [iniciado, setIniciado] = useState(false);
+  const {
+    changeSelection,
+    changeSelectionAll,
+    borrarFiltrosVacios,
+    agregarKeyValue,
+    seleccionados,
+  } = useFiltros();
 
   const handleClick = (data) => {
     setCurrentItem(data);
     setClaseActiva(data.id);
   };
+
+  useEffect(() => {
+    let nombreFiltro = currentItem?.id;
+
+    if (seleccionados.length === 0 && iniciado) {
+      borrarFiltrosVacios(nombreFiltro);
+    } else if (iniciado) {
+      agregarKeyValue(nombreFiltro);
+    }
+  }, [seleccionados]);
 
   return (
     <Item
@@ -151,6 +169,7 @@ const ItemFiltro = ({ data }) => {
               <button
                 className="btn-check"
                 onClick={() => {
+                  setIniciado(true);
                   changeSelectionAll(data, false);
                 }}
               >
@@ -160,6 +179,7 @@ const ItemFiltro = ({ data }) => {
               <button
                 className="btn-check"
                 onClick={() => {
+                  setIniciado(true);
                   changeSelectionAll(data, true);
                 }}
               >
@@ -174,6 +194,7 @@ const ItemFiltro = ({ data }) => {
                   className={value.isSelected && "seleccionado"}
                   key={value.id}
                   onClick={() => {
+                    setIniciado(true);
                     changeSelection(value);
                   }}
                 >

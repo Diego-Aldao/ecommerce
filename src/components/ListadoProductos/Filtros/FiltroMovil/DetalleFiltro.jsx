@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BsArrowLeft, BsCheck2, BsX } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
@@ -119,12 +119,28 @@ const CheckSelected = styled.div`
   opacity: ${({ isSelected }) => (isSelected ? "1" : "0")};
 `;
 
-const DetalleFiltro = ({ position, setPosition, dataFiltros }) => {
-  const { changeSelection, changeSelectionAll } = useFiltros();
+const DetalleFiltro = ({ position, setPosition, dataFiltros, currentItem }) => {
+  const {
+    changeSelection,
+    changeSelectionAll,
+    borrarFiltrosVacios,
+    agregarKeyValue,
+    seleccionados,
+  } = useFiltros();
+
+  const [iniciado, setIniciado] = useState(false);
 
   const handleClick = () => {
     setPosition(!position);
   };
+
+  useEffect(() => {
+    if (seleccionados.length === 0 && iniciado) {
+      borrarFiltrosVacios(currentItem);
+    } else if (iniciado) {
+      agregarKeyValue(currentItem);
+    }
+  }, [seleccionados]);
 
   return (
     <Contenedor position={position}>
@@ -139,6 +155,7 @@ const DetalleFiltro = ({ position, setPosition, dataFiltros }) => {
           {dataFiltros?.facetValues.some((obj) => obj.isSelected == true) ? (
             <BtnMarcar
               onClick={() => {
+                setIniciado(true);
                 changeSelectionAll(dataFiltros, false);
               }}
             >
@@ -148,6 +165,7 @@ const DetalleFiltro = ({ position, setPosition, dataFiltros }) => {
           ) : (
             <BtnMarcar
               onClick={() => {
+                setIniciado(true);
                 changeSelectionAll(dataFiltros, true);
               }}
             >
@@ -171,6 +189,7 @@ const DetalleFiltro = ({ position, setPosition, dataFiltros }) => {
             return (
               <ItemFiltro
                 onClick={() => {
+                  setIniciado(true);
                   changeSelection(filtro);
                 }}
                 key={filtro.id}
