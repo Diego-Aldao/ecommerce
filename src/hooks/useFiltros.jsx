@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import FiltrosFetchContext from "../context/FiltrosFetchContext";
 const useFiltros = () => {
   const [seleccionados, setSeleccionados] = useState([]);
+  const { filtrosFetch, setFiltrosFetch } = useContext(FiltrosFetchContext);
 
   const changeSelection = (filtro) => {
     if (filtro.isSelected == false) {
@@ -24,7 +26,31 @@ const useFiltros = () => {
     }
   };
 
-  return { changeSelection, changeSelectionAll, seleccionados };
+  const borrarFiltrosVacios = (nombre) => {
+    let arrayParams = Object?.entries(filtrosFetch);
+    let filtrados = arrayParams.filter((nombres) => !nombres.includes(nombre));
+    let newParams = Object.fromEntries(filtrados);
+    setFiltrosFetch(newParams);
+  };
+
+  const agregarKeyValue = (nombre) => {
+    let filtrosId = [];
+    seleccionados.map((seleccionado) => filtrosId.push(seleccionado.id));
+
+    setFiltrosFetch((filtrosFetch) => ({
+      ...filtrosFetch,
+      [`${nombre}`]: filtrosId.toString(),
+    }));
+  };
+
+  return {
+    changeSelection,
+    changeSelectionAll,
+    borrarFiltrosVacios,
+    agregarKeyValue,
+    seleccionados,
+    filtrosFetch,
+  };
 };
 
 export default useFiltros;
