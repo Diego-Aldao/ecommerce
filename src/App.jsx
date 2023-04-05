@@ -11,6 +11,7 @@ import { CarritoContextProvider } from "./context/CarritoContext";
 import CarritoProductos from "./pages/CarritoProductos";
 import LoginUsuario from "./pages/LoginUsuario";
 import RegistroUsuario from "./pages/RegistroUsuario";
+import { FiltrosFetchContextProvider } from "./context/FiltrosFetchContext";
 
 const router = createBrowserRouter([
   {
@@ -61,8 +62,10 @@ function App() {
       <CarritoContextProvider>
         <CategoriaContextProvider>
           <ProductosContextProvider>
-            <EstilosGlobales />
-            <RouterProvider router={router} />
+            <FiltrosFetchContextProvider>
+              <EstilosGlobales />
+              <RouterProvider router={router} />
+            </FiltrosFetchContextProvider>
           </ProductosContextProvider>
         </CategoriaContextProvider>
       </CarritoContextProvider>
