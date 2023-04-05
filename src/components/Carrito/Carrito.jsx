@@ -163,7 +163,6 @@ const MediosDePago = styled.div`
     }
   }
   p {
-    line-height: 1.4;
     font-size: 14px;
   }
   @media (min-width: 1024px) {

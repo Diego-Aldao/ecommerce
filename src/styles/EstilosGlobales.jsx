@@ -14,11 +14,18 @@ const EstilosGlobales = createGlobalStyle`
     h2,
     h3,
     h4,
-    p,
     span,
     button {
         color: var(--color-texto);
     }
+
+    p {
+      line-height: 1.5;
+      font-weight: 400;
+      color: #222;
+      letter-spacing: 0.4px;
+    }
+
     button, input{
         background: none;
         outline-color: transparent;

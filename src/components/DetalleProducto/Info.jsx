@@ -46,7 +46,6 @@ const Oferta = styled.div`
   p {
     margin-bottom: 7px;
     font-size: 14px;
-    letter-spacing: 0.4px;
     span {
       text-transform: uppercase;
       font-weight: 700;
@@ -217,7 +216,6 @@ const Info = ({ data }) => {
         <BtnFavorito
           onClick={() => {
             guardarProducto(data);
-            console.log(guardados?.some((guardado) => guardado.id === data.id));
           }}
         >
           {liked ? (

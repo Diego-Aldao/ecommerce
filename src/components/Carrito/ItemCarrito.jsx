@@ -69,8 +69,6 @@ const DataItem = styled.div`
     margin-right: 5px;
     position: relative;
     font-weight: 700;
-    color: #6d6d6d;
-    line-height: 1.5;
   }
   p:nth-child(2) {
     text-transform: uppercase;
