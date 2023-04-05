@@ -184,7 +184,9 @@ const NavPrincipal = () => {
           <AiOutlineSearch />
         </IconoNav>
         <IconoNav>
-          <AiOutlineUser />
+          <Link to="/login">
+            <AiOutlineUser />
+          </Link>
         </IconoNav>
         {guardados.length >= 1 ? (
           <IconoNav>
