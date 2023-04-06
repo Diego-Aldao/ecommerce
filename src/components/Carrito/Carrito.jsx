@@ -3,12 +3,19 @@ import useCarrito from "../../hooks/useCarrito";
 import styled from "styled-components";
 import ItemCarrito from "./ItemCarrito";
 import { MdOutlineLocalShipping } from "react-icons/md";
-import { AiOutlineShopping } from "react-icons/ai";
+import { AiOutlineShopping, AiOutlineInfoCircle } from "react-icons/ai";
 import SinProductos from "../SinProductos";
 import useGuardados from "../../hooks/useGuardados";
+import ContenedorMaxWidth from "../../styles/ContenedorMaxWidth";
 
 const Contenedor = styled.div`
   width: 100%;
+  background: var(--color-gris);
+`;
+
+const ContenedorWidthExtended = styled(ContenedorMaxWidth)`
+  margin: 0px auto;
+  padding: 20px 15px;
 `;
 
 const ContenedorGrid = styled.section`
@@ -34,22 +41,34 @@ const ContenedorGrid = styled.section`
       grid-column: 1 / 3;
     }
   }
+  @media (min-width: 1440px) {
+    min-height: calc(100vh - 493px);
+  }
 `;
 
 const Promo = styled.div`
   width: 100%;
   background: var(--color-promo);
-  padding: 10px;
+  padding: 15px;
   grid-column: 1 / 3;
-  margin-bottom: 25px;
   line-height: 1.7;
-  span {
-    text-transform: uppercase;
-    font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .icono {
+    padding: 5px 10px 0px 0px;
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
   p {
     text-align: center;
     font-size: 12px;
+    span {
+      text-transform: uppercase;
+      font-weight: 700;
+    }
   }
   p:first-letter {
     text-transform: uppercase;
@@ -67,24 +86,38 @@ const ListaCarrito = styled.ul`
   flex-direction: column;
 `;
 
+const HeaderCarrito = styled.li`
+  width: 100%;
+  padding: 20px;
+  background: white;
+  margin-bottom: 5px;
+  h3 {
+    text-transform: capitalize;
+  }
+`;
+
 const Pago = styled.div`
   width: 100%;
   top: 20px;
   position: sticky;
-  max-height: 390px;
+  max-height: 475px;
 `;
 
 const ConfirmarPago = styled.div`
   width: 100%;
-  padding: 15px;
+  padding: 17.5px 15px;
   background: #ffffff;
-  margin-bottom: 5px;
+  .total {
+    text-transform: uppercase;
+    padding: 15px 0px;
+    border-bottom: 1px solid var(--color-gris);
+    margin-bottom: 10px;
+  }
   .subtotal,
   .envio {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
     padding: 10px 0px;
     p {
       text-transform: capitalize;
@@ -100,6 +133,9 @@ const ConfirmarPago = styled.div`
       font-size: 14px;
       color: var(--color-promo2);
     }
+  }
+  .envio {
+    margin-bottom: 10px;
   }
   .btn-pagar {
     width: 100%;
@@ -117,7 +153,7 @@ const ConfirmarPago = styled.div`
 
 const Envio = styled.div`
   width: 100%;
-  background: var(--color-promo2);
+  background: white;
   padding: 15px;
   display: flex;
   justify-content: center;
@@ -146,7 +182,8 @@ const MediosDePago = styled.div`
   width: 100%;
   padding: 15px;
   background: white;
-  margin-bottom: 5px;
+  margin-top: 30px;
+  border-top: 1px solid var(--color-gris);
   h3 {
     text-transform: uppercase;
     font-size: 14px;
@@ -187,7 +224,7 @@ const Carrito = () => {
         titulo: "tu carrito esta vacío",
         carrito: true,
         descripcion:
-          "pero debajo aparecen los articulos que tienes guardados, buscabas alguno de ellos?",
+          "pero debajo aparecen los articulos que tienes guardados, ¡así puedes agregarlos a tu carrito cuando quieras!",
         boton: false,
       });
     } else if (guardados.length == 0 && carrito.length == 0) {
@@ -205,61 +242,75 @@ const Carrito = () => {
   return (
     <Contenedor>
       {carrito.length >= 1 ? (
-        <ContenedorGrid>
-          <header>
-            <h3>carrito</h3>
-          </header>
+        <>
           <Promo>
+            <span className="icono">
+              <AiOutlineInfoCircle />
+            </span>
             <p>
               realiza una compra de 100 euros y obten el 15% de descuento en
               casi todo con el codigo <span>ahora15</span>. Algunos artículos
               pueden crear excluidos
             </p>
           </Promo>
-          <ListaCarrito>
-            {carrito.map((item) => {
-              return <ItemCarrito item={item} />;
-            })}
-          </ListaCarrito>
-          <Pago>
-            <Envio>
-              <h3>
-                <span>
-                  <MdOutlineLocalShipping />
-                </span>
-                envio estandar gratis
-              </h3>
-            </Envio>
-            <MediosDePago>
-              <h3>aceptamos: </h3>
-              <div className="contenedor-tarjetas">
-                <span className="tarjeta"></span>
-                <span className="tarjeta"></span>
-                <span className="tarjeta"></span>
-                <span className="tarjeta"></span>
-                <span className="tarjeta"></span>
-              </div>
-              <p>Tienes un codigo de descuento? Añadelo en el proximo paso</p>
-            </MediosDePago>
-            <ConfirmarPago>
-              <div className="subtotal">
-                <p>subtotal</p>
-                <span>50,48 €</span>
-              </div>
-              <div className="envio">
-                <p>envio</p>
-                <span className="especial">gratis</span>
-              </div>
-              <button className="btn-pagar">
-                <span>pagar ahora</span>
-              </button>
-            </ConfirmarPago>
-          </Pago>
-        </ContenedorGrid>
+          <ContenedorWidthExtended>
+            <ContenedorGrid>
+              <ListaCarrito>
+                <HeaderCarrito>
+                  <h3>mi carrito</h3>
+                </HeaderCarrito>
+                {carrito.map((item) => {
+                  return <ItemCarrito item={item} />;
+                })}
+              </ListaCarrito>
+              <Pago>
+                <Envio>
+                  <h3>
+                    <span>
+                      <MdOutlineLocalShipping />
+                    </span>
+                    envio estandar gratis
+                  </h3>
+                </Envio>
+                <ConfirmarPago>
+                  <div className="total">
+                    <h3>total</h3>
+                  </div>
+                  <div className="subtotal">
+                    <p>subtotal</p>
+                    <span>50,48 €</span>
+                  </div>
+                  <div className="envio">
+                    <p>envio</p>
+                    <span className="especial">gratis</span>
+                  </div>
+                  <button className="btn-pagar">
+                    <span>pagar ahora</span>
+                  </button>
+                  <MediosDePago>
+                    <h3>aceptamos: </h3>
+                    <div className="contenedor-tarjetas">
+                      <span className="tarjeta"></span>
+                      <span className="tarjeta"></span>
+                      <span className="tarjeta"></span>
+                      <span className="tarjeta"></span>
+                      <span className="tarjeta"></span>
+                    </div>
+                    <p>
+                      Tienes un codigo de descuento? Añadelo en el proximo paso
+                    </p>
+                  </MediosDePago>
+                </ConfirmarPago>
+              </Pago>
+            </ContenedorGrid>
+          </ContenedorWidthExtended>
+        </>
       ) : carrito.length == 0 && guardados.length >= 1 ? (
-        <SinProductos data={data} />
+        <>
+          <SinProductos data={data} />
+        </>
       ) : (
-        <SinProductos data={data} />
+        <SinProductos data={data} clase={"vacio-completo"} />
       )}
     </Contenedor>
   );
