@@ -76,7 +76,7 @@ const Guardados = () => {
           </ContenedorWidth>
         </>
       ) : (
-        <SinProductos data={data} />
+        <SinProductos data={data} clase={"vacio-completo"} />
       )}
     </Contenedor>
   );
