@@ -147,12 +147,7 @@ const ItemCarrito = ({ item }) => {
         <span></span>
       </BtnMenu>
       <ImagenItem>
-        <img
-          src={`https://${
-            item.media ? item.media.images[0].url : item.imageUrl
-          }`}
-          alt=""
-        />
+        <img src={`https://${item.imagen}`} alt="" />
       </ImagenItem>
       <InfoItem>
         <span className="precio">{item.price.current.text}</span>

@@ -9,6 +9,7 @@ const Item = styled.div`
   flex-direction: column;
   position: relative;
   .nombre {
+    height: 40px;
     max-height: 40px;
     overflow: hidden;
     font-size: 14px;
@@ -72,12 +73,7 @@ const ItemGuardado = ({ item, data }) => {
       </BtnBorrar>
 
       <div>
-        <img
-          src={`https://${
-            item.media ? item.media.images[0].url : item.imageUrl
-          }`}
-          alt=""
-        />
+        <img src={`https://${item.imagen}`} alt="" />
       </div>
       <p className="nombre">{item.name}</p>
       <span className="precio">{item.price.current.text}</span>
