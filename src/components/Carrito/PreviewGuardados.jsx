@@ -2,6 +2,7 @@ import React from "react";
 import useGuardados from "../../hooks/useGuardados";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import useCarrito from "../../hooks/useCarrito";
 
 const ContenedorPreview = styled.div`
   width: 100%;
@@ -111,7 +112,8 @@ const DataItem = styled.div`
 `;
 
 const PreviewGuardados = () => {
-  const { guardados } = useGuardados();
+  const { guardados, guardarProducto } = useGuardados();
+  const { añadirProductoCarrito } = useCarrito();
   return (
     <ContenedorPreview>
       <header>
@@ -122,14 +124,7 @@ const PreviewGuardados = () => {
           return (
             <ItemGuardado key={guardado.id}>
               <ImagenItem>
-                <img
-                  src={`https://${
-                    guardado.media
-                      ? guardado.media.images[0].url
-                      : guardado.imageUrl
-                  }`}
-                  alt=""
-                />
+                <img src={`https://${guardado.imagen}`} alt="" />
               </ImagenItem>
               <InfoItem>
                 <span className="precio">{guardado.price.current.text}</span>
@@ -144,7 +139,14 @@ const PreviewGuardados = () => {
                     eu{" "}
                     {guardado.variants ? guardado.variants[0].brandSize : "s"}
                   </p>
-                  <button>añadir a mi bolsa</button>
+                  <button
+                    onClick={() => {
+                      añadirProductoCarrito(guardado);
+                      guardarProducto(guardado);
+                    }}
+                  >
+                    añadir a mi bolsa
+                  </button>
                 </DataItem>
               </InfoItem>
             </ItemGuardado>
