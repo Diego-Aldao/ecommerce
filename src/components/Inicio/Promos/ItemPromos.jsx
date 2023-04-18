@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import ButtonLink from "../ButtonLink";
 const ItemPromo = styled.div`
   width: 100%;
   text-align: center;
@@ -14,17 +14,25 @@ const ItemPromo = styled.div`
       text-transform: uppercase;
     }
   }
-  button {
+  a {
+    background: white;
+    color: black;
     margin: 25px auto 0px;
     width: 250px;
-    padding: 15px 0px 10px;
+    padding: 14px 0px 10px;
     border: 2px solid black;
-    span {
-      font-size: 16px;
-      text-transform: uppercase;
-      font-weight: 600;
-      line-height: 2;
-    }
+    height: 61px;
+
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 2;
+  }
+  a:after {
+    background: black;
+    color: white;
+    top: 61px;
+    padding: 8px 0px 10px;
   }
 `;
 
@@ -34,9 +42,7 @@ const ItemPromos = ({ data }) => {
       <img src={data.imagen} alt="" />
       <h2>{data.titulo}</h2>
       <p>{data.subtitulo}</p>
-      <button>
-        <span>comprar ahora</span>
-      </button>
+      <ButtonLink link={"/"}>comprar ahora</ButtonLink>
     </ItemPromo>
   );
 };
