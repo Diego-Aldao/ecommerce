@@ -20,11 +20,14 @@ const Contenedor = styled.div`
   background: white;
   display: flex;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
   max-width: 500px;
   transition: var(--transition);
   @media (min-width: 400px) {
     width: 320px;
+  }
+  @media (min-width: 580px) {
+    width: 380px;
   }
   &.left {
     left: ${({ isOpen }) => (isOpen ? "0px" : "-100%")};
@@ -35,10 +38,10 @@ const Contenedor = styled.div`
 `;
 
 const Btn = styled.div`
-  width: calc(100% - 266px);
+  width: 50px;
   height: 50px;
   display: flex;
-  background: black;
+  background: #000000ca;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -54,9 +57,11 @@ const Btn = styled.div`
     transform: rotate(-45deg);
   }
   &.left {
+    margin-right: auto;
     left: ${({ isOpen }) => (isOpen ? "0px" : "-100%")};
   }
   &.right {
+    margin-left: auto;
     right: ${({ isOpen }) => (isOpen ? "0px" : "-100%")};
   }
 `;
