@@ -5,8 +5,8 @@ import ContenedorWidth from "../../../styles/ContenedorMaxWidth";
 const Contenedor = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 20px 10px;
   grid-gap: 10px;
+  margin: 30px 0px;
   justify-items: center;
   @media (min-width: 768px) {
     grid-template-columns: repeat(4, 1fr);
