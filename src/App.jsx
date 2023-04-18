@@ -27,11 +27,23 @@ const router = createBrowserRouter([
     element: <PaginaPrincipal />,
   },
   {
-    path: "/productos/:genero/:categoria1/:categoria2/:idCategoria",
+    path: "/productos/:genero/:categoria1/:categoria2/:querys",
     element: <ListadoProductos />,
   },
   {
-    path: "/productos/:genero/:categoria1/:idCategoria",
+    path: "/productos/:genero/:categoria1/:querys",
+    element: <ListadoProductos />,
+  },
+  {
+    path: "/productos/:genero/:categoria1/:categoria2/:categoria3/:querys",
+    element: <ListadoProductos />,
+  },
+  {
+    path: "/productos/:genero/:categoria1/:categoria2/:categoria3/:querys",
+    element: <ListadoProductos />,
+  },
+  {
+    path: "/busqueda/:querys",
     element: <ListadoProductos />,
   },
   {
