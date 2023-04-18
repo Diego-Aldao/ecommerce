@@ -9,13 +9,19 @@ const Background = styled.div`
 const Contenedor = styled.ul`
   width: 100%;
   display: none;
-  max-width: 960px;
+  max-width: 1000px;
   margin: 0 auto;
   @media (min-width: 768px) {
     display: flex;
-    padding: 20px 20px 0px;
+    flex-wrap: wrap;
+    padding: 20px 24px 0px;
     li {
       flex: 1 1 auto;
+    }
+    .especial {
+      width: 100%;
+      padding-block: 10px;
+      border-top: 1px solid #bbbbbb;
     }
     h3 {
       text-transform: uppercase;
@@ -26,13 +32,16 @@ const Contenedor = styled.ul`
       color: #636363;
     }
   }
+  @media (min-width: 1024px) {
+    padding-inline: 32px;
+  }
 `;
 
 const ListaLinks = styled.ul`
   width: 100%;
+  margin-bottom: 20px;
   li {
-    padding: 0px 5px;
-    line-height: 30px;
+    line-height: 2;
     font-size: 14px;
     font-weight: 400;
     color: #5f5f5f;
@@ -51,32 +60,31 @@ const FooterDesktop = () => {
             <li>ayuda</li>
             <li>estado del pedido</li>
             <li>envios y devoluciones</li>
-            <li>asos premier</li>
-            <li>10% off estudiantes</li>
             <li>mapa del sitio</li>
           </ListaLinks>
         </li>
         <li>
-          <h3>informacion y ayuda</h3>
+          <h3>sobre asos</h3>
           <ListaLinks>
-            <li>ayuda</li>
-            <li>estado del pedido</li>
-            <li>envios y devoluciones</li>
-            <li>asos premier</li>
-            <li>10% off estudiantes</li>
-            <li>mapa del sitio</li>
+            <li>sobre nosotros</li>
+            <li>carreras en asos</li>
+            <li>responsabilidad corporativa</li>
+            <li>sitio de inversores</li>
           </ListaLinks>
         </li>
         <li>
-          <h3>informacion y ayuda</h3>
+          <h3>mas sobre asos</h3>
           <ListaLinks>
-            <li>ayuda</li>
-            <li>estado del pedido</li>
-            <li>envios y devoluciones</li>
-            <li>asos premier</li>
-            <li>10% off estudiantes</li>
-            <li>mapa del sitio</li>
+            <li>aplicacion movil</li>
+            <li>asos marketplace</li>
+            <li>cupones de regalo</li>
+            <li>black friday</li>
           </ListaLinks>
+        </li>
+        <li className="especial">
+          <p>
+            Estas en <strong>Argentina</strong>
+          </p>
         </li>
       </Contenedor>
     </Background>
