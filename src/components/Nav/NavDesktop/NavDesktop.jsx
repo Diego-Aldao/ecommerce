@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Dropdown from "./Dropdown";
+import Dropdown from "./Dropdown/Dropdown";
 import useCategorias from "../../../hooks/useCategorias";
 
 const Contenedor = styled.div`
@@ -19,6 +19,7 @@ const Contenedor = styled.div`
     border: none;
     text-transform: capitalize;
     font-size: 13px;
+    cursor: pointer;
   }
   @media (min-width: 1024px) {
     display: flex;
@@ -27,10 +28,10 @@ const Contenedor = styled.div`
   }
 `;
 
-const NavDesktop = ({ data }) => {
+const NavDesktop = ({ navegacion }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentContent, setCurrentContent] = useState();
-  const { categorias } = useCategorias(data);
+  const { categorias } = useCategorias(navegacion);
 
   const handleMouseOverCategoria = (categoria) => {
     setCurrentContent(categoria.children);
@@ -48,7 +49,8 @@ const NavDesktop = ({ data }) => {
     <Contenedor onMouseOut={handleMouseOut} onMouseOver={handleMouseOver}>
       {categorias?.map((categoria) => {
         return (
-          !categoria.channelExclusions.includes("webLarge") && (
+          !categoria.channelExclusions.includes("webLarge") &&
+          categoria.content.title !== "Marketplace" && (
             <button
               key={categoria.id}
               onMouseOver={() => {
