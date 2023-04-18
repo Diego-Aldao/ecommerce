@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ButtonLink from "./ButtonLink";
 
 const Contenedor = styled.div`
   width: 100%;
@@ -8,12 +9,15 @@ const Contenedor = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 35px 35px 10px;
+  a {
+    margin: 20px 0px;
+  }
 `;
 
 const Subtitulo = styled.p`
   text-transform: uppercase;
   font-style: italic;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   font-size: 14px;
   @media (min-width: 768px) {
     font-size: 24px;
@@ -30,22 +34,6 @@ const Titulo = styled.h2`
   @media (min-width: 768px) {
     max-width: 750px;
     font-size: 32px;
-  }
-`;
-
-const BtnRegistro = styled.button`
-  padding: 15px 35px;
-  margin: 35px 0px 50px;
-  background: #000;
-  color: #fff;
-  text-transform: uppercase;
-  font-size: 15px;
-  font-weight: 800;
-  span {
-    letter-spacing: 1px;
-    padding-top: 3px;
-    display: block;
-    color: #fff;
   }
 `;
 
@@ -66,9 +54,7 @@ const Header = () => {
     <Contenedor>
       <Subtitulo>asos premier party</Subtitulo>
       <Titulo>hazte miembro por el -25% en todo mañana!</Titulo>
-      <BtnRegistro>
-        <span>registrarme</span>
-      </BtnRegistro>
+      <ButtonLink link={"/registro"}>registrarme</ButtonLink>
       <Terminos>
         se aplican terminos y condiciones. Solo por tiempo limitado
       </Terminos>
