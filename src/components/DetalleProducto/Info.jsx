@@ -165,15 +165,33 @@ const Info = ({ data }) => {
   const [liked, setLiked] = useState([]);
   const { guardados, guardarProducto } = useGuardados();
 
+  const handleGuardarProducto = (producto) => {
+    let imagen = producto.imageUrl
+      ? producto.imageUrl
+      : producto.media.images[0].url;
+    let color = producto.colour ? producto.colour : producto.variants[0].colour;
+
+    let { id, name, price } = producto;
+
+    const dataProducto = {
+      id: id,
+      name: name,
+      price: price,
+      imagen: imagen,
+      colour: color,
+    };
+    guardarProducto(dataProducto);
+  };
+
   useEffect(() => {
-    let currentLiked = guardados?.some((guardado) => guardado.id === data.id);
+    let currentLiked = guardados?.some((guardado) => guardado.id === data?.id);
     setLiked(currentLiked);
   }, [guardados]);
   return (
     <Contenido>
       <Header>
-        <h3>{data.name}</h3>
-        <span>{data.price.current.text}</span>
+        <h3>{data?.name}</h3>
+        <span>{data?.price.current.text}</span>
       </Header>
       <Oferta>
         <span>
@@ -190,7 +208,7 @@ const Info = ({ data }) => {
       <Caracteristica>
         <p>
           color:
-          <span>{data.variants[0].colour}</span>
+          <span>{data?.variants[0].colour}</span>
         </p>
       </Caracteristica>
       <Caracteristica>
@@ -202,7 +220,7 @@ const Info = ({ data }) => {
         </p>
         <Select name="talle" id="talle" aria-label="Selecciona">
           <option value>seleccionar:</option>
-          {data.variants.map((variant) => {
+          {data?.variants.map((variant) => {
             return (
               <option value={variant.displaySizeText} key={variant.id}>
                 {variant.displaySizeText}
@@ -215,7 +233,7 @@ const Info = ({ data }) => {
         <BtnAñadir>añadir al carrito</BtnAñadir>
         <BtnFavorito
           onClick={() => {
-            guardarProducto(data);
+            handleGuardarProducto(data);
           }}
         >
           {liked ? (
