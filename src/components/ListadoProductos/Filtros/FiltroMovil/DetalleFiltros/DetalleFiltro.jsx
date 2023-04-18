@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BsArrowLeft, BsCheck2, BsX } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
-import useFiltros from "../../../../hooks/useFiltros";
+import useFiltros from "../../../../../hooks/useFiltros";
+import ItemDetalleFiltro from "./ItemDetalleFiltro";
 
 const Contenedor = styled.div`
   width: 100%;
@@ -11,6 +12,7 @@ const Contenedor = styled.div`
   position: absolute;
   transition: var(--transition);
   background: var(--color-gris);
+  overflow: scroll;
 `;
 
 const HeaderDetalle = styled.header`
@@ -121,7 +123,6 @@ const CheckSelected = styled.div`
 
 const DetalleFiltro = ({ position, setPosition, dataFiltros, currentItem }) => {
   const {
-    changeSelection,
     changeSelectionAll,
     borrarFiltrosVacios,
     agregarKeyValue,
@@ -133,14 +134,6 @@ const DetalleFiltro = ({ position, setPosition, dataFiltros, currentItem }) => {
   const handleClick = () => {
     setPosition(!position);
   };
-
-  useEffect(() => {
-    if (seleccionados.length === 0 && iniciado) {
-      borrarFiltrosVacios(currentItem);
-    } else if (iniciado) {
-      agregarKeyValue(currentItem);
-    }
-  }, [seleccionados]);
 
   return (
     <Contenedor position={position}>
@@ -187,13 +180,13 @@ const DetalleFiltro = ({ position, setPosition, dataFiltros, currentItem }) => {
         {dataFiltros &&
           dataFiltros.facetValues.map((filtro) => {
             return (
-              <ItemFiltro
-                onClick={() => {
-                  setIniciado(true);
-                  changeSelection(filtro);
-                }}
+              <ItemDetalleFiltro
+                setIniciado={setIniciado}
+                filtro={filtro}
+                iniciado={iniciado}
+                currentItem={currentItem}
                 key={filtro.id}
-                className={filtro.isSelected && "seleccionado"}
+                clase={filtro.isSelected && "seleccionado"}
               >
                 <p>{filtro.name}</p>
                 <span>({filtro.count})</span>
@@ -201,7 +194,7 @@ const DetalleFiltro = ({ position, setPosition, dataFiltros, currentItem }) => {
                 <CheckSelected isSelected={filtro.isSelected}>
                   <BsCheck2></BsCheck2>
                 </CheckSelected>
-              </ItemFiltro>
+              </ItemDetalleFiltro>
             );
           })}
       </ListaFiltros>

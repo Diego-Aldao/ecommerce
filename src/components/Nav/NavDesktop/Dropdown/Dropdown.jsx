@@ -1,17 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import useDestino from "../../../hooks/useDestino";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import ItemCategoria from "./ItemCategoria";
 
 const Contenedor = styled.div`
   width: 100%;
   background: var(--color-gris);
   position: absolute;
-  display: ${({ isVisible }) => (isVisible ? "flex" : "none")};
+  height: ${({ isVisible }) => (isVisible ? "auto" : "0px")};
+  opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
+  transition: opacity 0.2s ease-in-out;
+  overflow: hidden;
+  z-index: 9;
   top: 50px;
   left: 0px;
-  z-index: 9;
+  padding: 0px;
 `;
 
 const ListaFiltros = styled.ul`
@@ -27,7 +29,7 @@ const ListaFiltros = styled.ul`
   }
 `;
 
-const Filtro = styled.li`
+const FiltroCategorias = styled.li`
   flex: ${({ flex }) => (flex ? flex : 1)};
   padding: 0px 20px;
   border-right: 1px solid #00000022;
@@ -47,10 +49,18 @@ const Filtro = styled.li`
   }
 `;
 
-const ListaCategorias = styled.ul`
+const ListaItems = styled.ul`
   color: #666;
   font-size: 14px;
   column-count: ${({ column }) => column && column};
+  li:hover {
+    span {
+      color: var(--color-promo2);
+    }
+    div {
+      border-color: var(--color-promo2);
+    }
+  }
 
   .li-textList,
   .li-list {
@@ -186,42 +196,20 @@ const ListaCategorias = styled.ul`
   &.fullMarketingImage {
     column-count: ${({ column }) => column && column};
     div {
+      min-height: 270px;
       width: 240px;
       height: 270px;
     }
   }
   &.halfMarketingImage {
     div {
+      min-height: 125px;
       border: 1px solid #dfdfdf;
     }
   }
 `;
 
-const Categorias = styled.li`
-  text-align: start;
-  padding: 7px 0px;
-  cursor: pointer;
-  &:hover {
-    color: #1e65ff;
-    div {
-      border-color: #1e65ff;
-    }
-  }
-`;
-
 const Dropdown = ({ isVisible, currentContent }) => {
-  const navigate = useNavigate();
-  const [currentLink, setCurrentLink] = useState("");
-  const { linkFormateado } = useDestino(currentLink);
-
-  const handleNavigation = (item) => {
-    setCurrentLink(item);
-  };
-
-  useEffect(() => {
-    navigate(linkFormateado);
-  }, [linkFormateado]);
-
   return (
     <Contenedor isVisible={isVisible}>
       <ListaFiltros visible={isVisible}>
@@ -229,11 +217,14 @@ const Dropdown = ({ isVisible, currentContent }) => {
           /*retornar las agrupaciones de productos */
           return (
             !tipo.channelExclusions.includes("webLarge") && (
-              <Filtro key={tipo.id} flex={tipo.display.webLargeColumnSpan}>
+              <FiltroCategorias
+                key={tipo.id}
+                flex={tipo.display.webLargeColumnSpan}
+              >
                 <h4 className={tipo.style.webLargeStyleType}>
                   <span>{tipo.content.title}</span>
                 </h4>
-                <ListaCategorias
+                <ListaItems
                   className={
                     tipo.display.webLargeTemplateName.length !== 0
                       ? tipo.display.webLargeTemplateName
@@ -244,26 +235,16 @@ const Dropdown = ({ isVisible, currentContent }) => {
                   {tipo.children.map((producto) => {
                     /*retornar los productos */
                     return (
-                      <Categorias
-                        onClick={() => {
-                          handleNavigation(producto.link.webUrl);
-                        }}
-                        key={producto.id}
-                        className={
-                          tipo.display.webLargeTemplateName.length !== 0
-                            ? `li-${tipo.display.webLargeTemplateName}`
-                            : `li-${tipo.display.mobileDisplayLayout}`
-                        }
-                      >
-                        <div>
-                          <img src={producto.content.webLargeImageUrl}></img>
-                        </div>
-                        <span>{producto.content.title}</span>
-                      </Categorias>
+                      <React.Fragment key={producto.id}>
+                        <ItemCategoria
+                          producto={producto}
+                          categoriaProducto={tipo}
+                        />
+                      </React.Fragment>
                     );
                   })}
-                </ListaCategorias>
-              </Filtro>
+                </ListaItems>
+              </FiltroCategorias>
             )
           );
         })}
