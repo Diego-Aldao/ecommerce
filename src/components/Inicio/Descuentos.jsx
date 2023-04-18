@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Contenedor, Titulo, Terminos } from "./Header";
+import Loading from "../Loading";
 
 const TituloDescuento = styled(Titulo)`
   font-size: 26px;
@@ -27,7 +28,7 @@ const Descuentos = ({ data }) => {
           <Terminos>{data.footer}</Terminos>
         </>
       ) : (
-        <>loading</>
+        <Loading />
       )}
     </ContenedorDescuento>
   );
