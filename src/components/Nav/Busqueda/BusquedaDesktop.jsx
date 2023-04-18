@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const BusquedaNavPrincipal = styled.form`
@@ -70,26 +71,33 @@ const ItemSugerencia = styled.li`
 `;
 
 const BusquedaDesktop = () => {
-  const [contador, setContador] = useState(200);
+  const [valor, setValor] = useState();
+  const navigate = useNavigate();
 
-  const handleKeyDown = () => {
-    setContador((prevValue) => prevValue + 1);
+  const handleKeyDown = (e) => {
+    setValor(e.target.value);
   };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    navigate(`/busqueda/${valor}`);
+
+    //hacer el fetch con el valor como query
+  };
+
   return (
     <BusquedaNavPrincipal>
       <ContenedorInput>
         <input
           type="search"
-          name="q"
-          id="search"
-          onKeyDown={handleKeyDown}
+          onChange={(event) => handleKeyDown(event)}
           placeholder="Buscar artículos y marcas"
         />
-        <button>
+        <button onClick={(event) => handleClick(event)}>
           <FiSearch />
         </button>
       </ContenedorInput>
-      <ContenedorSugerencias tamaño={contador}>
+      <ContenedorSugerencias>
         <ItemSugerencia>
           <span>ASOS bikini</span>
           <span>796</span>
