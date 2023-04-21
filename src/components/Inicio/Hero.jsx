@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import ContenedorWidth from "../../styles/ContenedorMaxWidth";
 import Loading from "../Loading";
 import ButtonLink from "./ButtonLink";
 import useProductos from "../../hooks/useProductos";
 import { useNavigate } from "react-router-dom";
+import { animated, useSpring } from "@react-spring/web";
 
 const Contenedor = styled.div`
   width: 100%;
   margin: 20px 0px;
   position: relative;
-  min-height: 346px;
+  max-height: 900px;
+  picture {
+    width: 100%;
+  }
   display: flex;
-  align-items: center;
-  @media (min-width: 580px) {
-    min-height: 625px;
-  }
-  @media (min-width: 768px) {
-    min-height: 488px;
-  }
-  @media (min-width: 1240px) {
-    min-height: 591px;
+  @media (min-width: 650px) {
+    max-height: 645px;
   }
 `;
 
@@ -55,33 +52,54 @@ const Tienda = styled.div`
   }
 `;
 
+const ImagenHero = styled(animated.div)`
+  width: 100%;
+  position: relative;
+  height: 100%;
+`;
+
 const Hero = ({ data }) => {
-  const [categoria, setCategoria] = useState();
-  const { getProductos } = useProductos({ categoria });
+  const { getProductos } = useProductos();
   const navigate = useNavigate();
 
+  const [spring, api] = useSpring(() => ({
+    from: {
+      left: 10,
+      top: 10,
+      opacity: 0.5,
+    },
+    config: { mass: 5, tension: 2000, friction: 100 },
+  }));
+
   const handleClick = () => {
-    getProductos();
-    navigate(`/productos${data.link}`);
+    let categoria = data.categoria;
+    getProductos({ categoria });
+    navigate(data.link);
   };
 
   useEffect(() => {
-    if (!data) return;
-    setCategoria(data.categoria);
+    api.start({
+      from: {
+        left: 10,
+        top: 10,
+        opacity: 0.5,
+      },
+      to: {
+        left: 0,
+        top: 0,
+        opacity: 1,
+      },
+    });
   }, [data]);
 
   return (
     <ContenedorWidth>
       <Contenedor onClick={handleClick}>
         {data ? (
-          <>
+          <ImagenHero style={spring}>
             <picture>
-              <source srcset={data.imagenMovile} media="(max-width: 768px)" />
-              <img
-                class="hero__image"
-                src={data.imagenDesktop}
-                alt="Primavera_verano"
-              />
+              <source srcSet={data.imagenMovile} media="(max-width: 650px)" />
+              <img src={data.imagenDesktop} alt="Primavera_verano" />
             </picture>
             <InfoHero>
               <Tienda>
@@ -89,7 +107,7 @@ const Hero = ({ data }) => {
               </Tienda>
               <ButtonLink link={data.link}>comprar ahora</ButtonLink>
             </InfoHero>
-          </>
+          </ImagenHero>
         ) : (
           <Loading />
         )}
