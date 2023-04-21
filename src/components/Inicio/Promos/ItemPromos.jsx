@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import ButtonLink from "../ButtonLink";
 import { useNavigate } from "react-router-dom";
@@ -41,18 +41,18 @@ const ItemPromo = styled.div`
 `;
 
 const ItemPromos = ({ data }) => {
-  const [categoria, setCategoria] = useState(data.categoria);
-  const { getProductos } = useProductos({ categoria });
+  const { getProductos } = useProductos();
   const navigate = useNavigate();
 
   const handleClick = () => {
-    getProductos();
-    navigate(`/productos${data.link}`);
+    let categoria = data.link;
+    getProductos({ categoria });
+    navigate(date.link);
   };
 
   return (
     <ItemPromo onClick={handleClick}>
-      <img src={data.imagen} alt="" />
+      <img src={data.imagen} alt={`promocion ${data.titulo}`} />
       <h2>{data.titulo}</h2>
       <p>{data.subtitulo}</p>
       <ButtonLink link={data.link}>comprar ahora</ButtonLink>

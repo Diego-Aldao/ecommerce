@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import useProductos from "../../../hooks/useProductos";
 import { useNavigate } from "react-router-dom";
@@ -9,17 +9,18 @@ const ItemTendencia = styled.div`
 `;
 
 const ItemTendencias = ({ data }) => {
-  const [categoria, setCategoria] = useState(data.categoria);
-  const { getProductos } = useProductos({ categoria });
+  const { getProductos } = useProductos();
   const navigate = useNavigate();
 
   const handleClick = () => {
-    getProductos();
-    navigate(`/productos${data.link}`);
+    let categoria = data.link;
+    getProductos({ categoria });
+    navigate(data.link);
   };
+
   return (
     <ItemTendencia onClick={handleClick}>
-      <img src={data.imagen} alt="" />
+      <img src={data.imagen} alt="imagen tendencia" />
     </ItemTendencia>
   );
 };
