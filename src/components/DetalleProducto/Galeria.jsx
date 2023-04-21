@@ -70,15 +70,16 @@ const Galeria = ({ data }) => {
 
   useEffect(() => {
     const tempImagenes = [];
-    data.media.images.map((imagen) =>
+    data?.media.images.map((imagen) =>
       tempImagenes.push({
         original: `https://${imagen.url}?$n_640w$&wid=513`,
       })
     );
     setImagenes(tempImagenes);
-  }, []);
+  }, [data]);
 
   const handleContent = () => {
+    if (!data.media.catwalk.length >= 1) return;
     if (currentContent == "video") {
       setCurrentContent("galeria");
     } else {
@@ -106,22 +107,31 @@ const Galeria = ({ data }) => {
             );
           })}
           <BotonMedia onClick={handleContent} className="media-thumbnail">
-            {currentContent == "video" ? (
+            {data?.media?.catwalk.length >= 1 ? (
               <>
-                <BsImages></BsImages>
-                <p>galeria</p>
+                {currentContent == "video" ? (
+                  <>
+                    <BsImages></BsImages>
+                    <p>galeria</p>
+                  </>
+                ) : (
+                  <>
+                    <BsPlay></BsPlay>
+                    <p>video</p>
+                  </>
+                )}
               </>
             ) : (
               <>
-                <BsPlay></BsPlay>
-                <p>video</p>
+                <BsImages></BsImages>
+                <p>galeria</p>
               </>
             )}
           </BotonMedia>
         </Thumbnails>
         {currentContent == "video" ? (
           <div className="video">
-            {data.media.catwalk.map((item) => {
+            {data?.media.catwalk.map((item) => {
               return (
                 <ReactPlayer
                   url={`https://${item.url}.m3u8`}
