@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import ContenedorWidth from "../../styles/ContenedorMaxWidth";
-import Loading from "../Loading";
-import ButtonLink from "./ButtonLink";
-import useProductos from "../../hooks/useProductos";
+import ContenedorWidth from "../../../styles/ContenedorMaxWidth";
+import ButtonLink from "../ButtonLink";
+import useProductos from "../../../hooks/useProductos";
 import { useNavigate } from "react-router-dom";
 import { animated, useSpring } from "@react-spring/web";
 
-const Contenedor = styled.div`
+const Contenedor = styled(animated.div)`
   width: 100%;
   margin: 20px 0px;
   position: relative;
@@ -52,12 +51,6 @@ const Tienda = styled.div`
   }
 `;
 
-const ImagenHero = styled(animated.div)`
-  width: 100%;
-  position: relative;
-  height: 100%;
-`;
-
 const Hero = ({ data }) => {
   const { getProductos } = useProductos();
   const navigate = useNavigate();
@@ -94,23 +87,17 @@ const Hero = ({ data }) => {
 
   return (
     <ContenedorWidth>
-      <Contenedor onClick={handleClick}>
-        {data ? (
-          <ImagenHero style={spring}>
-            <picture>
-              <source srcSet={data.imagenMovile} media="(max-width: 650px)" />
-              <img src={data.imagenDesktop} alt="Primavera_verano" />
-            </picture>
-            <InfoHero>
-              <Tienda>
-                <span>{data.titulo}</span>
-              </Tienda>
-              <ButtonLink link={data.link}>comprar ahora</ButtonLink>
-            </InfoHero>
-          </ImagenHero>
-        ) : (
-          <Loading />
-        )}
+      <Contenedor onClick={handleClick} style={spring}>
+        <picture>
+          <source srcSet={data.imagenMovile} media="(max-width: 650px)" />
+          <img src={data.imagenDesktop} alt="Primavera_verano" />
+        </picture>
+        <InfoHero>
+          <Tienda>
+            <span>{data.titulo}</span>
+          </Tienda>
+          <ButtonLink link={data.link}>comprar ahora</ButtonLink>
+        </InfoHero>
       </Contenedor>
     </ContenedorWidth>
   );

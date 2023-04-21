@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Contenedor, Titulo, Terminos } from "./Header";
-import Loading from "../Loading";
+import { Contenedor, Titulo, Terminos } from "../Header/Header";
+import Loading from "../../Loading";
 
 const TituloDescuento = styled(Titulo)`
   font-size: 26px;
@@ -22,14 +22,8 @@ const ContenedorDescuento = styled(Contenedor)`
 const Descuentos = ({ data }) => {
   return (
     <ContenedorDescuento>
-      {data !== undefined ? (
-        <>
-          <TituloDescuento>{data.descripcion}</TituloDescuento>
-          <Terminos>{data.footer}</Terminos>
-        </>
-      ) : (
-        <Loading />
-      )}
+      <TituloDescuento>{data.descripcion}</TituloDescuento>
+      <Terminos>{data.footer}</Terminos>
     </ContenedorDescuento>
   );
 };

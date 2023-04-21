@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ButtonLink from "./ButtonLink";
+import ButtonLink from "../ButtonLink";
 
 const Contenedor = styled.div`
   width: 100%;
