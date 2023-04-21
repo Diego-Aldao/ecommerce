@@ -12,6 +12,9 @@ import CarritoProductos from "./pages/CarritoProductos";
 import LoginUsuario from "./pages/LoginUsuario";
 import RegistroUsuario from "./pages/RegistroUsuario";
 import { FiltrosFetchContextProvider } from "./context/FiltrosFetchContext";
+import { DetalleContextProvider } from "./context/DetalleContext";
+import { LoadingContextProvider } from "./context/LoadingContext";
+import TiendaTop from "./pages/TiendaTop";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +54,10 @@ const router = createBrowserRouter([
     element: <DetalleProducto />,
   },
   {
+    path: "/detalle/:categoria/:producto/grp/:querys",
+    element: <DetalleProducto />,
+  },
+  {
     path: "/guardados",
     element: <ProductosGuardados />,
   },
@@ -66,22 +73,34 @@ const router = createBrowserRouter([
     path: "/registro",
     element: <RegistroUsuario />,
   },
+  {
+    path: "/topman",
+    element: <TiendaTop />,
+  },
+  {
+    path: "/topshop",
+    element: <TiendaTop />,
+  },
 ]);
 
 function App() {
   return (
-    <GuardadosContextProvider>
-      <CarritoContextProvider>
-        <CategoriaContextProvider>
-          <ProductosContextProvider>
-            <FiltrosFetchContextProvider>
-              <EstilosGlobales />
-              <RouterProvider router={router} />
-            </FiltrosFetchContextProvider>
-          </ProductosContextProvider>
-        </CategoriaContextProvider>
-      </CarritoContextProvider>
-    </GuardadosContextProvider>
+    <LoadingContextProvider>
+      <DetalleContextProvider>
+        <GuardadosContextProvider>
+          <CarritoContextProvider>
+            <CategoriaContextProvider>
+              <ProductosContextProvider>
+                <FiltrosFetchContextProvider>
+                  <EstilosGlobales />
+                  <RouterProvider router={router} />
+                </FiltrosFetchContextProvider>
+              </ProductosContextProvider>
+            </CategoriaContextProvider>
+          </CarritoContextProvider>
+        </GuardadosContextProvider>
+      </DetalleContextProvider>
+    </LoadingContextProvider>
   );
 }
 
