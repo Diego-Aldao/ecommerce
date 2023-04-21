@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import useWindowSize from "../../hooks/useWindowSize";
 import ContenedorWidth from "../../styles/ContenedorMaxWidth";
 import Loading from "../Loading";
 import ButtonLink from "./ButtonLink";
+import useProductos from "../../hooks/useProductos";
+import { useNavigate } from "react-router-dom";
 
 const Contenedor = styled.div`
   width: 100%;
@@ -55,24 +56,38 @@ const Tienda = styled.div`
 `;
 
 const Hero = ({ data }) => {
-  const size = useWindowSize();
+  const [categoria, setCategoria] = useState();
+  const { getProductos } = useProductos({ categoria });
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    getProductos();
+    navigate(`/productos${data.link}`);
+  };
+
+  useEffect(() => {
+    if (!data) return;
+    setCategoria(data.categoria);
+  }, [data]);
 
   return (
     <ContenedorWidth>
-      <Contenedor>
+      <Contenedor onClick={handleClick}>
         {data ? (
           <>
-            <img
-              src={size.width < 768 ? data.imagenMovile : data.imagenDesktop}
-              alt="banner topshop"
-            />
+            <picture>
+              <source srcset={data.imagenMovile} media="(max-width: 768px)" />
+              <img
+                class="hero__image"
+                src={data.imagenDesktop}
+                alt="Primavera_verano"
+              />
+            </picture>
             <InfoHero>
               <Tienda>
                 <span>{data.titulo}</span>
               </Tienda>
-              <ButtonLink link={"/productos/mujer/novedades/categoryId=27108"}>
-                comprar ahora
-              </ButtonLink>
+              <ButtonLink link={data.link}>comprar ahora</ButtonLink>
             </InfoHero>
           </>
         ) : (
