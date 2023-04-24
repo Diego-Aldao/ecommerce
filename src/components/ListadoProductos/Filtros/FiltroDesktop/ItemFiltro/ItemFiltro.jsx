@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { BsCheck2, BsX } from "react-icons/bs";
-import useFiltros from "../../../../hooks/useFiltros";
-import FiltrosFetchContext from "../../../../context/FiltrosFetchContext";
+import useFiltros from "../../../../../hooks/useFiltros";
+import FiltrosFetchContext from "../../../../../context/FiltrosFetchContext";
+import Header from "./Header";
 
 const Item = styled.li`
   width: 100%;
@@ -115,33 +116,37 @@ const ItemFiltro = ({ data }) => {
   const [claseActiva, setClaseActiva] = useState();
   const [currentItem, setCurrentItem] = useState();
   const [iniciado, setIniciado] = useState(false);
+  const [currentData, setCurrentData] = useState();
   const {
     changeSelection,
     changeSelectionAll,
     borrarFiltrosVacios,
     agregarKeyValue,
     seleccionados,
+    filtrosFetch,
   } = useFiltros();
 
-  const handleClick = (data) => {
-    setCurrentItem(data);
-    setClaseActiva(data.id);
+  const handleClick = (currentData) => {
+    setCurrentItem(currentData);
+    setClaseActiva(currentData.id);
   };
 
   useEffect(() => {
-    let nombreFiltro = currentItem?.id;
+    setCurrentData(data); //para no renderizar el componente cuando aplique filtros y cambie la data
+  }, []);
 
+  useEffect(() => {
     if (seleccionados.length === 0 && iniciado) {
-      borrarFiltrosVacios(nombreFiltro);
+      borrarFiltrosVacios(claseActiva);
     } else if (iniciado) {
-      agregarKeyValue(nombreFiltro);
+      agregarKeyValue(claseActiva);
     }
   }, [seleccionados]);
 
   return (
     <Item
       onClick={() => {
-        handleClick(data);
+        handleClick(currentData);
       }}
       onMouseLeave={() => {
         setClaseActiva(null);
@@ -149,57 +154,33 @@ const ItemFiltro = ({ data }) => {
     >
       <ContenidoItem>
         <button className="btn-drop">
-          {data.name} <RiArrowDownSLine></RiArrowDownSLine>
+          {currentData?.name} <RiArrowDownSLine></RiArrowDownSLine>
         </button>
-        <DropdownItem className={data.id == claseActiva ? "visible" : "oculto"}>
-          <header>
-            <div className="seleccionados">
-              <p>{seleccionados.length} seleccionados</p>
-              <span className="seleccionados">
-                {seleccionados.map((seleccionado) => {
-                  return (
-                    <p className="item-seleccionado" key={seleccionado.id}>
-                      {seleccionado.name},
-                    </p>
-                  );
-                })}
-              </span>
-            </div>
-            {data?.facetValues.some((obj) => obj.isSelected == true) ? (
-              <button
-                className="btn-check"
-                onClick={() => {
-                  setIniciado(true);
-                  changeSelectionAll(data, false);
-                }}
-              >
-                <BsX></BsX> <span>borrar</span>
-              </button>
-            ) : (
-              <button
-                className="btn-check"
-                onClick={() => {
-                  setIniciado(true);
-                  changeSelectionAll(data, true);
-                }}
-              >
-                <BsCheck2></BsCheck2> <span>todo</span>
-              </button>
-            )}
-          </header>
+        <DropdownItem
+          className={currentData?.id == claseActiva ? "visible" : "oculto"}
+        >
+          <Header
+            seleccionados={seleccionados}
+            currentData={currentData}
+            setIniciado={setIniciado}
+            changeSelectionAll={changeSelectionAll}
+          />
           <ul className="contenido-dropdown">
             {currentItem?.facetValues.map((value) => {
               return (
-                <li
-                  className={value.isSelected && "seleccionado"}
-                  key={value.id}
-                  onClick={() => {
-                    setIniciado(true);
-                    changeSelection(value);
-                  }}
-                >
-                  {value.name}
-                </li>
+                <React.Fragment key={value.id}>
+                  {value.count !== 0 && (
+                    <li
+                      className={value.isSelected ? "seleccionado" : ""}
+                      onClick={() => {
+                        setIniciado(true);
+                        changeSelection(value);
+                      }}
+                    >
+                      {value.name}
+                    </li>
+                  )}
+                </React.Fragment>
               );
             })}
           </ul>
