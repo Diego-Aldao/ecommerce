@@ -8,6 +8,7 @@ import { BsFiles } from "react-icons/bs";
 import { AiOutlineTag } from "react-icons/ai";
 import Descripcion from "./Descripcion";
 import useGuardados from "../../hooks/useGuardados";
+import Loading from "../Loading";
 
 const Contenido = styled.section`
   width: 100%;
@@ -190,8 +191,8 @@ const Info = ({ data }) => {
   return (
     <Contenido>
       <Header>
-        <h3>{data?.name}</h3>
-        <span>{data?.price.current.text}</span>
+        <h3>{data.name}</h3>
+        <span>{data.price.current.text}</span>
       </Header>
       <Oferta>
         <span>
@@ -208,7 +209,11 @@ const Info = ({ data }) => {
       <Caracteristica>
         <p>
           color:
-          <span>{data?.variants[0].colour}</span>
+          {data.desdeProductos ? (
+            <Loading maxHeight={"25px"} maxWidth={"100px"} />
+          ) : (
+            <span>{data?.variants[0]?.colour}</span>
+          )}
         </p>
       </Caracteristica>
       <Caracteristica>
@@ -218,16 +223,20 @@ const Info = ({ data }) => {
             selecciona tu talla <RiArrowDropDownLine></RiArrowDropDownLine>
           </span>
         </p>
-        <Select name="talle" id="talle" aria-label="Selecciona">
-          <option value>seleccionar:</option>
-          {data?.variants.map((variant) => {
-            return (
-              <option value={variant.displaySizeText} key={variant.id}>
-                {variant.displaySizeText}
-              </option>
-            );
-          })}
-        </Select>
+        {data.desdeProductos ? (
+          <Loading maxHeight={"35px"} />
+        ) : (
+          <Select name="talle" id="talle" aria-label="Selecciona">
+            <option value>seleccionar:</option>
+            {data?.variants?.map((variant) => {
+              return (
+                <option value={variant.displaySizeText} key={variant.id}>
+                  {variant.displaySizeText}
+                </option>
+              );
+            })}
+          </Select>
+        )}
       </Caracteristica>
       <BotonesUsuario>
         <BtnAñadir>añadir al carrito</BtnAñadir>
