@@ -8,7 +8,7 @@ const Contenedor = styled.div`
   position: absolute;
   height: ${({ isVisible }) => (isVisible ? "auto" : "0px")};
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out 0.3s;
   overflow: hidden;
   z-index: 9;
   top: 50px;
@@ -209,7 +209,7 @@ const ListaItems = styled.ul`
   }
 `;
 
-const Dropdown = ({ isVisible, currentContent }) => {
+const Dropdown = ({ isVisible, currentContent, setIsVisible }) => {
   return (
     <Contenedor isVisible={isVisible}>
       <ListaFiltros visible={isVisible}>
@@ -239,6 +239,7 @@ const Dropdown = ({ isVisible, currentContent }) => {
                         <ItemCategoria
                           producto={producto}
                           categoriaProducto={tipo}
+                          setIsVisible={setIsVisible}
                         />
                       </React.Fragment>
                     );
