@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import useWindowSize from "../../../../hooks/useWindowSize";
 import { Modal, ContenedorNavs, BtnCerrar } from "../../../ModalFixed";
-import DetalleFiltro from "./DetalleFiltro";
-import Filtros from "./Filtros";
+import NombresFiltros from "./NombresFiltros/NombresFiltros";
+import DetalleFiltro from "./DetalleFiltros/DetalleFiltro";
+import useProductos from "../../../../hooks/useProductos";
+import Loading from "../../../Loading";
 
-const FiltroMovil = ({ isOpen, setIsOpen, data, loading }) => {
-  const [position, setPosition] = useState();
-  const [dataFiltros, setDataFiltros] = useState();
-  const [currentItem, setCurrentItem] = useState();
-
+const FiltroMovil = ({
+  isOpen,
+  setIsOpen,
+  currentItem,
+  setCurrentItem,
+  filtros,
+}) => {
   const size = useWindowSize();
+  const [dataFiltros, setDataFiltros] = useState();
+  const [position, setPosition] = useState();
+  const { loading } = useProductos();
 
   if (size.width > 768) {
     setIsOpen(false);
@@ -22,19 +29,26 @@ const FiltroMovil = ({ isOpen, setIsOpen, data, loading }) => {
         <span></span>
       </BtnCerrar>
       <ContenedorNavs isOpen={isOpen} className="right">
-        <Filtros
-          position={position}
-          setPosition={setPosition}
-          filtros={data}
-          setDataFiltros={setDataFiltros}
-          setCurrentItem={setCurrentItem}
-        />
-        <DetalleFiltro
-          position={position}
-          setPosition={setPosition}
-          dataFiltros={dataFiltros}
-          currentItem={currentItem}
-        />
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <NombresFiltros
+              position={position}
+              setPosition={setPosition}
+              filtros={filtros}
+              setDataFiltros={setDataFiltros}
+              setCurrentItem={setCurrentItem}
+              setIsOpen={setIsOpen}
+            />
+            <DetalleFiltro
+              position={position}
+              setPosition={setPosition}
+              dataFiltros={dataFiltros}
+              currentItem={currentItem}
+            />
+          </>
+        )}
       </ContenedorNavs>
     </Modal>
   );
