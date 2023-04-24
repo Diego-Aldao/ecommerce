@@ -70,7 +70,7 @@ const Galeria = ({ data }) => {
 
   useEffect(() => {
     const tempImagenes = [];
-    data?.media.images.map((imagen) =>
+    data?.media?.images?.map((imagen) =>
       tempImagenes.push({
         original: `https://${imagen.url}?$n_640w$&wid=513`,
       })
@@ -94,7 +94,7 @@ const Galeria = ({ data }) => {
     <ContenedorMedia>
       <div className="media">
         <Thumbnails>
-          {imagenes.map((imagen, index) => {
+          {imagenes?.map((imagen, index) => {
             return (
               <div
                 key={imagen.original}
