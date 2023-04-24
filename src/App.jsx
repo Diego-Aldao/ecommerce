@@ -30,19 +30,19 @@ const router = createBrowserRouter([
     element: <PaginaPrincipal />,
   },
   {
-    path: "/productos/:genero/:categoria1/:categoria2/:querys",
+    path: "/productos/:genero/:categoria1/:categoria2/:idCategoria",
     element: <ListadoProductos />,
   },
   {
-    path: "/productos/:genero/:categoria1/:querys",
+    path: "/productos/:genero/:categoria1/:idCategoria",
     element: <ListadoProductos />,
   },
   {
-    path: "/productos/:genero/:categoria1/:categoria2/:categoria3/:querys",
+    path: "/productos/:genero/:categoria1/:categoria2/:categoria3/:idCategoria",
     element: <ListadoProductos />,
   },
   {
-    path: "/productos/:genero/:categoria1/:categoria2/:categoria3/:querys",
+    path: "/productos/:genero/:categoria1/:categoria2/:categoria3/:idCategoria",
     element: <ListadoProductos />,
   },
   {
