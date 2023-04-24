@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import useGuardados from "../../../hooks/useGuardados";
-import useDetalleProducto from "../../../hooks/useDetalleProducto";
 import { animated, useSpring } from "@react-spring/web";
 
 const Item = styled.div`
@@ -105,7 +104,6 @@ const ItemProductos = ({ producto }) => {
   const navigate = useNavigate();
   const [liked, setLiked] = useState();
   const { guardados, guardarProducto } = useGuardados();
-  const { getDetalleProducto } = useDetalleProducto();
   const [currentImg, setCurrentImg] = useState(producto.imageUrl);
   const [spring, api] = useSpring(() => ({
     from: {
@@ -115,8 +113,16 @@ const ItemProductos = ({ producto }) => {
   }));
 
   const handleClick = () => {
-    let productoId = producto.id;
-    /*     getDetalleProducto({ productoId }); */
+    let productoLS = {
+      id: producto.id,
+      colour: producto.colour,
+      name: producto.name,
+      price: producto.price,
+      imageUrl: producto.imageUrl,
+
+      desdeProductos: true,
+    };
+    localStorage.setItem("DetalleProducto", JSON.stringify(productoLS));
     navigate(`/detalle/${producto.url}`);
   };
 
