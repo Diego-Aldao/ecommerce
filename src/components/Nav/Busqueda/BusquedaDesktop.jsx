@@ -3,7 +3,7 @@ import { FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const BusquedaNavPrincipal = styled.form`
+const BusquedaNavPrincipal = styled.div`
   flex: 1 1 auto;
   height: 100%;
   padding: 10px 15px;
@@ -17,7 +17,7 @@ const BusquedaNavPrincipal = styled.form`
   }
 `;
 
-const ContenedorInput = styled.div`
+const ContenedorInput = styled.form`
   background: white;
   width: 100%;
   height: 100%;
@@ -51,66 +51,33 @@ const ContenedorInput = styled.div`
   }
 `;
 
-const ContenedorSugerencias = styled.ul`
-  width: calc(100% - 30px);
-  border-radius: 25px 25px 0px 0px;
-  position: absolute;
-  top: 10px;
-  left: 15px;
-  background: var(--color-gris);
-  z-index: 8;
-  padding: 70px 15px 10px;
-  display: none;
-`;
-
-const ItemSugerencia = styled.li`
-  width: 100%;
-  height: 32px;
-  display: flex;
-  justify-content: space-between;
-`;
-
 const BusquedaDesktop = () => {
-  const [valor, setValor] = useState();
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
-  const handleKeyDown = (e) => {
-    setValor(e.target.value);
+  const handleChange = (e) => {
+    setQuery(e.target.value);
   };
 
-  const handleClick = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/busqueda/${valor}`);
-
-    //hacer el fetch con el valor como query
+    if (query === "") return;
+    navigate(`/busqueda/${query}`);
   };
 
   return (
     <BusquedaNavPrincipal>
-      <ContenedorInput>
+      <ContenedorInput onSubmit={handleSubmit}>
         <input
-          type="search"
-          onChange={(event) => handleKeyDown(event)}
+          type="text"
+          value={query}
+          onChange={handleChange}
           placeholder="Buscar artículos y marcas"
         />
-        <button onClick={(event) => handleClick(event)}>
+        <button>
           <FiSearch />
         </button>
       </ContenedorInput>
-      <ContenedorSugerencias>
-        <ItemSugerencia>
-          <span>ASOS bikini</span>
-          <span>796</span>
-        </ItemSugerencia>
-        <ItemSugerencia>
-          <span>ASOS trajes</span>
-          <span>776</span>
-        </ItemSugerencia>
-        <ItemSugerencia>
-          <span>Vestidos Asimetricos</span>
-          <span>16</span>
-        </ItemSugerencia>
-      </ContenedorSugerencias>
     </BusquedaNavPrincipal>
   );
 };
