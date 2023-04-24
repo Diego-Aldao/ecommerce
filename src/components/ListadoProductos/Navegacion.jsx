@@ -39,7 +39,8 @@ const Contenedor = styled.nav`
   }
 `;
 
-const Navegacion = ({ genero, categoria1, categoria2, producto }) => {
+const Navegacion = ({ producto }) => {
+  let { genero, categoria1, categoria2 } = useParams();
   let primerCategoria = categoria1?.replaceAll("-", " ");
   let currentCategoria = categoria2?.replaceAll("-", " ");
   let currentProducto = producto?.replaceAll("-", " ");
