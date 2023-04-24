@@ -1,9 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { RiArrowDownSLine } from "react-icons/ri";
-import { BsCheck2, BsX } from "react-icons/bs";
 import useFiltros from "../../../../../hooks/useFiltros";
-import FiltrosFetchContext from "../../../../../context/FiltrosFetchContext";
 import Header from "./Header";
 
 const Item = styled.li`
