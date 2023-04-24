@@ -40,10 +40,12 @@ const Contenedor = styled.nav`
 `;
 
 const Navegacion = ({ producto }) => {
-  let { genero, categoria1, categoria2 } = useParams();
+  let { genero, categoria1, categoria2, categoria, querys } = useParams();
   let primerCategoria = categoria1?.replaceAll("-", " ");
   let currentCategoria = categoria2?.replaceAll("-", " ");
   let currentProducto = producto?.replaceAll("-", " ");
+  let categoriaDetalle = categoria?.replaceAll("-", " ");
+
   return (
     <Contenedor>
       <ul>
@@ -52,6 +54,14 @@ const Navegacion = ({ producto }) => {
             <p>inicio</p>
           </Link>
         </li>
+        {querys && (
+          <li>
+            <span>
+              <MdKeyboardArrowRight></MdKeyboardArrowRight>
+            </span>
+            <p>busqueda: "{querys}"</p>
+          </li>
+        )}
         {genero && (
           <li>
             <span>
@@ -60,12 +70,15 @@ const Navegacion = ({ producto }) => {
             <p>{genero}</p>
           </li>
         )}
-        <li>
-          <span>
-            <MdKeyboardArrowRight></MdKeyboardArrowRight>
-          </span>
-          <p>{primerCategoria}</p>
-        </li>
+        {categoriaDetalle ||
+          (primerCategoria && (
+            <li>
+              <span>
+                <MdKeyboardArrowRight></MdKeyboardArrowRight>
+              </span>
+              <p>{categoriaDetalle ? categoriaDetalle : primerCategoria}</p>
+            </li>
+          ))}
         {categoria2 && (
           <li>
             <span>
