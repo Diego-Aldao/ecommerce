@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import useProductos from "../../../hooks/useProductos";
 import useFiltros from "../../../hooks/useFiltros";
@@ -45,13 +45,10 @@ const BotonVerMas = ({ longitud, itemCount }) => {
 
   const handleClick = () => {
     const newOffset = Number(filtrosFetch.offset) + 1;
-    setFiltrosFetch({ ...filtrosFetch, offset: newOffset });
+    const newFiltros = { ...filtrosFetch, offset: newOffset };
+    filterProductos(newFiltros);
+    setFiltrosFetch(newFiltros);
   };
-
-  useEffect(() => {
-    filterProductos({ filtrosFetch });
-    //no llamo al fetch en el onClick por que me tomaria el valor anterior del filtros fetch
-  }, [filtrosFetch]);
   return (
     <VerMas>
       <div className="range">
