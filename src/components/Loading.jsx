@@ -1,31 +1,15 @@
 import React from "react";
-import { AiOutlineLoading } from "react-icons/ai";
-import styled, { keyframes } from "styled-components";
-
-const animacion = keyframes`
-to{transform: rotate(360deg);}
-`;
+import styled from "styled-components";
 
 const Contenedor = styled.div`
-  width: 100%;
-  height: 100%;
-  background: #aeaeae;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: ${animacion} 1s linear infinite;
-  svg {
-    width: 50px;
-    height: 50px;
-  }
+  width: ${({ width }) => (width ? width : "100%")};
+  height: ${({ height }) => (height ? height : "100vh")};
+
+  background: #f5f5f5;
 `;
 
-const Loading = () => {
-  return (
-    <Contenedor>
-      <AiOutlineLoading></AiOutlineLoading>
-    </Contenedor>
-  );
+const Loading = ({ maxHeight, maxWidth }) => {
+  return <Contenedor height={maxHeight} width={maxWidth}></Contenedor>;
 };
 
 export default Loading;
