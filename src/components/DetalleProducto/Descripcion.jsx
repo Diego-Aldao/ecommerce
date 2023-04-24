@@ -68,12 +68,13 @@ const Descripcion = ({ data }) => {
   };
 
   useEffect(() => {
-    ref.current.innerHTML = data?.description;
-    ref2.current.innerHTML = data?.brand.description;
-    ref3.current.innerHTML = data?.info.sizeAndFit;
-    ref4.current.innerHTML = data?.info.careInfo;
-    ref5.current.innerHTML = data?.info.aboutMe;
-  }, []);
+    if (data.desdeProductos) return;
+    ref.current.innerHTML = data.description;
+    ref2.current.innerHTML = data.brand.description;
+    ref3.current.innerHTML = data.info.sizeAndFit;
+    ref4.current.innerHTML = data.info.careInfo;
+    ref5.current.innerHTML = data.info.aboutMe;
+  }, [data]);
   return (
     <Detalle>
       <li className="item-detalle">
