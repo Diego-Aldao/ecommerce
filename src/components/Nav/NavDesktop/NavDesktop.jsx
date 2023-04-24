@@ -63,7 +63,11 @@ const NavDesktop = ({ navegacion }) => {
           )
         );
       })}
-      <Dropdown isVisible={isVisible} currentContent={currentContent} />
+      <Dropdown
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+        currentContent={currentContent}
+      />
     </Contenedor>
   );
 };
