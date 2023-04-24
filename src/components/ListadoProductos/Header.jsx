@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Loading from "../Loading";
 
 const Titulo = styled.div`
   width: 100%;
@@ -10,15 +11,21 @@ const Titulo = styled.div`
   h3 {
     text-transform: uppercase;
     font-size: clamp(24px, 3vw, 32px);
+    width: 600px;
+    text-align: center;
   }
 `;
 
-const Header = ({ nombre }) => {
-  const nombreCategoria = nombre?.replaceAll("-", " ");
-
+const Header = ({ nombre, busqueda, loading }) => {
   return (
     <Titulo>
-      <h3>{nombreCategoria}</h3>
+      <h3>
+        {loading ? (
+          <Loading maxHeight={"50px"} />
+        ) : (
+          <>{busqueda ? <>buscaste "{busqueda}"</> : <>{nombre}</>}</>
+        )}
+      </h3>
     </Titulo>
   );
 };
