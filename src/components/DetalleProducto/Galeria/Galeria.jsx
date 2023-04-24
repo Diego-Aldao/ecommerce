@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ImageGallery from "react-image-gallery";
 import { BsPlay, BsImages } from "react-icons/bs";
 import ReactPlayer from "react-player";
+import Thumbnails from "./Thumbnails";
 
 const ContenedorMedia = styled.div`
   position: relative;
@@ -19,18 +20,6 @@ const ContenedorMedia = styled.div`
       top: 0px;
       position: sticky;
     }
-  }
-`;
-
-const Thumbnails = styled.div`
-  display: none;
-  width: 80px;
-  padding: 20px 10px;
-  div {
-    margin: 10px 5px;
-  }
-  @media (min-width: 768px) {
-    display: block;
   }
 `;
 
@@ -93,69 +82,46 @@ const Galeria = ({ data }) => {
   return (
     <ContenedorMedia>
       <div className="media">
-        <Thumbnails>
-          {imagenes?.map((imagen, index) => {
-            return (
-              <div
-                key={imagen.original}
-                onClick={() => {
-                  handleClick(index);
-                }}
-              >
-                <img src={imagen.original} alt="" />
-              </div>
-            );
-          })}
-          <BotonMedia onClick={handleContent} className="media-thumbnail">
-            {data?.media?.catwalk.length >= 1 ? (
-              <>
-                {currentContent == "video" ? (
-                  <>
-                    <BsImages></BsImages>
-                    <p>galeria</p>
-                  </>
-                ) : (
-                  <>
-                    <BsPlay></BsPlay>
-                    <p>video</p>
-                  </>
-                )}
-              </>
-            ) : (
-              <>
-                <BsImages></BsImages>
-                <p>galeria</p>
-              </>
-            )}
-          </BotonMedia>
-        </Thumbnails>
-        {currentContent == "video" ? (
-          <div className="video">
-            {data?.media.catwalk.map((item) => {
-              return (
-                <ReactPlayer
-                  url={`https://${item.url}.m3u8`}
-                  width="100%"
-                  height="100%"
-                  playing={true}
-                  loop={true}
-                  controls={true}
-                />
-              );
-            })}
-          </div>
+        <Thumbnails
+          imagenes={imagenes}
+          detalleProducto={data}
+          handleContent={handleContent}
+          handleClick={handleClick}
+          currentContent={currentContent}
+        />
+        {data.desdeProductos ? (
+          <img src={`https://${data.imageUrl}`} alt="" />
         ) : (
-          <div className="slide">
-            <ImageGallery
-              items={imagenes}
-              showThumbnails={false}
-              showNav={false}
-              showBullets={true}
-              slideDuration={250}
-              showFullscreenButton={false}
-              ref={ref}
-            />
-          </div>
+          <>
+            {currentContent == "video" ? (
+              <div className="video">
+                {data.media.catwalk.map((item) => {
+                  return (
+                    <ReactPlayer
+                      url={`https://${item.url}.m3u8`}
+                      width="100%"
+                      height="100%"
+                      playing={true}
+                      loop={true}
+                      controls={true}
+                    />
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="slide">
+                <ImageGallery
+                  items={imagenes}
+                  showThumbnails={false}
+                  showNav={false}
+                  showBullets={true}
+                  slideDuration={250}
+                  showFullscreenButton={false}
+                  ref={ref}
+                />
+              </div>
+            )}
+          </>
         )}
         <BotonMedia onClick={handleContent}>
           {currentContent == "video" ? "galeria" : "video"}
