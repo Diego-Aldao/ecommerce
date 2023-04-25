@@ -1,49 +1,54 @@
-import React, { useContext } from "react";
+import React from "react";
 import LayoutPrincipal from "../Layout/LayoutPrincipal";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import Navegacion from "../components/ListadoProductos/Navegacion";
 import FiltroMovil from "../components/ListadoProductos/Filtros/FiltroMovil/FiltroMovil";
 import BotonFiltroMovil from "../components/ListadoProductos/Filtros/FiltroMovil/BotonFiltroMovil";
-import dataProductos from "../data/productosMujer.json";
-import Productos from "../components/ListadoProductos/Productos";
 import FiltroDesktop from "../components/ListadoProductos/Filtros/FiltroDesktop/FiltroDesktop";
 import Header from "../components/ListadoProductos/Header";
-import CategoriaContext from "../context/IdCategoriaContext";
+import useWindowSize from "../hooks/useWindowSize";
+import GridProductos from "../components/ListadoProductos/Productos/GridProductos";
+import useDataProductos from "../hooks/useDataProductos";
 
 const ListadoProductos = () => {
-  let { genero, categoria1, categoria2, idCategoria } = useParams();
+  const { currentProductos, filtros, loading, querys, idCategoria } =
+    useDataProductos();
   const [isOpen, setIsOpen] = useState();
-  const [data, setData] = useState();
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState(true);
-  const [filtros, setFiltros] = useState();
-  const { setCategoria } = useContext(CategoriaContext);
-
-  useEffect(() => {
-    setData(dataProductos);
-    setFiltros(dataProductos.facets);
-    setLoading(false);
-    setCategoria(idCategoria);
-  }, []);
+  const [currentItem, setCurrentItem] = useState();
+  const size = useWindowSize();
+  const location = useLocation();
 
   return (
     <LayoutPrincipal>
-      <Navegacion
-        genero={genero}
-        categoria1={categoria1}
-        categoria2={categoria2}
-      />
-      <Header nombre={categoria2 ? categoria2 : categoria1} />
-      <BotonFiltroMovil isOpen={isOpen} setIsOpen={setIsOpen} />
-      <FiltroMovil
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        data={filtros}
+      <Navegacion querys={querys} />
+      <Header
+        nombre={currentProductos?.categoryName}
+        busqueda={currentProductos?.searchTerm}
         loading={loading}
       />
-      <FiltroDesktop data={filtros} />
-      <Productos data={data} idCategoria={idCategoria} />
+      {size.width < 768 && (
+        <>
+          <BotonFiltroMovil isOpen={isOpen} setIsOpen={setIsOpen} />
+          <FiltroMovil
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            currentItem={currentItem}
+            setCurrentItem={setCurrentItem}
+            filtros={filtros}
+          />
+        </>
+      )}
+      <FiltroDesktop
+        filtros={filtros}
+        currentItem={currentItem}
+        setCurrentItem={setCurrentItem}
+        idCategoria={idCategoria}
+        querys={querys}
+        location={location}
+        loading={loading}
+      />
+      <GridProductos productos={currentProductos} loading={loading} />
     </LayoutPrincipal>
   );
 };
