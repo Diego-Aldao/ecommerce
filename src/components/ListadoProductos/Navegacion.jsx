@@ -39,8 +39,8 @@ const Contenedor = styled.nav`
   }
 `;
 
-const Navegacion = ({ producto }) => {
-  let { genero, categoria1, categoria2, categoria, querys } = useParams();
+const Navegacion = ({ querys, producto }) => {
+  let { genero, categoria1, categoria2, categoria } = useParams();
   let primerCategoria = categoria1?.replaceAll("-", " ");
   let currentCategoria = categoria2?.replaceAll("-", " ");
   let currentProducto = producto?.replaceAll("-", " ");
@@ -70,15 +70,22 @@ const Navegacion = ({ producto }) => {
             <p>{genero}</p>
           </li>
         )}
-        {categoriaDetalle ||
-          (primerCategoria && (
-            <li>
-              <span>
-                <MdKeyboardArrowRight></MdKeyboardArrowRight>
-              </span>
-              <p>{categoriaDetalle ? categoriaDetalle : primerCategoria}</p>
-            </li>
-          ))}
+        {categoriaDetalle && (
+          <li>
+            <span>
+              <MdKeyboardArrowRight></MdKeyboardArrowRight>
+            </span>
+            <p>{categoriaDetalle}</p>
+          </li>
+        )}
+        {primerCategoria && (
+          <li>
+            <span>
+              <MdKeyboardArrowRight></MdKeyboardArrowRight>
+            </span>
+            <p>{primerCategoria}</p>
+          </li>
+        )}
         {categoria2 && (
           <li>
             <span>
