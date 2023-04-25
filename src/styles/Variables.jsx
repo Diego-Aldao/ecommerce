@@ -2,15 +2,15 @@ import { css } from "styled-components";
 
 const Variables = css`
   :root {
-    --color-principal: #fed5db;
-    --color-secundario: #ffdfc0;
+    --color-principal: #f9d7f6;
+    --color-secundario: #fcdfd7;
     --color-promo: #aef6f7;
     --color-promo2: #e690bd;
     --color-gris: #ebebeb;
     --color-texto: #383838;
     --color-gris-secundario: #a8a8a8;
     --gradiente-principal: linear-gradient(
-      to left,
+      to right,
       var(--color-principal),
       var(--color-secundario)
     );
