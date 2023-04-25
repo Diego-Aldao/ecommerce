@@ -47,7 +47,7 @@ const ItemPromos = ({ data }) => {
   const handleClick = () => {
     let categoria = data.link;
     getProductos({ categoria });
-    navigate(date.link);
+    navigate(categoria);
   };
 
   return (
