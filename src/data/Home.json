@@ -3,202 +3,253 @@
     {
       "nombre": "mujer",
       "id": 1,
-      "children": [
-        {
+      "children": {
+        "hero": {
           "id": 1,
           "nombre": "Hero",
-          "imagenMovile": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/12/hero/topshop/topshop_ww-hp-hero_mobile.jpg",
-          "imagenDesktop": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/12/hero/topshop/topshop_ww-hp-hero_desktop.jpg",
-          "titulo": "topshop"
+          "imagenMovile": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/ts/lp-hero-3-mob-ww-es-390x580.jpg",
+          "imagenDesktop": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/ts/lp-hero-3-desktop-ww-es-1440x750.jpg",
+          "titulo": "novedades",
+          "link": "/productos/mujer/novedades/categoryId=27108",
+          "categoria": 27108
         },
-        {
+        "lanzamientos": {
           "id": 2,
-          "nombre": "GridPrincipal",
+          "nombre": "lanzamientos",
           "children": [
             {
               "id": 1,
-              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/26/moments/ww_global_ultimate_tailoring_moment_870x1110.jpg",
-              "titulo": "trajes: el combo perfecto",
-              "subtitulo": "sastrería en toda la regla"
+              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/26/moments/ww_global_corsage_dressing_moment_870x1110.jpg",
+              "titulo": "puro magnetismo",
+              "subtitulo": "diseños para echarse flores",
+              "link": "/productos/mujer/vestidos/vestidos-florales/categoryId=12969",
+              "categoria": 12969
             },
             {
               "id": 2,
-              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/26/moments/ww_global_corsage_dressing_moment_870x1110.jpg",
-              "titulo": "puro magnetismo",
-              "subtitulo": "diseños para echarse flores"
+              "imagen": "https://images.asos-media.com/products/minifalda-color-piedra-plisada-estilo-pantalones-chinos-de-asos-design/204656027-1-stone?$n_750w$&wid=750",
+              "titulo": "veranito a todo color",
+              "subtitulo": "los tonos se ponen intensos",
+              "link": "/productos/mujer/ctas/llego-el-verano/cat/categoryId=50597",
+              "categoria": 50597
             },
             {
               "id": 3,
-              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/26/moments/ww_global_colour_and_shine_pu_moment_870x1110.jpg",
-              "titulo": "brilla con luz propia",
-              "subtitulo": "déjate conquistar por el PU"
+              "imagen": "https://images.asos-media.com/products/camisa-corta-en-tonos-pastel-con-diseno-de-llamas-efecto-purpurina-de-labelrail-x-pose-and-repeat-parte-de-un-conjunto/204255890-1-multi?$n_640w$&wid=513",
+              "titulo": "finde de relax",
+              "subtitulo": "estilos para relajarse",
+              "link": "/productos/mujer/a-to-z-of-brands/topshop/categoryId=29299",
+              "categoria": 29299
             },
-
             {
               "id": 4,
-              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/26/hero/tstm_refresh3_mob_ww_v2.png",
-              "titulo": "romance rave",
-              "subtitulo": "ASOS DESIGN: estilo para salir(se)"
+              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/26/moments/ww_global_ultimate_tailoring_moment_870x1110.jpg",
+              "titulo": "trajes: el combo perfecto",
+              "subtitulo": "sastrería en toda la regla",
+              "link": "/productos/mujer/trajes-y-prendas-sueltas/cat/categoryId=13632",
+              "categoria": 13632
             }
           ]
         },
-        {
+        "descuento": {
           "id": 3,
           "nombre": "Descuento",
           "descripcion": "hasta un -50% de descuento en diseños comodos",
           "footer": "Por tiempo limitado. Los artículos seleccionados se muestran rebajados"
         },
-        {
+        "promos": {
           "id": 4,
           "nombre": "Promocion",
           "children": [
             {
               "id": 1,
-              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/26/moments/ww_global_tommy_jeans_moment_870x1110.jpg",
-              "titulo": "tommy jeans",
-              "subtitulo": "lo mejor en ropa vaquera",
-              "boton": "comprar ahora"
+              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2023/april/11-gbl-prime/ww_global_asos_edition_festival_party_moment_870x1110.jpg",
+              "titulo": "festi-cool",
+              "subtitulo": "el vestido definitiva",
+              "boton": "comprar ahora",
+              "link": "/productos/mujer/ctas/festi-cool/cat/categoryId=17404",
+              "categoria": 17404
             },
             {
               "id": 2,
-              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2022/sept/26/moments/ww_global_asos_design_halloween_moment_870x1110.jpg",
-              "titulo": "estilosamente terrorífico",
-              "subtitulo": "llega el estilo gotico",
-              "boton": "comprar halloween"
+              "imagen": "https://content.asos-media.com/-/media/homepages/ww/2023/april/11-gbl-prime/ww_global_weekend_collective_moment_870x1110-(1).jpg",
+              "titulo": "estamos living con...",
+              "subtitulo": "the weekend collective",
+              "boton": "comprar la marca",
+              "link": "/productos/mujer/a-to-z-of-brands/asos-weekend-collective/categoryId=50940",
+              "categoria": 50940
             }
           ]
         },
-        {
+        "marcas": {
           "id": 5,
           "nombre": "Marcas",
           "children": [
             {
               "id": 1,
-              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/monkl-hp-logos-256x256.jpg"
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/monkl-hp-logos-256x256.jpg",
+              "categoria": 17556,
+              "link": "/productos/mujer/a-to-z-of-brands/monki/cat/categoryId=17556"
             },
             {
               "id": 2,
-              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/never-fully-dressed-hp-logos-256x256.png"
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/never-fully-dressed-hp-logos-256x256.png",
+              "categoria": 20203,
+              "link": "/productos/mujer/a-to-z-of-brands/never-fully-dressed/cat/categoryId=20203"
             },
             {
               "id": 3,
-              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/1x12x---test.png"
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/1x12x---test.png",
+              "categoria": 29299,
+              "link": "/productos/mujer/a-to-z-of-brands/topshop/cat/categoryId=29299"
             },
             {
               "id": 4,
-              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/reclaimed-vintage-hp-logos-256x256.jpg"
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/reclaimed-vintage-hp-logos-256x256.jpg",
+              "categoria": 10597,
+              "link": "/productos/mujer/a-to-z-of-brands/reclaimed-vintage/cat/categoryId=10597"
             },
             {
               "id": 5,
-              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/collusion-hp-logos-256x256.jpg"
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/collusion-hp-logos-256x256.jpg",
+              "categoria": 28477,
+              "link": "/productos/mujer/a-to-z-of-brands/collusion/cat/categoryId=28477"
             },
             {
               "id": 6,
-              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/weekday-hp-logos-256x256.jpg"
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/weekday-hp-logos-256x256.jpg",
+              "categoria": 19511,
+              "link": "/productos/mujer/a-to-z-of-brands/weekday/cat/categoryId=19511"
             }
           ]
         }
-      ]
+      }
     },
     {
       "nombre": "hombre",
       "id": 2,
-      "children": [
-        {
+      "children": {
+        "hero": {
           "id": 1,
           "nombre": "Hero",
-          "imagenMovile": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/12/topman/updated-assets/topman_hp-hero_mobile.jpg",
-          "imagenDesktop": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/12/topman/updated-assets/topman_hp-hero_desktop.jpg",
-          "titulo": "topman"
+          "imagenMovile": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/tm/lp-hero-3-mob-mw-es-390x580.jpg",
+          "imagenDesktop": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/tm/lp-hero-3-desktop-mw-es-1440x750.jpg",
+          "titulo": "novedades",
+          "link": "/productos/hombre/novedades/categoryId=27110",
+          "categoria": 27110
         },
-        {
+        "lanzamientos": {
           "id": 2,
           "nombre": "GridPrincipal",
           "children": [
             {
               "id": 1,
-              "imagen": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/26/moments/mw_warm_handle_moment_870x1110-v3.png",
-              "titulo": "confort de asos design",
-              "subtitulo": "ponle buena cara al frío"
+              "imagen": "https://images.asos-media.com/products/cortavientos-blanca-y-gris-con-capucha-challenger-de-columbia/202872246-1-white?$n_1280w$&wid=1125&fit=constrain",
+              "titulo": "aire libre",
+              "subtitulo": "lleva el confort contigo",
+              "link": "/productos/hombre/ropa-deportiva/al-aire-libre/cat/categoryId=27184",
+              "categoria": 27184
             },
             {
               "id": 2,
-              "imagen": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/26/moments/mw_global_winter_essentials_moment_870x1110.jpg",
-              "titulo": "neutros de invierno",
-              "subtitulo": "¿quién dijo que el beige es aburrido?"
+              "imagen": "https://images.asos-media.com/products/pantalones-cortos-beis-de-corte-slim-de-tejido-texturizado-efecto-natural-de-asos-design/201950545-1-chocolatechip?$n_960w$&wid=952&fit=constrain",
+              "titulo": "¡llego el verano!",
+              "subtitulo": "acompaña la temperatura",
+              "link": "/productos/hombre/ctas/ganas-de-verano/cat/categoryId=50606",
+              "categoria": 50606
             },
             {
               "id": 3,
-              "imagen": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/26/moments/mw_weekday_moment_870x1110.jpg",
-              "titulo": "weekday",
-              "subtitulo": "ríete del frío"
+              "imagen": "https://content.asos-media.com/-/media/homepages/mw/2023/april/11-gbl-prime/mw_global_festival_moment_870x1110.jpg",
+              "titulo": "festi-cool",
+              "subtitulo": "ríete del calor",
+              "link": "/productos/hombre/ctas/hp-edit-3/cat/categoryId=50608",
+              "categoria": 50608
             },
 
             {
               "id": 4,
-              "imagen": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/26/moments/mw_retro_day_and_night_moment_870x1110-2.jpg",
-              "titulo": "disco nostalgia",
-              "subtitulo": "todo un viaje retro"
+              "imagen": "https://images.asos-media.com/products/sudadera-negra-con-logo-grande-de-puma-essentials/23816410-1-black?$n_750w$&wid=750&fit=constrain",
+              "titulo": "puma",
+              "subtitulo": "con mucha garra",
+              "link": "/productos/hombre/a-to-z-of-brands/puma/cat/categoryId=3355",
+              "categoria": 3355
             }
           ]
         },
-        {
+        "descuento": {
           "id": 3,
           "nombre": "Descuento",
           "descripcion": "hasta un -50% de descuento en diseños comodos",
           "footer": "oferta limitada hasta agotar stock"
         },
-        {
+        "promos": {
           "id": 4,
           "nombre": "Promocion",
           "children": [
             {
               "id": 1,
-              "imagen": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/26/moments/mw_global_asos_design_halloween_moment_870x1110.jpg",
-              "titulo": "estilosamente terrorífico",
-              "subtitulo": "llega el estilo gotico",
-              "boton": "comprar asos design"
+              "imagen": "https://content.asos-media.com/-/media/homepages/mw/2023/april/17-prime/126468559_model-1-870x1110.jpg",
+              "titulo": "esenciales estivales",
+              "subtitulo": "esto cambia el tono",
+              "boton": "comprar asos design",
+              "link": "/productos/hombre/ctas/estivales/categoryId=50610",
+              "categoria": 50610
             },
             {
               "id": 2,
-              "imagen": "https://content.asos-media.com/-/media/homepages/mw/2022/sept/12/mw_global_melancholy_punk_moment_870x1110.jpg",
-              "titulo": "e-boy otoñal",
-              "subtitulo": "pásate al lado oscuro",
-              "boton": "comprar asos design"
+              "imagen": "https://content.asos-media.com/-/media/homepages/mw/2023/april/11-gbl-prime/mw_global_topman_alt_moment_870x1110---v3.png",
+              "titulo": "trajes",
+              "subtitulo": "la coleccion definitiva",
+              "boton": "comprar asos design",
+              "link": "/productos/hombre/ctas/trajes/categoryId=5678",
+              "categoria": 5678
             }
           ]
         },
-        {
+        "marcas": {
           "id": 5,
           "nombre": "Marcas",
           "children": [
             {
               "id": 1,
-              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/tommy-hilfiger-hp-logos-256x256.jpg"
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/tommy-hilfiger-hp-logos-256x256.jpg",
+              "link": "/hombre/a-to-z-of-brands/tommy-hilfiger/cat/categoryId=5247",
+              "categoria": 5247
             },
             {
               "id": 2,
-              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/north-face.png"
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/north-face.png",
+              "link": "/hombre/a-to-z-of-brands/the-north-face/cat/categoryId=5715",
+              "categoria": 5715
             },
             {
               "id": 3,
-              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/nike-hp-logos-256x256.jpg"
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/nike-hp-logos-256x256.jpg",
+              "link": "/hombre/a-to-z-of-brands/nike/cat/categoryId=4766",
+              "categoria": 4766
             },
             {
               "id": 4,
-              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/carhartt-hp-logos-256x256.jpg"
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/carhartt-hp-logos-256x256.jpg",
+              "link": "/hombre/a-to-z-of-brands/carhartt-wip/cat/categoryId=6759",
+              "categoria": 6759
             },
             {
               "id": 5,
-              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/ellesse-hp-logos-256x256.jpg"
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/ellesse-hp-logos-256x256.jpg",
+              "link": "/hombre/a-to-z-of-brands/ellesse/cat/categoryId=19763",
+              "categoria": 19763
             },
             {
               "id": 6,
-              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/dr-martens-hp-logos-256x256.jpg"
+              "imagen": "https://content.asos-media.com/-/media/homepages/unisex/brands-logos/256x256/dr-martens-hp-logos-256x256.jpg",
+              "link": "/hombre/a-to-z-of-brands/dr-martens/cat/categoryId=4747",
+              "categoria": 4747
             }
           ]
         }
-      ]
+      }
     }
   ]
 }
