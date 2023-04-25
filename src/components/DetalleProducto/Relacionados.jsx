@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import useSimilares from "../../hooks/useSimilares";
 import { useNavigate } from "react-router-dom";
 
 const Contenedor = styled.section`
@@ -60,18 +59,23 @@ const Item = styled.div`
 `;
 
 const Relacionados = () => {
-  const [currentLink, setCurrentLink] = useState();
-  const { productos, getIdColor, getIdMarca, fetchData } = useSimilares();
+  const productosLS = JSON.parse(localStorage.getItem("Productos"));
+  const currentProductos = productosLS.products.slice(0, 20);
   const navigate = useNavigate();
 
-  const handleClick = (url, producto) => {
-    let idColor = getIdColor(producto, productos.facets);
-    let idMarca = getIdMarca(producto, productos.facets);
-    fetchData(idColor, idMarca);
-    let link = `/detalle/${url}`;
-    setCurrentLink(link);
-    navigate(currentLink);
+  const handleClick = (producto) => {
+    let productoLS = {
+      id: producto.id,
+      colour: producto.colour,
+      name: producto.name,
+      price: producto.price,
+      imageUrl: producto.imageUrl,
+      desdeProductos: true,
+    };
+    localStorage.setItem("DetalleProducto", JSON.stringify(productoLS));
+    navigate(`/detalle/${producto.url}`);
   };
+
   return (
     <Contenedor>
       <header>
@@ -79,12 +83,12 @@ const Relacionados = () => {
         <p>mas informacion sobre como estan oredenados estos productos</p>
       </header>
       <ContenedorGrid>
-        {productos?.products?.map((producto) => {
+        {currentProductos?.map((producto) => {
           return (
             <Item
               key={producto.id}
               onClick={() => {
-                handleClick(producto.url, producto);
+                handleClick(producto);
               }}
             >
               <img src={`https://${producto.imageUrl}`} alt="" />
