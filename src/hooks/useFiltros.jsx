@@ -1,8 +1,16 @@
-import { useState, useContext } from "react";
-import FiltrosFetchContext from "../context/FiltrosFetchContext";
+import { useState } from "react";
 const useFiltros = () => {
   const [seleccionados, setSeleccionados] = useState([]);
-  const { filtrosFetch, setFiltrosFetch } = useContext(FiltrosFetchContext);
+  const initialParams = {
+    store: "ES",
+    limit: "48",
+    country: "ES",
+    currency: "EUR",
+    sizeSchema: "ES",
+    lang: "es-ES",
+    offset: "0",
+  };
+  const [filtrosFetch, setFiltrosFetch] = useState(initialParams);
 
   const changeSelection = (filtro) => {
     if (filtro.isSelected == false) {
@@ -50,6 +58,7 @@ const useFiltros = () => {
     agregarKeyValue,
     seleccionados,
     filtrosFetch,
+    setFiltrosFetch,
   };
 };
 
