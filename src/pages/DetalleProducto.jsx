@@ -14,13 +14,18 @@ const DetalleProducto = () => {
   const size = useWindowSize();
   const { getDetalleProducto, detalle, loading } = useDetalleProducto();
   const detalleStorage = JSON.parse(localStorage.getItem("DetalleProducto"));
+
   const productoId = detalleStorage.id;
 
   useEffect(() => {
-    let lastFetch = Number(localStorage.getItem("LastFetchDetalle"));
+    window.scrollTo(0, 0);
+    document.title = `Akira Ecommerce | ${categoria.toUpperCase()}`;
+  }, [detalle, detalleStorage]);
+
+  useEffect(() => {
+    let lastFetch = Number(localStorage.getItem("LastFetch"));
     if (!productoId || productoId === lastFetch) return;
     getDetalleProducto({ productoId });
-    localStorage.setItem("LastFetchDetalle", productoId);
   }, [productoId]);
 
   return (
@@ -33,13 +38,13 @@ const DetalleProducto = () => {
           <>
             <Galeria data={detalle} />
             <Info data={detalle} />
-            <Relacionados />
+            <Relacionados loading={loading} />
           </>
         ) : (
           <>
             <Galeria data={detalleStorage} />
             <Info data={detalleStorage} />
-            <Relacionados />
+            <Relacionados loading={loading} />
           </>
         )}
       </Main>

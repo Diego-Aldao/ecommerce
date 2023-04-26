@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useWindowSize from "../hooks/useWindowSize";
 import LayoutPrincipal from "../Layout/LayoutPrincipal";
 import Header from "../components/Inicio/Header/Header";
@@ -19,6 +19,13 @@ const PaginaPrincipal = () => {
   const location = useLocation();
   const genero = location.pathname;
   const { dataGenero } = useContentHome({ genero }); //custom hook para obtener la data del genero correcto
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 500);
+    document.title = "Akira Ecommerce | Nueva Temporada";
+  }, [genero]);
 
   return (
     <LayoutPrincipal>
