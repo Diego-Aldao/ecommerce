@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
@@ -48,6 +48,7 @@ const ContenedorGrid = styled.div`
 const Item = styled.div`
   align-self: center;
   justify-self: center;
+  cursor: pointer;
   span {
     display: block;
     margin-top: 10px;
@@ -58,9 +59,14 @@ const Item = styled.div`
   }
 `;
 
-const Relacionados = () => {
-  const productosLS = JSON.parse(localStorage.getItem("Productos"));
-  const currentProductos = productosLS.products.slice(0, 20);
+const Relacionados = ({ loading }) => {
+  const [currentProductos, setCurrentProductos] = useState();
+
+  useEffect(() => {
+    const productosLS = JSON.parse(localStorage.getItem("Productos"));
+    const currentProductos = productosLS.products.slice(0, 20);
+    setCurrentProductos(currentProductos);
+  }, [loading]);
   const navigate = useNavigate();
 
   const handleClick = (producto) => {
