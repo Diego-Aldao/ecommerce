@@ -8,6 +8,7 @@ import SinProductos from "../SinProductos";
 
 const Contenedor = styled.section`
   width: 100%;
+  min-height: calc(100vh - 142px);
   header {
     background: var(--color-gris);
     text-align: center;
@@ -28,6 +29,12 @@ const Contenedor = styled.section`
     .contenedor-pequeño {
       margin-top: 15px;
     }
+  }
+  @media (min-width: 480px) {
+    min-height: calc(100vh - 102px);
+  }
+  @media (min-width: 1440px) {
+    min-height: calc(100vh - 400px);
   }
 `;
 
