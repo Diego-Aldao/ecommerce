@@ -57,7 +57,7 @@ const FiltroDesktop = ({
     setCurrentLoading(true);
     setTimeout(() => {
       setCurrentLoading(false);
-    }, 4000);
+    }, 2000);
     if (location.pathname.includes("busqueda") && querys) {
       setFiltrosFetch({ ...filtrosFetch, q: querys });
     } else if (location.pathname.includes("productos") && idCategoria) {

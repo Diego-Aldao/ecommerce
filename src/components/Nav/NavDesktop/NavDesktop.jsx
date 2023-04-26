@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Dropdown from "./Dropdown/Dropdown";
 import useCategorias from "../../../hooks/useCategorias";
+import Loading from "../../Loading";
 
 const Contenedor = styled.div`
   width: 100%;
@@ -14,7 +15,6 @@ const Contenedor = styled.div`
     flex: 1 1 auto;
     padding: 10px;
     background: none;
-    color: white;
     color: black;
     border: none;
     text-transform: capitalize;
@@ -28,7 +28,7 @@ const Contenedor = styled.div`
   }
 `;
 
-const NavDesktop = ({ navegacion }) => {
+const NavDesktop = ({ navegacion, loading }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentContent, setCurrentContent] = useState();
   const { categorias } = useCategorias(navegacion);
@@ -47,27 +47,33 @@ const NavDesktop = ({ navegacion }) => {
 
   return (
     <Contenedor onMouseOut={handleMouseOut} onMouseOver={handleMouseOver}>
-      {categorias?.map((categoria) => {
-        return (
-          !categoria.channelExclusions.includes("webLarge") &&
-          categoria.content.title !== "Marketplace" && (
-            <button
-              key={categoria.id}
-              onMouseOver={() => {
-                handleMouseOverCategoria(categoria);
-              }}
-              onMouseOut={handleMouseOut}
-            >
-              {categoria.content.title}
-            </button>
-          )
-        );
-      })}
-      <Dropdown
-        isVisible={isVisible}
-        setIsVisible={setIsVisible}
-        currentContent={currentContent}
-      />
+      {loading ? (
+        <Loading maxHeight={"35px"} />
+      ) : (
+        <>
+          {categorias?.map((categoria) => {
+            return (
+              !categoria.channelExclusions.includes("webLarge") &&
+              categoria.content.title !== "Marketplace" && (
+                <button
+                  key={categoria.id}
+                  onMouseOver={() => {
+                    handleMouseOverCategoria(categoria);
+                  }}
+                  onMouseOut={handleMouseOut}
+                >
+                  {categoria.content.title}
+                </button>
+              )
+            );
+          })}
+          <Dropdown
+            isVisible={isVisible}
+            setIsVisible={setIsVisible}
+            currentContent={currentContent}
+          />
+        </>
+      )}
     </Contenedor>
   );
 };

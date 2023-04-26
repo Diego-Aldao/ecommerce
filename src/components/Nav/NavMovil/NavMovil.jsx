@@ -3,8 +3,9 @@ import useCategorias from "../../../hooks/useCategorias";
 import Categorias from "./Categorias";
 import DetalleCategorias from "./DetalleCategorias";
 import { Modal, BtnCerrar, ContenedorNavs } from "../../ModalFixed";
+import Loading from "../../Loading";
 
-const NavMovil = ({ setIsOpen, isOpen, navegacion }) => {
+const NavMovil = ({ setIsOpen, isOpen, navegacion, loading }) => {
   const [currentNav, setCurrentNav] = useState();
   const [position, setPosition] = useState(false);
   const { categorias, inicio } = useCategorias(navegacion);
@@ -22,24 +23,28 @@ const NavMovil = ({ setIsOpen, isOpen, navegacion }) => {
       onClick={handleClick}
       className="modal-fixed"
     >
-      <ContenedorNavs isOpen={isOpen} className="left">
-        <Categorias
-          setIsOpen={setIsOpen}
-          currentNav={currentNav}
-          setCurrentNav={setCurrentNav}
-          position={position}
-          setPosition={setPosition}
-          categorias={categorias}
-          inicio={inicio}
-        />
-        <DetalleCategorias
-          setIsOpen={setIsOpen}
-          currentNav={currentNav}
-          position={position}
-          setPosition={setPosition}
-          setCurrentNav={setCurrentNav}
-        />
-      </ContenedorNavs>
+      {loading ? (
+        <Loading maxWidth={"500px"} />
+      ) : (
+        <ContenedorNavs isOpen={isOpen} className="left">
+          <Categorias
+            setIsOpen={setIsOpen}
+            currentNav={currentNav}
+            setCurrentNav={setCurrentNav}
+            position={position}
+            setPosition={setPosition}
+            categorias={categorias}
+            inicio={inicio}
+          />
+          <DetalleCategorias
+            setIsOpen={setIsOpen}
+            currentNav={currentNav}
+            position={position}
+            setPosition={setPosition}
+            setCurrentNav={setCurrentNav}
+          />
+        </ContenedorNavs>
+      )}
       <BtnCerrar isOpen={isOpen} setIsOpen={setIsOpen} className="left">
         <span></span>
         <span></span>
