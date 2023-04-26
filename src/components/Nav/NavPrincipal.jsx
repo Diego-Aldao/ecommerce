@@ -14,22 +14,30 @@ import { Link, useLocation } from "react-router-dom";
 import BusquedaDesktop from "./Busqueda/BusquedaDesktop";
 import useGuardados from "../../hooks/useGuardados";
 import useCarrito from "../../hooks/useCarrito";
+import useWindowSize from "../../hooks/useWindowSize";
+import BusquedaMovil from "./Busqueda/BusquedaMovil";
+import useNavegacion from "../../hooks/useNavegacion";
+import Logo from "../Logo";
 
 const Nav = styled.nav`
   width: 100%;
   height: 50px;
-  padding: 0px 15px;
+  padding-inline: 15px;
   background: black;
   color: white;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  position: relative;
   @media (min-width: 768px) {
     height: 60px;
-    padding: 0px 32px;
+    padding-inline: 24px;
     .icono-busqueda {
       display: none;
     }
+  }
+  @media (min-width: 992px) {
+    padding-inline: 32px;
   }
 `;
 
@@ -50,11 +58,19 @@ const BtnNavMovil = styled.div`
   }
 `;
 
-const LogoNav = styled.p`
-  padding: 0px 20px;
-  font-size: 2rem;
+const LogoNav = styled(Link)`
   margin-right: auto;
-  color: white;
+  padding: 8px 10px 0px;
+  p {
+    font-size: 1.7rem;
+    color: white;
+  }
+  @media (min-width: 480px) {
+    padding-inline: 20px;
+    p {
+      font-size: 2rem;
+    }
+  }
   @media (min-width: 1024px) {
     padding-left: 0px;
   }
@@ -97,12 +113,12 @@ const BotonGenero = styled.button`
   }
   &.btn-mujer {
     background: ${({ genero }) =>
-      genero == "/hombre" ? "none" : "var(--color-secundario)"};
+      genero == "/hombre" ? "none" : "var(--color-principal)"};
     color: ${({ genero }) => (genero == "/hombre" ? "#fff" : "#000")};
   }
   &.btn-hombre {
     background: ${({ genero }) =>
-      genero == "/hombre" ? "var(--color-secundario)" : "none"};
+      genero == "/hombre" ? "var(--color-principal)" : "none"};
     color: ${({ genero }) => (genero == "/hombre" ? "#000" : "#fff")};
   }
 `;
@@ -124,45 +140,26 @@ const Cantidad = styled.span`
 
 const NavPrincipal = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState();
+  const { navegacion, loading } = useNavegacion();
   const location = useLocation();
   const { guardados } = useGuardados();
   const { carrito } = useCarrito();
+  const size = useWindowSize();
+  const [busquedaVisible, setBusquedaVisible] = useState(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleData = (data) => {
-    setData(data);
-    localStorage.setItem("data", JSON.stringify(data));
-  };
-
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
-      "X-RapidAPI-Host": "asos2.p.rapidapi.com",
-    },
-  };
-
-  const fetchData = () => {
-    fetch(
-      "https://asos2.p.rapidapi.com/categories/list?country=ES&lang=es-ES",
-      options
-    )
-      .then((response) => response.json())
-      .then((dataFetch) => handleData(dataFetch.navigation))
-      .catch((err) => console.error(err));
-  };
-
   useEffect(() => {
-    if (localStorage.getItem("data")) {
-      setData(JSON.parse(localStorage.getItem("data")));
-    } else {
-      fetchData();
+    if (size.width > 1024) {
+      setIsOpen(false);
     }
-  }, []);
+  }, [size]);
+
+  const handleBusqueda = () => {
+    setBusquedaVisible((busquedaVisible) => !busquedaVisible);
+  };
 
   return (
     <>
@@ -172,7 +169,9 @@ const NavPrincipal = () => {
           <span></span>
           <span></span>
         </BtnNavMovil>
-        <LogoNav>asos</LogoNav>
+        <LogoNav to="/">
+          <Logo />
+        </LogoNav>
         <BotonGenero genero={location.pathname} className="btn-mujer">
           <Link to="/mujer">mujer</Link>
         </BotonGenero>
@@ -180,8 +179,13 @@ const NavPrincipal = () => {
           <Link to="/hombre">hombre</Link>
         </BotonGenero>
         <BusquedaDesktop />
-        <IconoNav className="icono-busqueda">
-          <AiOutlineSearch />
+        <BusquedaMovil isVisible={busquedaVisible} />
+        <IconoNav className="icono-busqueda" onClick={handleBusqueda}>
+          {busquedaVisible ? (
+            <AiOutlineSearch className="lleno" />
+          ) : (
+            <AiOutlineSearch />
+          )}
         </IconoNav>
         <IconoNav>
           <Link to="/login">
@@ -216,9 +220,16 @@ const NavPrincipal = () => {
             </Link>
           </IconoNav>
         )}
-        <NavMovil isOpen={isOpen} setIsOpen={setIsOpen} data={data} />
+        {size.width < 1024 && (
+          <NavMovil
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            navegacion={navegacion}
+            loading={loading}
+          />
+        )}
       </Nav>
-      <NavDesktop data={data} />
+      <NavDesktop navegacion={navegacion} loading={loading} />
     </>
   );
 };
