@@ -13,7 +13,7 @@ const useDestino = (link) => {
       .split("?", 2);
     let url = ruta[0] ? ruta[0] : ruta;
     let querys = ruta[1]?.replaceAll("cid=", "categoryId=");
-    const destino = `/productos${url}${querys}`;
+    const destino = `/productos${url}${querys ? querys : ""}`;
     setLinkFormateado(destino);
   }, [link]);
   return { linkFormateado };
