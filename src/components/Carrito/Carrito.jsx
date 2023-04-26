@@ -7,6 +7,11 @@ import { AiOutlineShopping, AiOutlineInfoCircle } from "react-icons/ai";
 import SinProductos from "../SinProductos";
 import useGuardados from "../../hooks/useGuardados";
 import ContenedorMaxWidth from "../../styles/ContenedorMaxWidth";
+import tarjetaVisa from "../../assets/visa.png";
+import tarjetaMaster from "../../assets/master.png";
+import tarjetaAmerican from "../../assets/american.png";
+import tarjetaMaestro from "../../assets/maestro.png";
+import tarjetaHCBC from "../../assets/hcbc.png";
 
 const Contenedor = styled.div`
   width: 100%;
@@ -42,7 +47,7 @@ const ContenedorGrid = styled.section`
     }
   }
   @media (min-width: 1440px) {
-    min-height: calc(100vh - 493px);
+    min-height: calc(100vh - 503px);
   }
 `;
 
@@ -112,6 +117,12 @@ const ConfirmarPago = styled.div`
     padding: 15px 0px;
     border-bottom: 1px solid var(--color-gris);
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    span {
+      font-size: 22px;
+    }
   }
   .subtotal,
   .envio {
@@ -123,10 +134,7 @@ const ConfirmarPago = styled.div`
       text-transform: capitalize;
       font-weight: 700;
     }
-    span {
-      font-weight: 300;
-      font-size: 18px;
-    }
+
     .especial {
       text-transform: uppercase;
       font-weight: 800;
@@ -141,12 +149,12 @@ const ConfirmarPago = styled.div`
     width: 100%;
     padding: 12px 0px;
     background: black;
-    text-transform: uppercase;
-    font-weight: 800;
-    font-size: 16px;
     margin-top: 20px;
     span {
-      color: var(--color-principal);
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: 16px;
+      color: white;
     }
   }
 `;
@@ -196,7 +204,13 @@ const MediosDePago = styled.div`
       margin-right: 7px;
       height: 20px;
       width: 30px;
-      background: red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
   p {
@@ -215,6 +229,16 @@ const Carrito = () => {
   const { carrito } = useCarrito();
   const { guardados } = useGuardados();
   const [data, setData] = useState({});
+  const [total, setTotal] = useState(0);
+
+  //mover a un helper o custom hook
+  const calcularTotal = () => {
+    let total = 0;
+    carrito.map((item) => {
+      total += item.price.current.value;
+    });
+    setTotal(total.toFixed(2));
+  };
 
   useEffect(() => {
     if (guardados.length >= 1 && carrito.length == 0) {
@@ -237,6 +261,7 @@ const Carrito = () => {
         boton: true,
       });
     }
+    calcularTotal();
   }, [carrito, guardados]);
 
   return (
@@ -275,10 +300,11 @@ const Carrito = () => {
                 <ConfirmarPago>
                   <div className="total">
                     <h3>total</h3>
+                    <span>{total}</span>
                   </div>
                   <div className="subtotal">
                     <p>subtotal</p>
-                    <span>50,48 €</span>
+                    <span>{total}</span>
                   </div>
                   <div className="envio">
                     <p>envio</p>
@@ -290,11 +316,21 @@ const Carrito = () => {
                   <MediosDePago>
                     <h3>aceptamos: </h3>
                     <div className="contenedor-tarjetas">
-                      <span className="tarjeta"></span>
-                      <span className="tarjeta"></span>
-                      <span className="tarjeta"></span>
-                      <span className="tarjeta"></span>
-                      <span className="tarjeta"></span>
+                      <span className="tarjeta">
+                        <img src={tarjetaVisa} alt="" />
+                      </span>
+                      <span className="tarjeta">
+                        <img src={tarjetaAmerican} alt="" />
+                      </span>
+                      <span className="tarjeta">
+                        <img src={tarjetaMaestro} alt="" />
+                      </span>
+                      <span className="tarjeta">
+                        <img src={tarjetaMaster} alt="" />
+                      </span>
+                      <span className="tarjeta">
+                        <img src={tarjetaHCBC} alt="" />
+                      </span>
                     </div>
                     <p>
                       Tienes un codigo de descuento? Añadelo en el proximo paso
