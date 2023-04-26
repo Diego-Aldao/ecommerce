@@ -39,6 +39,7 @@ const Contenedor = styled.div`
 
 const Btn = styled.div`
   width: 50px;
+  min-width: 50px;
   height: 50px;
   display: flex;
   background: #000000ca;
