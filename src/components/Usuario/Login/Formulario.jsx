@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Formik, ErrorMessage, Field, Form } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const FormularioLogin = styled(Form)`
   width: 100%;
@@ -101,6 +102,7 @@ const MensajeError = styled.div`
 `;
 
 const Formulario = () => {
+  const navigate = useNavigate();
   const validacionLogin = Yup.object().shape({
     email: Yup.string()
       .email("¡Error en el email! Escribe tu direccion de email correctamente")
@@ -115,7 +117,7 @@ const Formulario = () => {
       }}
       validationSchema={validacionLogin}
       onSubmit={(values) => {
-        console.log(values);
+        navigate("/");
       }}
     >
       {(props) => (

@@ -6,6 +6,7 @@ import { registerLocale } from "react-datepicker";
 import es from "date-fns/locale/es";
 import { Formik, Form, ErrorMessage, Field } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const Contenedor = styled.section`
   width: 100%;
@@ -187,6 +188,7 @@ const MensajeError = styled.div`
 `;
 
 const Formulario = () => {
+  const navigate = useNavigate();
   registerLocale("es", es);
   const [startDate, setStartDate] = useState();
   const [maxDate, setMaxDate] = useState();
@@ -236,7 +238,7 @@ const Formulario = () => {
         }}
         validationSchema={validacionRegistro}
         onSubmit={(values) => {
-          console.log(values);
+          navigate("/");
         }}
       >
         {(props) => (
@@ -331,7 +333,7 @@ const Formulario = () => {
                     maxDate={maxDate}
                   />
                   <span>
-                    solo puedes registrarte en asos si tienes a partir de 16
+                    solo puedes registrarte en akira si tienes a partir de 16
                     años
                   </span>
                 </Campo>
@@ -367,7 +369,7 @@ const Formulario = () => {
                   <input type="checkbox" name="para-ti" id="para-ti" />
                 </Campo>
                 <Campo className="checkbox newsletter">
-                  <label htmlFor="partners">asos partners</label>
+                  <label htmlFor="partners">akira partners</label>
                   <input type="checkbox" name="partners" id="partners" />
                 </Campo>
               </fieldset>
@@ -392,7 +394,7 @@ const Formulario = () => {
                 type="submit"
                 disabled={!props.isValid}
               >
-                únete a asos
+                únete a akira
               </BtnSubmit>
             </fieldset>
           </FormularioRegistro>
