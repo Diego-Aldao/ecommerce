@@ -1,0 +1,298 @@
+{
+  "hombre": {
+    "header": {
+      "nombre": "topman",
+      "imagenDesk": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/tm/lp-hero-1-desktop-mw-es-1440x800.jpg",
+      "imagenMovil": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/tm/lp-hero-1-mob-mw-es-390x626.jpg",
+      "link1": "/productos/hombre/a-to-z-of-brands/topman/categoryId=29065",
+      "link2": "/productos/hombre/ctas/topman-superventas/categoryId=19839"
+    },
+    "galeriaProductos": [
+      {
+        "id": 202945290,
+        "categoria": 30242,
+        "imagenUrl": "images.asos-media.com/products/camisa-de-vestir-blanca-elastica-y-entallada-de-topman/202945290-1-white?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topman/camisa-de-vestir-blanca-elastica-y-entallada-de-topman/prd/202945290",
+        "nombre": "camisa de vestir blanca elástica y entallada de Topman",
+        "price": {
+          "current": {
+            "text": "26,50"
+          }
+        }
+      },
+      {
+        "id": 203057323,
+        "categoria": 30242,
+        "imagenUrl": "images.asos-media.com/products/camisa-de-vestir-azul-elastica-de-topman/203057323-1-blue?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topman/camisa-de-vestir-azul-elastica-de-topman/prd/203057323",
+        "nombre": "camisa de vestir azul elástica de Topman",
+        "price": {
+          "current": {
+            "text": "26,50"
+          }
+        }
+      },
+      {
+        "id": 202052141,
+        "categoria": 30242,
+        "imagenUrl": "images.asos-media.com/products/chaqueta-de-traje-color-crudo-con-doble-botonadura-y-detalle-cruzado-de-mezcla-de-lana-de-topman/202052141-1-ecru?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topman/traje-color-crudo-cruzado-de-tejido-de-mezcla-de-lana-de-topman/prd/202052141",
+        "nombre": "chaqueta de traje color crudo con doble botonadura y detalle cruzado de mezcla de lana de Topman",
+        "price": {
+          "current": {
+            "text": "135,50"
+          }
+        }
+      },
+      {
+        "id": 203509416,
+        "categoria": 30242,
+        "imagenUrl": "images.asos-media.com/products/joggers-rectos-gris-jaspeado-de-topman/203509416-1-grey?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topman/joggers-rectos-gris-jaspeado-de-topman/prd/203509416",
+        "nombre": "joggers rectos gris jaspeado de Topman",
+        "price": {
+          "current": {
+            "text": "37,00"
+          }
+        }
+      },
+      {
+        "id": 202311986,
+        "categoria": 30242,
+        "imagenUrl": "images.asos-media.com/products/chaqueta-de-esmoquin-negra-entallada-de-topman/202311986-1-black?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topman/esmoquin-negro-entallado-de-topman/prd/202311986",
+        "nombre": "chaqueta de esmoquin negra entallada de Topman",
+        "price": {
+          "current": {
+            "text": "135,50"
+          }
+        }
+      },
+      {
+        "id": 203710620,
+        "categoria": 30242,
+        "imagenUrl": "images.asos-media.com/products/polo-gris-jaspeado-extragrande-de-tejido-grueso-de-topman/203710620-1-grey?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topman/polo-gris-jaspeado-extragrande-de-tejido-grueso-de-topman/prd/203710620",
+        "nombre": "polo gris jaspeado extragrande de tejido grueso de topman",
+        "price": {
+          "current": {
+            "text": "34,50"
+          }
+        }
+      },
+      {
+        "id": 203046571,
+        "categoria": 30242,
+        "imagenUrl": "images.asos-media.com/products/camisa-blanca-formal-de-corte-slim-y-manga-larga-de-topman/203046571-1-white?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topman/camisa-blanca-formal-de-corte-slim-y-manga-larga-de-topman/prd/203046571",
+        "nombre": "camisa blanca formal de corte slim y manga larga de topman",
+        "price": {
+          "current": {
+            "text": "19,50"
+          }
+        }
+      },
+      {
+        "id": 201613574,
+        "categoria": 30242,
+        "imagenUrl": "images.asos-media.com/products/camiseta-blanca-clasica-de-topman/201613574-1-white?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topman/camiseta-blanca-clasica-de-topman/prd/201613574",
+        "nombre": "camiseta blanca clasica de topman",
+        "price": {
+          "current": {
+            "text": "8,00"
+          }
+        }
+      }
+    ],
+    "banner1": {
+      "nombre": "eventos",
+      "imagenDesktop": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/tm/lp-hero-2-desktop-mw-es-1440x750.jpg",
+      "imagenMovil": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/tm/lp-hero-2-mob-mw-es-390x580---v2.jpg",
+      "link": "/productos/hombre/ctas/fiesta-en-la-piscina/categoryId=13520"
+    },
+    "galeriaCategorias": [
+      {
+        "id": 30209,
+        "imagenUrl": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/topman/category-polaroids/870x1110_1.jpg",
+        "linkCategoria": "/productos/hombre/a-to-z-of-brands/topman/trajes/categoryId=30209",
+        "nombre": "trajes y americanas"
+      },
+      {
+        "id": 30215,
+        "imagenUrl": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/topman/category-polaroids/870x1110_2_.jpg",
+        "linkCategoria": "/productos/hombre/a-to-z-of-brands/topman/camisetas/categoryId=30215",
+        "nombre": "ropa de punto"
+      },
+      {
+        "id": 30204,
+        "imagenUrl": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/topman/category-polaroids/870x1110_3.jpg",
+        "linkCategoria": "/productos/hombre/a-to-z-of-brands/topman/pantalones-cortos/categoryId=30204",
+        "nombre": "shorts"
+      },
+      {
+        "id": 30242,
+        "imagenUrl": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/topman/category-polaroids/870x1110_4.jpg",
+        "linkCategoria": "/productos/hombre/a-to-z-of-brands/topman/camisas/categoryId=30242",
+        "nombre": "camisas"
+      }
+    ],
+    "banner2": {
+      "id": 29065,
+      "nombre": "comprar",
+      "imagenDesktop": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/tm/lp-hero-3-desktop-mw-es-1440x750.jpg",
+      "imagenMovil": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/tm/lp-hero-3-mob-mw-es-390x580.jpg",
+      "link": "/productos/hombre/a-to-z-of-brands/topman/categoryId=29065"
+    }
+  },
+  "mujer": {
+    "header": {
+      "nombre": "topshop",
+      "imagenDesk": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/ts/lp-hero-1-desktop-ww-es-1440x800.jpg",
+      "imagenMovil": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/ts/lp-hero-1-mob-ww-es-390x626.jpg",
+      "link1": "/productos/mujer/a-to-z-of-brands/topshop/novedades-de-topshop/categoryId=50698",
+      "link2": "/productos/mujer/ctas/topshop-superventas/categoryId=17776"
+    },
+    "galeriaProductos": [
+      {
+        "id": 201476423,
+        "categoria": "29299",
+        "imagenUrl": "images.asos-media.com/products/vaqueros-azul-medio-de-corte-recto-de-topshop/201476423-1-midblue?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topshop/vaqueros-azul-medio-de-corte-recto-de-topshop/prd/201476423",
+        "nombre": "vaqueros azul medio de corte recto de Topshop",
+        "price": {
+          "current": {
+            "text": "43,00"
+          }
+        }
+      },
+      {
+        "id": 204217419,
+        "categoria": "29299",
+        "imagenUrl": "images.asos-media.com/products/mono-corto-negro-de-tirantes-de-lino-de-topshop/204217419-1-black?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topshop/mono-corto-negro-de-tirantes-de-lino-de-topshop/prd/204217419",
+        "nombre": "mono corto negro de tirantes de lino de topshop",
+        "price": {
+          "current": {
+            "text": "40,00"
+          }
+        }
+      },
+      {
+        "id": 204193309,
+        "categoria": "29299",
+        "imagenUrl": "images.asos-media.com/products/sandalias-doradas-con-diseno-tobillero-plataforma-y-tacon-eve-de-topshop/204193309-1-gold?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topshop/sandalias-doradas-con-diseno-tobillero-plataforma-y-tacon-eve-de-topshop/prd/204193309",
+        "nombre": "sandalias doradas con diseno tobillero plataforma y tacon eve de topshop",
+        "price": {
+          "current": {
+            "text": "45,00"
+          }
+        }
+      },
+      {
+        "id": 204204334,
+        "categoria": "29299",
+        "imagenUrl": "images.asos-media.com/products/camisa-color-marfil-de-corte-casual-de-algodon-de-topshop/204204334-1-ivory?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topshop/camisa-color-marfil-de-corte-casual-de-algodon-de-topshop/prd/204204334",
+        "nombre": "camisa color marfil de corte casual de algodon de topshop",
+        "price": {
+          "current": {
+            "text": "30,00"
+          }
+        }
+      },
+      {
+        "id": 204610734,
+        "categoria": "29299",
+        "imagenUrl": "images.asos-media.com/products/joggers-color-crudo-de-pernera-ancha-con-bajo-con-vuelta-premium-de-topshop/204610734-1-ecru?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topshop/joggers-color-crudo-de-pernera-ancha-con-bajo-con-vuelta-premium-de-topshop/prd/204610734",
+        "nombre": "joggers color crudo de pernera ancha con bajo con vuelta premium de topshop",
+        "price": {
+          "current": {
+            "text": "135,50"
+          }
+        }
+      },
+      {
+        "id": 204542014,
+        "categoria": "29299",
+        "imagenUrl": "images.asos-media.com/products/pantalones-cortos-mom-vaqueros-negros-rasgados-de-pernera-acampanada-con-acabado-lavado-de-topshop/204542014-1-black?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topshop/pantalones-cortos-mom-vaqueros-negros-rasgados-de-pernera-acampanada-con-acabado-lavado-de-topshop/prd/204542014",
+        "nombre": "pantalones cortos mom vaqueros negros rasgados de pernera acampanada con acabado lavado de topshop",
+        "price": {
+          "current": {
+            "text": "36,00"
+          }
+        }
+      },
+      {
+        "id": 204189432,
+        "categoria": "29299",
+        "imagenUrl": "images.asos-media.com/products/chaqueta-bomber-color-cerceta-extragrande-de-topshop/204189432-1-teal?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topshop/chaqueta-bomber-color-cerceta-extragrande-de-topshop/prd/204189432",
+        "nombre": "chaqueta bomber color cerceta extragrande de topshop",
+        "price": {
+          "current": {
+            "text": "73,50"
+          }
+        }
+      },
+      {
+        "id": 204167240,
+        "categoria": "29299",
+        "imagenUrl": "images.asos-media.com/products/pantalones-cortos-vaqueros-mom-azul-medio-de-corte-acampanado-de-topshop/204167240-1-midblue?$n_640w$&wid=513&fit=constrain",
+        "linkDetalle": "/detalle/topshop/pantalones-cortos-vaqueros-mom-azul-medio-de-corte-acampanado-de-topshop/prd/204167240",
+        "nombre": "pantalones cortos vaqueros mom azul medio de corte acampanado de topshop",
+        "price": {
+          "current": {
+            "text": "34,00"
+          }
+        }
+      }
+    ],
+    "banner1": {
+      "nombre": "eventos",
+      "imagenDesktop": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/ts/lp-hero-2-desktop-ww-es-1440x750.jpg",
+      "imagenMovil": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/ts/lp-hero-2-mob-ww-es-390x580---v2.jpg",
+      "link": "/productos/mujer/a-to-z-of-brands/topshop/vestidos/categoryId=30228"
+    },
+    "galeriaCategorias": [
+      {
+        "id": 1,
+        "categoria": 30228,
+        "imagenUrl": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/topshop/category-polaroids/870x1110_1.jpg",
+        "linkCategoria": "/productos/mujer/a-to-z-of-brands/topshop/vestidos/categoryId=30228",
+        "nombre": "vestidos"
+      },
+      {
+        "id": 2,
+        "categoria": 29299,
+        "imagenUrl": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/topshop/category-polaroids/870x1110_2.jpg",
+        "linkCategoria": "/productos/mujer/a-to-z-of-brands/topshop/categoryId=29299",
+        "nombre": "faldas"
+      },
+      {
+        "id": 3,
+        "categoria": 29299,
+        "imagenUrl": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/topshop/category-polaroids/870x1110_3.jpg",
+        "linkCategoria": "/productos/mujer/a-to-z-of-brands/topshop/categoryId=29299",
+        "nombre": "trajes y americanas"
+      },
+      {
+        "id": 4,
+        "categoria": 30235,
+        "imagenUrl": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/topshop/category-polaroids/870x1110_4.jpg",
+        "linkCategoria": "/productos/mujer/a-to-z-of-brands/topshop/tops/categoryId=30235",
+        "nombre": "tops"
+      }
+    ],
+    "banner2": {
+      "id": 17413,
+      "nombre": "comprar",
+      "imagenDesktop": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/ts/lp-hero-3-desktop-ww-es-1440x750.jpg",
+      "imagenMovil": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/ts/lp-hero-3-mob-ww-es-390x580.jpg",
+      "link": "/productos/mujer/ctas/vestidos-veraniegos/categoryId=17413"
+    }
+  }
+}
