@@ -30,7 +30,7 @@ const useProductos = () => {
         lang: "es-ES",
       },
       headers: {
-        "X-RapidAPI-Key": "88b3f1fbc5msh84aa9bd0735a359p1751c3jsnf1eef21f214e",
+        "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
         "X-RapidAPI-Host": "asos2.p.rapidapi.com",
       },
     };
@@ -65,7 +65,7 @@ const useProductos = () => {
         lang: "es-ES",
       },
       headers: {
-        "X-RapidAPI-Key": "88b3f1fbc5msh84aa9bd0735a359p1751c3jsnf1eef21f214e",
+        "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
         "X-RapidAPI-Host": "asos2.p.rapidapi.com",
       },
     };
@@ -88,7 +88,7 @@ const useProductos = () => {
       url: "https://asos2.p.rapidapi.com/products/v2/list",
       params: filtros,
       headers: {
-        "X-RapidAPI-Key": "88b3f1fbc5msh84aa9bd0735a359p1751c3jsnf1eef21f214e",
+        "X-RapidAPI-Key": import.meta.env.VITE_API_KEY,
         "X-RapidAPI-Host": "asos2.p.rapidapi.com",
       },
     };
