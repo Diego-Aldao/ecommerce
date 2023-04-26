@@ -3,8 +3,6 @@ import PaginaPrincipal from "./pages/PaginaPrincipal";
 import ListadoProductos from "./pages/ListadoProductos";
 import DetalleProducto from "./pages/DetalleProducto";
 import EstilosGlobales from "./styles/EstilosGlobales";
-import { ProductosContextProvider } from "./context/ProductosContext";
-import { CategoriaContextProvider } from "./context/IdCategoriaContext";
 import { GuardadosContextProvider } from "./context/GuardadosContext";
 import ProductosGuardados from "./pages/ProductosGuardados";
 import { CarritoContextProvider } from "./context/CarritoContext";
@@ -12,7 +10,6 @@ import CarritoProductos from "./pages/CarritoProductos";
 import LoginUsuario from "./pages/LoginUsuario";
 import RegistroUsuario from "./pages/RegistroUsuario";
 import { FiltrosFetchContextProvider } from "./context/FiltrosFetchContext";
-import { DetalleContextProvider } from "./context/DetalleContext";
 import { LoadingContextProvider } from "./context/LoadingContext";
 import TiendaTop from "./pages/TiendaTop";
 
@@ -74,11 +71,11 @@ const router = createBrowserRouter([
     element: <RegistroUsuario />,
   },
   {
-    path: "/topman",
+    path: "/productos/topman",
     element: <TiendaTop />,
   },
   {
-    path: "/topshop",
+    path: "/productos/topshop",
     element: <TiendaTop />,
   },
 ]);
@@ -86,20 +83,14 @@ const router = createBrowserRouter([
 function App() {
   return (
     <LoadingContextProvider>
-      <DetalleContextProvider>
-        <GuardadosContextProvider>
-          <CarritoContextProvider>
-            <CategoriaContextProvider>
-              <ProductosContextProvider>
-                <FiltrosFetchContextProvider>
-                  <EstilosGlobales />
-                  <RouterProvider router={router} />
-                </FiltrosFetchContextProvider>
-              </ProductosContextProvider>
-            </CategoriaContextProvider>
-          </CarritoContextProvider>
-        </GuardadosContextProvider>
-      </DetalleContextProvider>
+      <GuardadosContextProvider>
+        <CarritoContextProvider>
+          <FiltrosFetchContextProvider>
+            <EstilosGlobales />
+            <RouterProvider router={router} />
+          </FiltrosFetchContextProvider>
+        </CarritoContextProvider>
+      </GuardadosContextProvider>
     </LoadingContextProvider>
   );
 }
