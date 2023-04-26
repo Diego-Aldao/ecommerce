@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 const useDataProductos = () => {
   const initialProductos = JSON.parse(localStorage.getItem("Productos"));
-  let { querys, idCategoria } = useParams();
+  let { querys, idCategoria, categoria1 } = useParams();
   const [filtros, setFiltros] = useState();
   const { productos, getProductos, searchProductos, loading } = useProductos();
   const [currentProductos, setCurrentProductos] = useState(
@@ -54,7 +54,14 @@ const useDataProductos = () => {
     setFiltros(productos.facets);
   }, [productos]);
 
-  return { currentProductos, filtros, loading, querys, idCategoria };
+  return {
+    currentProductos,
+    filtros,
+    loading,
+    querys,
+    idCategoria,
+    categoria1,
+  };
 };
 
 export default useDataProductos;
