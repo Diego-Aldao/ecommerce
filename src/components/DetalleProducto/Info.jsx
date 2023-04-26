@@ -9,6 +9,7 @@ import { AiOutlineTag } from "react-icons/ai";
 import Descripcion from "./Descripcion";
 import useGuardados from "../../hooks/useGuardados";
 import Loading from "../Loading";
+import useCarrito from "../../hooks/useCarrito";
 
 const Contenido = styled.section`
   width: 100%;
@@ -62,6 +63,8 @@ const Oferta = styled.div`
 
 const Caracteristica = styled.div`
   margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
   p {
     text-transform: uppercase;
     font-size: 12px;
@@ -101,6 +104,7 @@ const BtnAñadir = styled.button`
   font-weight: 800;
   font-size: 16px;
   padding: 7px 0px 3px 0px;
+  cursor: pointer;
 `;
 
 const BtnFavorito = styled.button`
@@ -112,6 +116,7 @@ const BtnFavorito = styled.button`
   justify-content: center;
   align-items: center;
   margin-left: 20px;
+  cursor: pointer;
   svg {
     height: 20px;
     width: 20px;
@@ -165,8 +170,15 @@ const Envio = styled.div`
 const Info = ({ data }) => {
   const [liked, setLiked] = useState([]);
   const { guardados, guardarProducto } = useGuardados();
+  const { carrito, añadirProductoCarrito } = useCarrito();
+  const [productoEnCarrito, setProductoEnCarrito] = useState(false);
 
-  const handleGuardarProducto = (producto) => {
+  useEffect(() => {
+    const productoExiste = carrito.some((producto) => producto.id === data.id);
+    setProductoEnCarrito(productoExiste);
+  }, [data, carrito]);
+
+  const formatearProducto = (producto, accion) => {
     let imagen = producto.imageUrl
       ? producto.imageUrl
       : producto.media.images[0].url;
@@ -181,7 +193,11 @@ const Info = ({ data }) => {
       imagen: imagen,
       colour: color,
     };
-    guardarProducto(dataProducto);
+    if (accion == "guardar") {
+      guardarProducto(dataProducto);
+    } else if (accion == "carrito") {
+      añadirProductoCarrito(dataProducto);
+    }
   };
 
   useEffect(() => {
@@ -202,19 +218,24 @@ const Info = ({ data }) => {
           <p>¿acabas de llegar?</p>
           <p>¡consigue un -15% en todo!</p>
           <p>
-            con el codigo: <span>asosnew</span>
+            con el código: <span>akiranew</span>
           </p>
         </div>
       </Oferta>
       <Caracteristica>
-        <p>
-          color:
-          {data.desdeProductos ? (
+        {data.desdeProductos ? (
+          <>
+            <p>color:</p>
             <Loading maxHeight={"25px"} maxWidth={"100px"} />
-          ) : (
-            <span>{data?.variants[0]?.colour}</span>
-          )}
-        </p>
+          </>
+        ) : (
+          <>
+            <p>
+              color:
+              <span>{data?.variants[0]?.colour}</span>
+            </p>
+          </>
+        )}
       </Caracteristica>
       <Caracteristica>
         <p>
@@ -239,10 +260,16 @@ const Info = ({ data }) => {
         )}
       </Caracteristica>
       <BotonesUsuario>
-        <BtnAñadir>añadir al carrito</BtnAñadir>
+        <BtnAñadir
+          onClick={() => {
+            formatearProducto(data, "carrito");
+          }}
+        >
+          {productoEnCarrito ? "quitar del carrito" : "añadir al carrito"}
+        </BtnAñadir>
         <BtnFavorito
           onClick={() => {
-            handleGuardarProducto(data);
+            formatearProducto(data, "guardar");
           }}
         >
           {liked ? (
