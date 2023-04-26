@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Logo from "../Logo";
+import { Link } from "react-router-dom";
 
 const Contenedor = styled.footer`
   padding: 10px;
@@ -9,9 +11,12 @@ const Contenedor = styled.footer`
   align-items: center;
 `;
 
-const Copy = styled.p`
+const Copy = styled.h5`
   font-size: 12px;
   text-transform: uppercase;
+  p {
+    letter-spacing: 0px;
+  }
 `;
 const Links = styled.div`
   display: flex;
@@ -50,9 +55,14 @@ const Links = styled.div`
 const Footer = () => {
   return (
     <Contenedor>
-      <Copy>@ 2022 asos</Copy>
+      <Copy>
+        @ 2022{" "}
+        <Link to="/">
+          <Logo />
+        </Link>
+      </Copy>
       <Links>
-        <span>datos de asos</span>
+        <span>datos de akira</span>
         <span>privacidad y cookies</span>
         <span>terminos y condiciones</span>
       </Links>

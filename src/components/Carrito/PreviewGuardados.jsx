@@ -106,8 +106,12 @@ const DataItem = styled.div`
     text-transform: uppercase;
     margin-top: 10px;
     width: 100%;
-    padding: 10px 5px;
-    border: 2px solid var(--color-principal);
+    background: var(--gradiente-principal);
+    padding: 10px 5px 8px;
+    line-height: 1.5;
+    font-weight: 700;
+    font-size: clamp(12px, 1.5vw, 14px);
+    cursor: pointer;
   }
 `;
 
@@ -145,7 +149,7 @@ const PreviewGuardados = () => {
                       guardarProducto(guardado);
                     }}
                   >
-                    añadir a mi bolsa
+                    añadir al carrito
                   </button>
                 </DataItem>
               </InfoItem>

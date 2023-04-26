@@ -35,9 +35,11 @@ const Item = styled.div`
   .btn-bolsa {
     text-transform: uppercase;
     padding: 12px 15px 10px;
-    border: 2px solid var(--color-principal);
+    background: var(--gradiente-principal);
     line-height: 1.5;
     font-weight: 700;
+    font-size: clamp(12px, 1.5vw, 16px);
+    cursor: pointer;
   }
 `;
 
@@ -48,19 +50,21 @@ const BtnBorrar = styled.div`
   position: absolute;
   top: 10px;
   right: 10px;
-  background: #ffffffb0;
+  background: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   svg {
     height: 20px;
     width: 20px;
+    color: var(--color-promo2);
   }
 `;
 
-const ItemGuardado = ({ item, data }) => {
+const ItemGuardado = ({ item }) => {
   const { guardarProducto } = useGuardados();
-  const { carrito, añadirProductoCarrito } = useCarrito();
+  const { añadirProductoCarrito } = useCarrito();
 
   return (
     <Item>
@@ -89,7 +93,7 @@ const ItemGuardado = ({ item, data }) => {
           guardarProducto(item);
         }}
       >
-        mover a la bolsa
+        añadir al carrito
       </button>
     </Item>
   );

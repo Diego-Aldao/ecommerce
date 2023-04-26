@@ -1,15 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Logo from "../Logo";
 
 const Header = styled.header`
   width: 100%;
   h3 {
     text-align: center;
-    text-transform: uppercase;
     padding: 70px 0px 20px;
-    font-size: 32px;
-    letter-spacing: -1px;
+  }
+  h3:first-letter {
+    text-transform: uppercase;
+  }
+  p {
+    font-size: 2rem;
+    margin-left: 10px;
   }
 `;
 
@@ -17,7 +22,10 @@ const HeaderUsuario = () => {
   return (
     <Header>
       <h3>
-        <Link to="/">asos</Link>
+        <Link to="/">
+          volver a
+          <Logo />
+        </Link>
       </h3>
     </Header>
   );

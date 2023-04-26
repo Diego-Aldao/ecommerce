@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import ContenedorWidth from "../../../styles/ContenedorMaxWidth";
 import ItemProductos from "./ItemProductos";
@@ -12,13 +12,9 @@ const Contenedor = styled.section`
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 12px;
-  @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
   }
 `;

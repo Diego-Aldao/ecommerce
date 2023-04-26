@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ButtonLink from "../ButtonLink";
+import Logo from "../../Logo";
 
 const Contenedor = styled.div`
   width: 100%;
@@ -14,13 +15,16 @@ const Contenedor = styled.div`
   }
 `;
 
-const Subtitulo = styled.p`
+const Subtitulo = styled.h3`
   text-transform: uppercase;
   font-style: italic;
   margin-bottom: 20px;
   font-size: 14px;
   @media (min-width: 768px) {
     font-size: 24px;
+  }
+  p {
+    letter-spacing: -2px;
   }
 `;
 
@@ -52,7 +56,9 @@ export { Contenedor, Titulo, Terminos };
 const Header = () => {
   return (
     <Contenedor>
-      <Subtitulo>asos premier party</Subtitulo>
+      <Subtitulo>
+        <Logo /> premier party
+      </Subtitulo>
       <Titulo>hazte miembro por el -25% en todo mañana!</Titulo>
       <ButtonLink link={"/registro"}>registrarme</ButtonLink>
       <Terminos>

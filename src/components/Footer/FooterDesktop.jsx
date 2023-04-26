@@ -64,19 +64,19 @@ const FooterDesktop = () => {
           </ListaLinks>
         </li>
         <li>
-          <h3>sobre asos</h3>
+          <h3>sobre akira</h3>
           <ListaLinks>
             <li>sobre nosotros</li>
-            <li>carreras en asos</li>
+            <li>carreras en akira</li>
             <li>responsabilidad corporativa</li>
             <li>sitio de inversores</li>
           </ListaLinks>
         </li>
         <li>
-          <h3>mas sobre asos</h3>
+          <h3>mas sobre akira</h3>
           <ListaLinks>
             <li>aplicacion movil</li>
-            <li>asos marketplace</li>
+            <li>akira marketplace</li>
             <li>cupones de regalo</li>
             <li>black friday</li>
           </ListaLinks>

@@ -9,6 +9,7 @@ const EstilosGlobales = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         font-family: var(--fuente-principal);
+        scroll-behavior: smooth;
     }
     h1,
     h2,

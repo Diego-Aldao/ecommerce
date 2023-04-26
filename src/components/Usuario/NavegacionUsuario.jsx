@@ -20,14 +20,14 @@ const Links = styled.header`
   .registro {
     border-bottom: ${({ path }) =>
       path == "/registro"
-        ? "2px solid var(--color-principal)"
-        : "2px solid var(--color-gris)"};
+        ? "4px solid var(--color-principal)"
+        : "4px solid var(--color-gris)"};
   }
   .login {
     border-bottom: ${({ path }) =>
       path == "/login"
         ? "4px solid var(--color-principal)"
-        : "2px solid var(--color-gris)"};
+        : "4px solid var(--color-gris)"};
   }
   button:first-child:after {
     content: "";
@@ -52,29 +52,16 @@ const NavegacionUsuario = () => {
 
   return (
     <Links path={path}>
-      {path == "/registro" ? (
-        <>
-          <button className="registro">
-            <span>regístrate</span>
-          </button>
-          <button className="login">
-            <Link to="/login">
-              <span>acceder</span>
-            </Link>
-          </button>
-        </>
-      ) : (
-        <>
-          <button className="registro">
-            <Link to="/registro">
-              <span>regístrate</span>
-            </Link>
-          </button>
-          <button className="login">
-            <span>acceder</span>
-          </button>
-        </>
-      )}
+      <button className="registro">
+        <Link to="/registro">
+          <span>regístrate</span>
+        </Link>
+      </button>
+      <button className="login">
+        <Link to="/login">
+          <span>acceder</span>
+        </Link>
+      </button>
     </Links>
   );
 };

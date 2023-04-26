@@ -26,6 +26,7 @@ const BtnMenu = styled.button`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
   span {
     display: block;
     border-radius: 50%;
@@ -101,6 +102,7 @@ const Opciones = styled.div`
     padding: 15px;
     background: #fafafa;
     margin-top: 10px;
+    cursor: pointer;
 
     span:first-letter {
       text-transform: uppercase;

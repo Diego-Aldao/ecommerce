@@ -10,6 +10,7 @@ const Detalle = styled.ul`
     display: flex;
     align-items: center;
     padding: 20px 5px;
+    cursor: pointer;
     span {
       position: absolute;
       background: #494949;

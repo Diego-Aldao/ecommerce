@@ -3,7 +3,7 @@ import styled from "styled-components";
 const ContenedorWidth = styled.div`
   max-width: 1300px;
   margin: 0 auto;
-  padding: 0px 10px;
+  padding: 0px 15px;
   &.contenedor-pequeño {
     max-width: 512px;
   }

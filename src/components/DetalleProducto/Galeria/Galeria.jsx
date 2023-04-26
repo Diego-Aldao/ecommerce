@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import ImageGallery from "react-image-gallery";
-import { BsPlay, BsImages } from "react-icons/bs";
 import ReactPlayer from "react-player";
 import Thumbnails from "./Thumbnails";
 
@@ -9,9 +8,18 @@ const ContenedorMedia = styled.div`
   position: relative;
   width: 100%;
   .slide {
+    height: 100%;
     img {
-      object-fit: cover;
+      object-fit: contain;
     }
+  }
+  .media {
+    width: 100%;
+    min-height: 410px;
+  }
+  .video {
+    min-height: 410px;
+    width: 100%;
   }
   @media (min-width: 768px) {
     .media {
@@ -19,6 +27,15 @@ const ContenedorMedia = styled.div`
       max-height: 660px;
       top: 0px;
       position: sticky;
+    }
+    .video {
+      min-height: 530px;
+      width: 100%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .video {
+      min-height: 655px;
     }
   }
 `;
