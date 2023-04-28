@@ -4,7 +4,7 @@ import { Modal, ContenedorNavs, BtnCerrar } from "../../../ModalFixed";
 import NombresFiltros from "./NombresFiltros/NombresFiltros";
 import DetalleFiltro from "./DetalleFiltros/DetalleFiltro";
 import useProductos from "../../../../hooks/useProductos";
-import Loading from "../../../Loading";
+import Loader from "../../../Loader";
 
 const FiltroMovil = ({
   isOpen,
@@ -30,7 +30,7 @@ const FiltroMovil = ({
       </BtnCerrar>
       <ContenedorNavs isOpen={isOpen} className="right">
         {loading ? (
-          <Loading />
+          <Loader width={"100%"} height={"100vh"} />
         ) : (
           <>
             <NombresFiltros

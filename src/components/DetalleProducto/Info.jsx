@@ -8,8 +8,8 @@ import { BsFiles } from "react-icons/bs";
 import { AiOutlineTag } from "react-icons/ai";
 import Descripcion from "./Descripcion";
 import useGuardados from "../../hooks/useGuardados";
-import Loading from "../Loading";
 import useCarrito from "../../hooks/useCarrito";
+import Loader from "../Loader";
 
 const Contenido = styled.section`
   width: 100%;
@@ -226,7 +226,7 @@ const Info = ({ data }) => {
         {data.desdeProductos ? (
           <>
             <p>color:</p>
-            <Loading maxHeight={"25px"} maxWidth={"100px"} />
+            <Loader height={"25px"} width={"100px"} />
           </>
         ) : (
           <>
@@ -245,7 +245,7 @@ const Info = ({ data }) => {
           </span>
         </p>
         {data.desdeProductos ? (
-          <Loading maxHeight={"35px"} />
+          <Loader height={"55px"} width={"100%"} />
         ) : (
           <Select name="talle" id="talle" aria-label="Selecciona">
             <option value>seleccionar:</option>

@@ -12,7 +12,7 @@ import Tendencias from "../components/Inicio/Tendencias/Tendencias";
 import ItemTendencias from "../components/Inicio/Tendencias/ItemTendencias";
 import { useLocation } from "react-router-dom";
 import useContentHome from "../hooks/useContentHome";
-import Loading from "../components/Loading";
+import Loader from "../components/Loader";
 
 const PaginaPrincipal = () => {
   const size = useWindowSize(); //custom hook para obtener el width y height del window
@@ -60,7 +60,7 @@ const PaginaPrincipal = () => {
           </Tendencias>
         </>
       ) : (
-        <Loading />
+        <Loader width={"100%"} height={"100vh"} />
       )}
     </LayoutPrincipal>
   );

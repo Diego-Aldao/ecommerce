@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Dropdown from "./Dropdown/Dropdown";
 import useCategorias from "../../../hooks/useCategorias";
-import Loading from "../../Loading";
+import Loader from "../../Loader";
 
 const Contenedor = styled.div`
   width: 100%;
@@ -48,7 +48,7 @@ const NavDesktop = ({ navegacion, loading }) => {
   return (
     <Contenedor onMouseOut={handleMouseOut} onMouseOver={handleMouseOver}>
       {loading ? (
-        <Loading maxHeight={"35px"} />
+        <Loader width={"100%"} height={"35px"} />
       ) : (
         <>
           {categorias?.map((categoria) => {

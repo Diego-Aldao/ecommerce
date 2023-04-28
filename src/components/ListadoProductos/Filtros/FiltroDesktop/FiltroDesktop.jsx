@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ItemFiltro from "./ItemFiltro/ItemFiltro";
 import useFiltros from "../../../../hooks/useFiltros";
 import useProductos from "../../../../hooks/useProductos";
-import Loading from "../../../Loading";
+import Loader from "../../../Loader";
 
 const Background = styled.div`
   width: 100%;
@@ -24,6 +24,7 @@ const ContenedorFiltros = styled.ul`
   grid-gap: 15px;
   padding: 20px 15px;
   flex-wrap: wrap;
+  min-height: 245px;
 `;
 const BotonAplicar = styled.button`
   text-transform: uppercase;
@@ -66,11 +67,11 @@ const FiltroDesktop = ({
   }, [idCategoria, querys]);
 
   return (
-    <Background>
-      <>
-        {currentLoading ? (
-          <Loading maxHeight={"210px"} />
-        ) : (
+    <>
+      {currentLoading ? (
+        <Loader height={"310px"} width={"100%"} />
+      ) : (
+        <Background>
           <ContenedorFiltros>
             {filtros?.map((item) => {
               return (
@@ -83,11 +84,10 @@ const FiltroDesktop = ({
               );
             })}
           </ContenedorFiltros>
-        )}
-
-        <BotonAplicar onClick={handleClick}>aplicar filtros</BotonAplicar>
-      </>
-    </Background>
+          <BotonAplicar onClick={handleClick}>aplicar filtros</BotonAplicar>
+        </Background>
+      )}
+    </>
   );
 };
 

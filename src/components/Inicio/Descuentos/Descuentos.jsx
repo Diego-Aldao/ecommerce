@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Contenedor, Titulo, Terminos } from "../Header/Header";
-import Loading from "../../Loading";
 
 const TituloDescuento = styled(Titulo)`
   font-size: 26px;

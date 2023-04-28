@@ -7,7 +7,7 @@ import GaleriaProductos from "../components/TiendaTop/GaleriaProductos";
 import PrimerBanner from "../components/TiendaTop/PrimerBanner";
 import GaleriaCategorias from "../components/TiendaTop/GaleriaCategorias";
 import SegundoBanner from "../components/TiendaTop/SegundoBanner";
-import Loading from "../components/Loading";
+import Loader from "../components/Loader";
 
 const TiendaTop = () => {
   const [currentData, setCurrentData] = useState();
@@ -39,7 +39,7 @@ const TiendaTop = () => {
           <SegundoBanner data={currentData.banner2} />
         </>
       ) : (
-        <Loading />
+        <Loader width={"100%"} height={"100vh"} />
       )}
     </Layout>
   );

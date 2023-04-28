@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Loading from "../Loading";
+import Loader from "../Loader";
 
 const Titulo = styled.div`
   width: 100%;
@@ -9,6 +9,7 @@ const Titulo = styled.div`
   justify-content: center;
   align-items: center;
   h3 {
+    min-height: 50px;
     text-transform: uppercase;
     font-size: clamp(24px, 3vw, 32px);
     width: 600px;
@@ -21,7 +22,7 @@ const Header = ({ nombre, busqueda, loading }) => {
     <Titulo>
       <h3>
         {loading ? (
-          <Loading maxHeight={"50px"} />
+          <Loader height={"50px"} width={"100%"} />
         ) : (
           <>{busqueda ? <>buscaste "{busqueda}"</> : <>{nombre}</>}</>
         )}

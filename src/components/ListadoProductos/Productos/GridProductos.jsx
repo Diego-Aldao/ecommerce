@@ -4,7 +4,7 @@ import ContenedorWidth from "../../../styles/ContenedorMaxWidth";
 import ItemProductos from "./ItemProductos";
 import Header from "./Header";
 import BotonVerMas from "./BotonVerMas";
-import Loading from "../../Loading";
+import Loader from "../../Loader";
 
 const Contenedor = styled.section`
   width: 100%;
@@ -37,7 +37,7 @@ const GridProductos = ({ productos, loading }) => {
         </Contenedor>
       ) : (
         <Contenedor>
-          <Loading />
+          <Loader width={"100%"} height={"100vh"} />
           {productos && (
             <BotonVerMas
               longitud={productos.products.length}

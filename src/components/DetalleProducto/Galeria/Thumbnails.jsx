@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { BsImages, BsPlay } from "react-icons/bs";
-import Loading from "../../Loading";
+import Loader from "../../Loader";
 
 const StyledThumbnails = styled.div`
   display: none;
   width: 80px;
   padding: 20px 10px;
+  min-height: 250px;
   div {
     margin: 10px 5px;
   }
@@ -54,7 +55,7 @@ const Thumbnails = ({
   return (
     <StyledThumbnails>
       {detalleProducto.desdeProductos ? (
-        <Loading maxHeight={"100%"} />
+        <Loader height={"450px"} width={"100%"} />
       ) : (
         <>
           {imagenes?.map((imagen, index) => {
