@@ -13,6 +13,7 @@ import { FiltrosFetchContextProvider } from "./context/FiltrosFetchContext";
 import { LoadingContextProvider } from "./context/LoadingContext";
 import TiendaTop from "./pages/TiendaTop";
 import { ProductosContextProvider } from "./context/ProductosContext";
+import Pagina404 from "./pages/Pagina404";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
         element: <PaginaPrincipal />,
       },
     ],
+    errorElement: <Pagina404 />,
   },
   {
     path: "/productos/:genero/:categoria1?/:categoria2?/:categoria3?/:idCategoria",
