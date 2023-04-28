@@ -1,16 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import FiltrosFetchContext from "../context/FiltrosFetchContext";
 const useFiltros = () => {
   const [seleccionados, setSeleccionados] = useState([]);
-  const initialParams = {
-    store: "ES",
-    limit: "48",
-    country: "ES",
-    currency: "EUR",
-    sizeSchema: "ES",
-    lang: "es-ES",
-    offset: "0",
-  };
-  const [filtrosFetch, setFiltrosFetch] = useState(initialParams);
+  const { filtrosFetch, setFiltrosFetch } = useContext(FiltrosFetchContext);
 
   const changeSelection = (filtro) => {
     if (filtro.isSelected == false) {
