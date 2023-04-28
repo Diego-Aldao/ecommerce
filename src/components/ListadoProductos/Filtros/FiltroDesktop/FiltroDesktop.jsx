@@ -10,6 +10,10 @@ const Background = styled.div`
   background: var(--color-gris);
   padding-bottom: 20px;
   display: none;
+  li:nth-of-type(4n + 0) .detalle {
+    left: unset;
+    right: 0;
+  }
   @media (min-width: 768px) {
     display: block;
   }
@@ -51,7 +55,7 @@ const FiltroDesktop = ({
 
   const handleClick = () => {
     //cada itemFiltro habra modificado el filtrosFetch y cuando haga este click, ya estara listo el objeto con los filtros para hacer el fetch
-    filterProductos(filtrosFetch);
+    filterProductos({ filtros: filtrosFetch });
   };
 
   useEffect(() => {
@@ -62,7 +66,11 @@ const FiltroDesktop = ({
     if (location.pathname.includes("busqueda") && querys) {
       setFiltrosFetch({ ...filtrosFetch, q: querys });
     } else if (location.pathname.includes("productos") && idCategoria) {
-      setFiltrosFetch({ ...filtrosFetch, q: "", categoryId: idCategoria });
+      setFiltrosFetch({
+        ...filtrosFetch,
+        q: "",
+        categoryId: idCategoria.replaceAll("categoryId=", ""),
+      });
     }
   }, [idCategoria, querys]);
 
