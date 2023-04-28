@@ -18,29 +18,19 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <PaginaPrincipal />,
+    children: [
+      {
+        path: "mujer",
+        element: <PaginaPrincipal />,
+      },
+      {
+        path: "hombre",
+        element: <PaginaPrincipal />,
+      },
+    ],
   },
   {
-    path: "mujer",
-    element: <PaginaPrincipal />,
-  },
-  {
-    path: "hombre",
-    element: <PaginaPrincipal />,
-  },
-  {
-    path: "/productos/:genero/:categoria1/:categoria2/:idCategoria",
-    element: <ListadoProductos />,
-  },
-  {
-    path: "/productos/:genero/:categoria1/:idCategoria",
-    element: <ListadoProductos />,
-  },
-  {
-    path: "/productos/:genero/:categoria1/:categoria2/:categoria3/:idCategoria",
-    element: <ListadoProductos />,
-  },
-  {
-    path: "/productos/:genero/:categoria1/:categoria2/:categoria3/:idCategoria",
+    path: "/productos/:genero/:categoria1?/:categoria2?/:categoria3?/:idCategoria",
     element: <ListadoProductos />,
   },
   {
