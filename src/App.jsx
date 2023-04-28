@@ -12,6 +12,7 @@ import RegistroUsuario from "./pages/RegistroUsuario";
 import { FiltrosFetchContextProvider } from "./context/FiltrosFetchContext";
 import { LoadingContextProvider } from "./context/LoadingContext";
 import TiendaTop from "./pages/TiendaTop";
+import { ProductosContextProvider } from "./context/ProductosContext";
 
 const router = createBrowserRouter([
   {
@@ -82,16 +83,18 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <LoadingContextProvider>
-      <GuardadosContextProvider>
-        <CarritoContextProvider>
-          <FiltrosFetchContextProvider>
-            <EstilosGlobales />
-            <RouterProvider router={router} />
-          </FiltrosFetchContextProvider>
-        </CarritoContextProvider>
-      </GuardadosContextProvider>
-    </LoadingContextProvider>
+    <ProductosContextProvider>
+      <LoadingContextProvider>
+        <GuardadosContextProvider>
+          <CarritoContextProvider>
+            <FiltrosFetchContextProvider>
+              <EstilosGlobales />
+              <RouterProvider router={router} />
+            </FiltrosFetchContextProvider>
+          </CarritoContextProvider>
+        </GuardadosContextProvider>
+      </LoadingContextProvider>
+    </ProductosContextProvider>
   );
 }
 

@@ -42,7 +42,7 @@ const ListadoProductos = () => {
         busqueda={currentProductos?.searchTerm}
         loading={loading}
       />
-      {size.width < 768 && (
+      {size.width < 768 ? (
         <>
           <BotonFiltroMovil isOpen={isOpen} setIsOpen={setIsOpen} />
           <FiltroMovil
@@ -53,16 +53,17 @@ const ListadoProductos = () => {
             filtros={filtros}
           />
         </>
+      ) : (
+        <FiltroDesktop
+          filtros={filtros}
+          currentItem={currentItem}
+          setCurrentItem={setCurrentItem}
+          idCategoria={idCategoria}
+          querys={querys}
+          location={location}
+          loading={loading}
+        />
       )}
-      <FiltroDesktop
-        filtros={filtros}
-        currentItem={currentItem}
-        setCurrentItem={setCurrentItem}
-        idCategoria={idCategoria}
-        querys={querys}
-        location={location}
-        loading={loading}
-      />
       <GridProductos productos={currentProductos} loading={loading} />
     </LayoutPrincipal>
   );

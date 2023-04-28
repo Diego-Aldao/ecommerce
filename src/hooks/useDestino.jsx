@@ -8,6 +8,7 @@ const useDestino = (link) => {
     if (!link.includes("/")) return;
     let ruta = link
       .replaceAll("https://www.asos.com/es/", "/")
+      .replaceAll("https://www.asos.com/", "/")
       .replaceAll("/cat", "")
       .replaceAll("/ctas", "")
       .split("?", 2);

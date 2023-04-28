@@ -155,7 +155,9 @@ const ItemFiltro = ({ data }) => {
           {currentData?.name} <RiArrowDownSLine></RiArrowDownSLine>
         </button>
         <DropdownItem
-          className={currentData?.id == claseActiva ? "visible" : "oculto"}
+          className={`${
+            currentData?.id == claseActiva ? "visible" : "oculto"
+          } detalle`}
         >
           <Header
             seleccionados={seleccionados}

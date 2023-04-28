@@ -1,15 +1,15 @@
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useContext } from "react";
 import axios from "axios";
 import LoadingContext from "../context/LoadingContext";
+import ProductosContext from "../context/ProductosContext";
 
 const useProductos = () => {
-  const [productos, setProductos] = useState();
+  const { productos, setProductos } = useContext(ProductosContext);
   const { loading, setLoading } = useContext(LoadingContext);
 
   const handleFetch = (response, value) => {
     setProductos(response.data);
     localStorage.setItem("Productos", JSON.stringify(response.data));
-
     localStorage.setItem("LastFetch", value);
   };
 
@@ -92,11 +92,13 @@ const useProductos = () => {
         "X-RapidAPI-Host": "asos2.p.rapidapi.com",
       },
     };
-
     axios
       .request(options)
       .then(function (response) {
-        handleFetch(response);
+        handleFetch(
+          response,
+          filtros?.q?.length >= 1 ? filtros.q : filtros.categoryId
+        );
         setLoading(false);
       })
       .catch(function (error) {
