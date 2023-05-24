@@ -14,6 +14,7 @@ const ModalFixed = styled.div`
   transition: var(--transition);
   z-index: 99;
 `;
+
 const Contenedor = styled.div`
   width: 266px;
   height: 100%;
