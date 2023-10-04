@@ -39,13 +39,14 @@ const VerMas = styled.div`
   }
 `;
 
-const BotonVerMas = ({ longitud, itemCount }) => {
+const BotonVerMas = ({ itemCount }) => {
   const { filterProductos } = useProductos();
   const { filtrosFetch, setFiltrosFetch } = useFiltros();
 
   const handleClick = () => {
-    const newOffset = Number(filtrosFetch.offset) + 1;
-    const newFiltros = { ...filtrosFetch, offset: newOffset };
+    window.scrollTo(0, 0);
+    const newOffset = Number(filtrosFetch.offset) + 48;
+    const newFiltros = { ...filtrosFetch, offset: String(newOffset) };
     filterProductos(newFiltros);
     setFiltrosFetch(newFiltros);
   };
@@ -53,7 +54,7 @@ const BotonVerMas = ({ longitud, itemCount }) => {
     <VerMas>
       <div className="range">
         <p>
-          has visto {longitud} de {itemCount} productos
+          has visto {filtrosFetch.offset} de {itemCount} productos
         </p>
         <span></span>
       </div>
