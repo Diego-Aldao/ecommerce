@@ -6,6 +6,9 @@ const StyledBanner = styled.section`
   display: flex;
   flex-direction: column;
   margin: 25px 0px;
+  img {
+    mix-blend-mode: darken;
+  }
 `;
 const StyledLink = styled(Link)`
   background: black;

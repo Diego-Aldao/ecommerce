@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 const ItemTendencia = styled.div`
   width: 100%;
   cursor: pointer;
+  height: 100%;
+  mix-blend-mode: darken;
 `;
 
 const ItemTendencias = ({ data }) => {

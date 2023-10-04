@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Background = styled.div`
   width: 100%;
-  background: #f5f5f5;
+  background: #f0f0f0;
 `;
 
 const Contenedor = styled.ul`

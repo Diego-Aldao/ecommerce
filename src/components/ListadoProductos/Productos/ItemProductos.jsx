@@ -11,20 +11,11 @@ const Item = styled.div`
   border-bottom: 2px solid var(--color-principal);
   .nombre-producto {
     font-size: 14px;
-    line-height: 1.5;
-    height: 45px;
-    max-height: 45px;
+    margin-block: 5px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
     overflow: hidden;
-    position: relative;
-  }
-  .nombre-producto:after {
-    content: "";
-    width: 50px;
-    height: 50%;
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    background: linear-gradient(to left, #ffffff, #ffffff58);
   }
   .contenedor-precio {
     align-items: center;
@@ -79,12 +70,12 @@ const BtnFavorito = styled.span`
 
 const ImagenProducto = styled(animated.div)`
   position: relative;
-  min-height: 190px;
-  span {
+  min-height: 370px;
+  border-radius: 5px;
+  overflow: hidden;
+  .arrasando {
     display: block;
     position: absolute;
-  }
-  .arrasando {
     right: 0px;
     bottom: 28%;
     background: black;
@@ -92,11 +83,20 @@ const ImagenProducto = styled(animated.div)`
     padding: 5px;
     border-radius: 20px 0px 0px 20px;
   }
-  @media (min-height: 768px) {
-    min-height: 300px;
+  @media (min-width: 440px) {
+    min-height: 256px;
   }
-  @media (min-height: 1024px) {
-    min-height: 360px;
+  @media (min-width: 768px) {
+    min-height: 295px;
+  }
+  @media (min-width: 1024px) {
+    min-height: 286px;
+  }
+  @media (min-width: 1240px) {
+    min-height: 279px;
+  }
+  @media (min-width: 1440px) {
+    min-height: 294px;
   }
 `;
 

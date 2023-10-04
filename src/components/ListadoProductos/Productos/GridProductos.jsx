@@ -16,12 +16,13 @@ const StyledGrid = styled.div`
   gap: 12px;
   @media (min-width: 1024px) {
     gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
   }
 `;
 
 const GridProductos = ({ productos, loading }) => {
   return (
-    <ContenedorWidth className="contenedor-pequeño">
+    <ContenedorWidth>
       {!loading && productos ? (
         <Contenedor>
           <Header itemCount={productos.itemCount} />

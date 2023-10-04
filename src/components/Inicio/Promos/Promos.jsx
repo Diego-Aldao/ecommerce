@@ -7,7 +7,7 @@ const Contenedor = styled.section`
   grid-template-columns: 1fr;
   margin: 30px 0px;
   grid-gap: 20px;
-  @media (min-width: 768px) {
+  @media (min-width: 580px) {
     grid-template-columns: 1fr 1fr;
   }
 `;

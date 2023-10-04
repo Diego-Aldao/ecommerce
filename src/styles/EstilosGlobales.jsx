@@ -4,6 +4,10 @@ import Variables from "./Variables";
 const EstilosGlobales = createGlobalStyle`
     ${Variables};
 
+    body{
+        background: #f7f7f7;
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -42,6 +46,7 @@ const EstilosGlobales = createGlobalStyle`
     img{
         width: 100%;
         object-fit: cover;
+        height: 100%;
     }
 `;
 export default EstilosGlobales;

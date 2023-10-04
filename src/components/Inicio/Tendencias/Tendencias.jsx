@@ -8,8 +8,8 @@ const Contenedor = styled.section`
   grid-gap: 10px;
   margin: 30px 0px;
   justify-items: center;
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
+  @media (min-width: 580px) {
+    grid-template-columns: repeat(3, 1fr);
   }
   @media (min-width: 992px) {
     grid-template-columns: repeat(6, 1fr);
@@ -26,8 +26,8 @@ const HeaderTendencias = styled.header`
     text-transform: uppercase;
     line-height: 1.5;
   }
-  @media (min-width: 768px) {
-    grid-column: 1 / 5;
+  @media (min-width: 580px) {
+    grid-column: 1 / 4;
   }
   @media (min-width: 992px) {
     grid-column: 1 / 7;
