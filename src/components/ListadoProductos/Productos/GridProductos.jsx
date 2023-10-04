@@ -39,12 +39,7 @@ const GridProductos = ({ productos, loading }) => {
       ) : (
         <Contenedor>
           <Loader width={"100%"} height={"100vh"} />
-          {productos && (
-            <BotonVerMas
-              longitud={productos.products.length}
-              itemCount={productos.itemCount}
-            />
-          )}
+          {productos && <BotonVerMas itemCount={productos.itemCount} />}
         </Contenedor>
       )}
     </ContenedorWidth>
