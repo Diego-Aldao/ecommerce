@@ -9,8 +9,8 @@
           "nombre": "Hero",
           "imagenMovile": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/ts/lp-hero-3-mob-ww-es-390x580.jpg",
           "imagenDesktop": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/ts/lp-hero-3-desktop-ww-es-1440x750.jpg",
-          "titulo": "novedades",
-          "link": "/productos/mujer/novedades/categoryId=27108",
+          "titulo": "topshop",
+          "link": "/productos/topshop",
           "categoria": 27108
         },
         "lanzamientos": {
@@ -134,8 +134,8 @@
           "nombre": "Hero",
           "imagenMovile": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/tm/lp-hero-3-mob-mw-es-390x580.jpg",
           "imagenDesktop": "https://content.asos-media.com/-/media/hubs/topshop-topman/tstm-march-april-2023/localise-markets-assets/es/tm/lp-hero-3-desktop-mw-es-1440x750.jpg",
-          "titulo": "novedades",
-          "link": "/productos/hombre/novedades/categoryId=27110",
+          "titulo": "topman",
+          "link": "/productos/topman",
           "categoria": 27110
         },
         "lanzamientos": {
