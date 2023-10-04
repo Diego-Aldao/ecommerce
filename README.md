@@ -1,4 +1,4 @@
-# Akira Ecommerce ![icono](/public/Akira.png)
+# Akira Ecommerce ![icono](/public/logo.png)
 
 Akira es una aplicacion que demuestra un sitio web ecommerce utilizando React. La aplicacion utiliza llamadas a una api para traer y mostrar productos.
 
