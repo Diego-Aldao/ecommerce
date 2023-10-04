@@ -81,7 +81,7 @@ const useProductos = () => {
       });
   }, []);
 
-  const filterProductos = useCallback(({ filtros }) => {
+  const filterProductos = useCallback((filtros) => {
     setLoading(true);
     const options = {
       method: "GET",
@@ -97,7 +97,7 @@ const useProductos = () => {
       .then(function (response) {
         handleFetch(
           response,
-          filtros?.q?.length >= 1 ? filtros.q : filtros.categoryId
+          filtros?.q?.length >= 1 ? filtros.q : filtros?.categoryId
         );
         setLoading(false);
       })
