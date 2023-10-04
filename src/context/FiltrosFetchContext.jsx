@@ -11,6 +11,8 @@ export const FiltrosFetchContextProvider = ({ children }) => {
     currency: "EUR",
     sizeSchema: "ES",
     lang: "es-ES",
+    categoryId: `4200`,
+    sort: "freshness",
   };
 
   const [filtrosFetch, setFiltrosFetch] = useState(initialParams);
