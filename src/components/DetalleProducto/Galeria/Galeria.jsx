@@ -7,26 +7,44 @@ import Thumbnails from "./Thumbnails";
 const ContenedorMedia = styled.div`
   position: relative;
   width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
   .slide {
     height: 100%;
+    border-radius: 5px;
+    overflow: hidden;
     img {
-      object-fit: contain;
+      object-fit: fill;
     }
   }
   .media {
     width: 100%;
-    min-height: 410px;
+    height: 127vw;
   }
   .video {
     min-height: 410px;
     width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  @media (min-width: 580px) {
+    .media {
+      height: 708px;
+    }
   }
   @media (min-width: 768px) {
+    max-width: 100%;
+    margin: 0;
     .media {
       display: flex;
-      max-height: 660px;
+      height: 66vw;
+      max-height: 655px;
       top: 0px;
       position: sticky;
+      margin-top: 20px;
+      div:not(.image-gallery-bullets) {
+        height: 100%;
+      }
     }
     .video {
       min-height: 530px;
@@ -107,7 +125,9 @@ const Galeria = ({ data }) => {
           currentContent={currentContent}
         />
         {data.desdeProductos ? (
-          <img src={`https://${data.imageUrl}`} alt="" />
+          <div>
+            <img src={`https://${data.imageUrl}`} alt="" />
+          </div>
         ) : (
           <>
             {currentContent == "video" ? (
@@ -140,10 +160,10 @@ const Galeria = ({ data }) => {
             )}
           </>
         )}
-        <BotonMedia onClick={handleContent}>
-          {currentContent == "video" ? "galeria" : "video"}
-        </BotonMedia>
       </div>
+      <BotonMedia onClick={handleContent}>
+        {currentContent == "video" ? "galeria" : "video"}
+      </BotonMedia>
     </ContenedorMedia>
   );
 };

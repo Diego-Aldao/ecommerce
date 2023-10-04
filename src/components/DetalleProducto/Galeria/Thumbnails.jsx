@@ -6,13 +6,17 @@ import Loader from "../../Loader";
 const StyledThumbnails = styled.div`
   display: none;
   width: 80px;
-  padding: 20px 10px;
+  padding-inline: 10px;
   min-height: 250px;
   div {
-    margin: 10px 5px;
+    height: 83px !important;
+    border-radius: 5px;
+    overflow: hidden;
   }
   @media (min-width: 768px) {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 `;
 

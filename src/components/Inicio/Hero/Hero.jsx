@@ -11,12 +11,25 @@ const Contenedor = styled(animated.div)`
   margin: 20px 0px;
   position: relative;
   max-height: 900px;
+  min-height: 450px;
+  mix-blend-mode: darken;
   picture {
     width: 100%;
+    height: 100%;
   }
   display: flex;
-  @media (min-width: 650px) {
+  @media (min-width: 580px) {
     max-height: 645px;
+    min-height: 300px;
+  }
+  @media (min-width: 768px) {
+    min-height: 380px;
+  }
+  @media (min-width: 1024px) {
+    min-height: 500px;
+  }
+  @media (min-width: 1240px) {
+    min-height: 620px;
   }
 `;
 
@@ -25,9 +38,10 @@ const InfoHero = styled.div`
   position: absolute;
   bottom: 0px;
   left: 0px;
-  height: 50%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   a {
     margin-top: 20px;
@@ -89,14 +103,14 @@ const Hero = ({ data }) => {
     <ContenedorWidth>
       <Contenedor onClick={handleClick} style={spring}>
         <picture>
-          <source srcSet={data.imagenMovile} media="(max-width: 650px)" />
+          <source srcSet={data.imagenMovile} media="(max-width: 580px)" />
           <img src={data.imagenDesktop} alt="Primavera_verano" />
         </picture>
         <InfoHero>
           <Tienda>
             <span>{data.titulo}</span>
           </Tienda>
-          <ButtonLink link={data.link}>comprar ahora</ButtonLink>
+          <ButtonLink link={data.link}>ir a la tienda</ButtonLink>
         </InfoHero>
       </Contenedor>
     </ContenedorWidth>

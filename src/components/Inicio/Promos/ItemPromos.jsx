@@ -12,6 +12,17 @@ const ItemPromo = styled.div`
     padding: 20px 0px 10px;
     text-transform: uppercase;
   }
+  div {
+    min-height: 380px;
+    height: 120vw;
+    @media (min-width: 580px) {
+      min-height: 350px;
+      height: 60vw;
+    }
+    @media (min-width: 1240px) {
+      height: 740px;
+    }
+  }
   p {
     font-size: 18px;
     &::first-letter {
@@ -52,7 +63,9 @@ const ItemPromos = ({ data }) => {
 
   return (
     <ItemPromo onClick={handleClick}>
-      <img src={data.imagen} alt={`promocion ${data.titulo}`} />
+      <div>
+        <img src={data.imagen} alt={`promocion ${data.titulo}`} />
+      </div>
       <h2>{data.titulo}</h2>
       <p>{data.subtitulo}</p>
       <ButtonLink link={data.link}>comprar ahora</ButtonLink>
