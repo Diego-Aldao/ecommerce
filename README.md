@@ -19,20 +19,19 @@ Algunas tecnologías utilizadas fueron:
 - *React*
 - *styled-components*
 - *React Router*
-- *Firebase*
 - *Axios*
 - *Formik*
 - *Yup*
 
 ## Sitio en vivo
 
-El deploy del sitio se puede ver haciendo [click aqui](https://akira-ecommerce.web.app/)
+El deploy del sitio se puede ver haciendo [click aqui](https://akira-ecommerce.vercel.app/)
 
 A continuacion dejo algunas imagenes del sitio
 
 ### Inicio
 
-![pagina inicio](https://firebasestorage.googleapis.com/v0/b/akira-ecommerce.appspot.com/o/screenshots%2Finicio.png?alt=media&token=962f8fcb-2d99-4723-b776-86192e67442a)
+![pagina inicio](https://firebasestorage.googleapis.com/v0/b/akira-ecommerce.appspot.com/o/screenshots%2Finicio.png?alt=media&token=80cc8167-a5ee-4c8a-84c3-9bff8876902e&_gl=1*94nubx*_ga*MTgzMzI3NDAwOC4xNjk1Mzk0MDI0*_ga_CW55HF8NVT*MTY5NjQ0MDk0My4zLjEuMTY5NjQ0NDc3NC42MC4wLjA.)
 
 ### Productos
 
